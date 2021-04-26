@@ -1,4 +1,4 @@
-package com.example.agenda
+package com.bdeguigne.agenda
 
 import io.flutter.embedding.android.FlutterActivity
 
