@@ -14,6 +14,211 @@ class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
 // ignore: unused_element
+  Auth<T> auth<T>(AuthValueFailure<T> f) {
+    return Auth<T>(
+      f,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $ValueFailure = _$ValueFailureTearOff();
+
+/// @nodoc
+mixin _$ValueFailure<T> {
+  AuthValueFailure<T> get f;
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult auth(AuthValueFailure<T> f),
+  });
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult auth(AuthValueFailure<T> f),
+    @required TResult orElse(),
+  });
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult auth(Auth<T> value),
+  });
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult auth(Auth<T> value),
+    @required TResult orElse(),
+  });
+
+  @JsonKey(ignore: true)
+  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $ValueFailureCopyWith<T, $Res> {
+  factory $ValueFailureCopyWith(
+          ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
+      _$ValueFailureCopyWithImpl<T, $Res>;
+  $Res call({AuthValueFailure<T> f});
+
+  $AuthValueFailureCopyWith<T, $Res> get f;
+}
+
+/// @nodoc
+class _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  _$ValueFailureCopyWithImpl(this._value, this._then);
+
+  final ValueFailure<T> _value;
+  // ignore: unused_field
+  final $Res Function(ValueFailure<T>) _then;
+
+  @override
+  $Res call({
+    Object f = freezed,
+  }) {
+    return _then(_value.copyWith(
+      f: f == freezed ? _value.f : f as AuthValueFailure<T>,
+    ));
+  }
+
+  @override
+  $AuthValueFailureCopyWith<T, $Res> get f {
+    if (_value.f == null) {
+      return null;
+    }
+    return $AuthValueFailureCopyWith<T, $Res>(_value.f, (value) {
+      return _then(_value.copyWith(f: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class $AuthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $AuthCopyWith(Auth<T> value, $Res Function(Auth<T>) then) =
+      _$AuthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({AuthValueFailure<T> f});
+
+  @override
+  $AuthValueFailureCopyWith<T, $Res> get f;
+}
+
+/// @nodoc
+class _$AuthCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $AuthCopyWith<T, $Res> {
+  _$AuthCopyWithImpl(Auth<T> _value, $Res Function(Auth<T>) _then)
+      : super(_value, (v) => _then(v as Auth<T>));
+
+  @override
+  Auth<T> get _value => super._value as Auth<T>;
+
+  @override
+  $Res call({
+    Object f = freezed,
+  }) {
+    return _then(Auth<T>(
+      f == freezed ? _value.f : f as AuthValueFailure<T>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$Auth<T> with DiagnosticableTreeMixin implements Auth<T> {
+  const _$Auth(this.f) : assert(f != null);
+
+  @override
+  final AuthValueFailure<T> f;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.auth(f: $f)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.auth'))
+      ..add(DiagnosticsProperty('f', f));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Auth<T> &&
+            (identical(other.f, f) ||
+                const DeepCollectionEquality().equals(other.f, f)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(f);
+
+  @JsonKey(ignore: true)
+  @override
+  $AuthCopyWith<T, Auth<T>> get copyWith =>
+      _$AuthCopyWithImpl<T, Auth<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult auth(AuthValueFailure<T> f),
+  }) {
+    assert(auth != null);
+    return auth(f);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult auth(AuthValueFailure<T> f),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (auth != null) {
+      return auth(f);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult auth(Auth<T> value),
+  }) {
+    assert(auth != null);
+    return auth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult auth(Auth<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (auth != null) {
+      return auth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Auth<T> implements ValueFailure<T> {
+  const factory Auth(AuthValueFailure<T> f) = _$Auth<T>;
+
+  @override
+  AuthValueFailure<T> get f;
+  @override
+  @JsonKey(ignore: true)
+  $AuthCopyWith<T, Auth<T>> get copyWith;
+}
+
+/// @nodoc
+class _$AuthValueFailureTearOff {
+  const _$AuthValueFailureTearOff();
+
+// ignore: unused_element
   InvalidEmail<T> invalidEmail<T>({@required T failedValue}) {
     return InvalidEmail<T>(
       failedValue: failedValue,
@@ -30,10 +235,10 @@ class _$ValueFailureTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $ValueFailure = _$ValueFailureTearOff();
+const $AuthValueFailure = _$AuthValueFailureTearOff();
 
 /// @nodoc
-mixin _$ValueFailure<T> {
+mixin _$AuthValueFailure<T> {
   T get failedValue;
 
   @optionalTypeArgs
@@ -60,25 +265,25 @@ mixin _$ValueFailure<T> {
   });
 
   @JsonKey(ignore: true)
-  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
+  $AuthValueFailureCopyWith<T, AuthValueFailure<T>> get copyWith;
 }
 
 /// @nodoc
-abstract class $ValueFailureCopyWith<T, $Res> {
-  factory $ValueFailureCopyWith(
-          ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
-      _$ValueFailureCopyWithImpl<T, $Res>;
+abstract class $AuthValueFailureCopyWith<T, $Res> {
+  factory $AuthValueFailureCopyWith(
+          AuthValueFailure<T> value, $Res Function(AuthValueFailure<T>) then) =
+      _$AuthValueFailureCopyWithImpl<T, $Res>;
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class _$ValueFailureCopyWithImpl<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
-  _$ValueFailureCopyWithImpl(this._value, this._then);
+class _$AuthValueFailureCopyWithImpl<T, $Res>
+    implements $AuthValueFailureCopyWith<T, $Res> {
+  _$AuthValueFailureCopyWithImpl(this._value, this._then);
 
-  final ValueFailure<T> _value;
+  final AuthValueFailure<T> _value;
   // ignore: unused_field
-  final $Res Function(ValueFailure<T>) _then;
+  final $Res Function(AuthValueFailure<T>) _then;
 
   @override
   $Res call({
@@ -93,7 +298,7 @@ class _$ValueFailureCopyWithImpl<T, $Res>
 
 /// @nodoc
 abstract class $InvalidEmailCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+    implements $AuthValueFailureCopyWith<T, $Res> {
   factory $InvalidEmailCopyWith(
           InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
@@ -103,7 +308,7 @@ abstract class $InvalidEmailCopyWith<T, $Res>
 
 /// @nodoc
 class _$InvalidEmailCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$AuthValueFailureCopyWithImpl<T, $Res>
     implements $InvalidEmailCopyWith<T, $Res> {
   _$InvalidEmailCopyWithImpl(
       InvalidEmail<T> _value, $Res Function(InvalidEmail<T>) _then)
@@ -135,14 +340,14 @@ class _$InvalidEmail<T>
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue)';
+    return 'AuthValueFailure<$T>.invalidEmail(failedValue: $failedValue)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.invalidEmail'))
+      ..add(DiagnosticsProperty('type', 'AuthValueFailure<$T>.invalidEmail'))
       ..add(DiagnosticsProperty('failedValue', failedValue));
   }
 
@@ -215,7 +420,7 @@ class _$InvalidEmail<T>
   }
 }
 
-abstract class InvalidEmail<T> implements ValueFailure<T> {
+abstract class InvalidEmail<T> implements AuthValueFailure<T> {
   const factory InvalidEmail({@required T failedValue}) = _$InvalidEmail<T>;
 
   @override
@@ -227,7 +432,7 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
 
 /// @nodoc
 abstract class $ShortPasswordCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+    implements $AuthValueFailureCopyWith<T, $Res> {
   factory $ShortPasswordCopyWith(
           ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
       _$ShortPasswordCopyWithImpl<T, $Res>;
@@ -237,7 +442,7 @@ abstract class $ShortPasswordCopyWith<T, $Res>
 
 /// @nodoc
 class _$ShortPasswordCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
+    extends _$AuthValueFailureCopyWithImpl<T, $Res>
     implements $ShortPasswordCopyWith<T, $Res> {
   _$ShortPasswordCopyWithImpl(
       ShortPassword<T> _value, $Res Function(ShortPassword<T>) _then)
@@ -269,14 +474,14 @@ class _$ShortPassword<T>
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ValueFailure<$T>.shortPassword(failedValue: $failedValue)';
+    return 'AuthValueFailure<$T>.shortPassword(failedValue: $failedValue)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.shortPassword'))
+      ..add(DiagnosticsProperty('type', 'AuthValueFailure<$T>.shortPassword'))
       ..add(DiagnosticsProperty('failedValue', failedValue));
   }
 
@@ -349,7 +554,7 @@ class _$ShortPassword<T>
   }
 }
 
-abstract class ShortPassword<T> implements ValueFailure<T> {
+abstract class ShortPassword<T> implements AuthValueFailure<T> {
   const factory ShortPassword({@required T failedValue}) = _$ShortPassword<T>;
 
   @override

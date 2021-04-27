@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
@@ -6,6 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:agenda/domain/auth/user.dart' as app;
+import './firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -13,6 +17,10 @@ class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
 
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+
+  @override
+  Option<app.User> getSignedInUser() =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -61,7 +69,6 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
-    print("GOOGLE SIGNIN");
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -79,9 +86,14 @@ class FirebaseAuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
-    } on PlatformException catch (error) {
-      print("SIGN IN GOOGLE ERROR $error");
+    } on PlatformException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]);
 }
