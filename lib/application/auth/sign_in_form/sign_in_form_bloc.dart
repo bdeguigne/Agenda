@@ -30,7 +30,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       );
     }, passwordChanged: (e) async* {
       yield state.copyWith(
-        emailAddress: EmailAddress(e.passwordStr),
+        password: Password(e.passwordStr),
         authFailureOrSuccessOption: none(),
       );
     }, registerWithEmailAndPasswordPressed: (e) async* {
@@ -43,11 +43,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       );
     }, signInWithGooglePressed: (e) async* {
       yield state.copyWith(
-          isSubmitting: true, authFailureOrSuccessOption: none());
+        isSubmitting: true,
+        authFailureOrSuccessOption: none(),
+      );
       final failureOrSuccess = await _authFacade.signInWithGoogle();
       yield state.copyWith(
-          isSubmitting: false,
-          authFailureOrSuccessOption: some(failureOrSuccess));
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(failureOrSuccess),
+      );
     });
   }
 

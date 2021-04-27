@@ -3,6 +3,7 @@ import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
@@ -60,6 +61,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+    print("GOOGLE SIGNIN");
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -69,12 +71,16 @@ class FirebaseAuthFacade implements IAuthFacade {
       final googleAuthentication = await googleUser.authentication;
 
       final authCredential = GoogleAuthProvider.credential(
-          accessToken: googleAuthentication.accessToken,
-          idToken: googleAuthentication.idToken);
+        accessToken: googleAuthentication.accessToken,
+        idToken: googleAuthentication.idToken,
+      );
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
     } on FirebaseAuthException catch (_) {
+      return left(const AuthFailure.serverError());
+    } on PlatformException catch (error) {
+      print("SIGN IN GOOGLE ERROR $error");
       return left(const AuthFailure.serverError());
     }
   }
