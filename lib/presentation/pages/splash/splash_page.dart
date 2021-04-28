@@ -1,4 +1,5 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
+import 'package:agenda/presentation/pages/splash/widgets/splash_widget.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class SplashPage extends StatelessWidget {
         );
       },
       child: const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: SplashWidget(),
       ),
     );
   }
