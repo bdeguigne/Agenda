@@ -1,5 +1,6 @@
 import 'package:agenda/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:agenda/injection.dart';
+import 'package:agenda/presentation/core/snackbars.dart';
 import 'package:agenda/presentation/pages/sign_in/widgets/sign_in_form.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -18,30 +19,17 @@ class SignInPage extends StatelessWidget {
               () {},
               (either) => either.fold(
                 (failure) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Row(
-                      children: [
-                        const Icon(Icons.close, color: Colors.white),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: Text(
-                            failure.map(
-                              cancelledByUser: (_) => "Cancelled",
-                              serverError: (_) => "Server error",
-                              emailAlreadyInUse: (_) => "Email already in use",
-                              invalidEmailAndPasswordCombination: (_) =>
-                                  "Invalid email and password combination",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    backgroundColor: Colors.redAccent,
-                  ));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    AppSnackBar.errorSnackBar(
+                      failure.map(
+                        cancelledByUser: (_) => "Cancelled",
+                        serverError: (_) => "Server error",
+                        emailAlreadyInUse: (_) => "Email already in use",
+                        invalidEmailAndPasswordCombination: (_) =>
+                            "Invalid email and password combination",
+                      ),
+                    ).toSnackBar,
+                  );
                 },
                 (_) => ExtendedNavigator.of(context).replace(Routes.homePage),
               ),
