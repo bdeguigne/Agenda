@@ -1,5 +1,4 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
-import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/pages/home/widgets/home_widget.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -11,25 +10,32 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthBloc _authBloc = BlocProvider.of<AuthBloc>(context);
+
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<AuthBloc>(),
-        child: BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) {
-            state.when(
-                initial: () {},
-                authenticated: () {},
-                unauthenticated: () =>
-                    ExtendedNavigator.of(context).replace(Routes.signInPage));
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            return HomeWidget(
+      body: BlocConsumer(
+        bloc: _authBloc,
+        listener: (BuildContext context, AuthState state) {
+          state.user.fold(
+            () => ExtendedNavigator.of(context).replace(Routes.signInPage),
+            (_) => print("USER !!"),
+          );
+        },
+        builder: (context, AuthState state) {
+          return context.read<AuthBloc>().state.user.fold(
+            () {
+              // TODO Message d'erreur et rediriger vers le login
+              return const Center(
+                child: Text("Waiting for user..."),
+              );
+            },
+            (user) => HomeWidget(
+              user: user,
               onSignOutPressed: () =>
                   context.read<AuthBloc>().add(const AuthEvent.signedOut()),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

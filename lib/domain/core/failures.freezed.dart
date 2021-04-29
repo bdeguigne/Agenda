@@ -231,6 +231,13 @@ class _$AuthValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+// ignore: unused_element
+  InvalidRole<T> invalidRole<T>({@required T failedValue}) {
+    return InvalidRole<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -245,22 +252,26 @@ mixin _$AuthValueFailure<T> {
   TResult when<TResult extends Object>({
     @required TResult invalidEmail(T failedValue),
     @required TResult shortPassword(T failedValue),
+    @required TResult invalidRole(T failedValue),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult invalidEmail(T failedValue),
     TResult shortPassword(T failedValue),
+    TResult invalidRole(T failedValue),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
+    @required TResult invalidRole(InvalidRole<T> value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
+    TResult invalidRole(InvalidRole<T> value),
     @required TResult orElse(),
   });
 
@@ -374,9 +385,11 @@ class _$InvalidEmail<T>
   TResult when<TResult extends Object>({
     @required TResult invalidEmail(T failedValue),
     @required TResult shortPassword(T failedValue),
+    @required TResult invalidRole(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
+    assert(invalidRole != null);
     return invalidEmail(failedValue);
   }
 
@@ -385,6 +398,7 @@ class _$InvalidEmail<T>
   TResult maybeWhen<TResult extends Object>({
     TResult invalidEmail(T failedValue),
     TResult shortPassword(T failedValue),
+    TResult invalidRole(T failedValue),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -399,9 +413,11 @@ class _$InvalidEmail<T>
   TResult map<TResult extends Object>({
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
+    @required TResult invalidRole(InvalidRole<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
+    assert(invalidRole != null);
     return invalidEmail(this);
   }
 
@@ -410,6 +426,7 @@ class _$InvalidEmail<T>
   TResult maybeMap<TResult extends Object>({
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
+    TResult invalidRole(InvalidRole<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -508,9 +525,11 @@ class _$ShortPassword<T>
   TResult when<TResult extends Object>({
     @required TResult invalidEmail(T failedValue),
     @required TResult shortPassword(T failedValue),
+    @required TResult invalidRole(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
+    assert(invalidRole != null);
     return shortPassword(failedValue);
   }
 
@@ -519,6 +538,7 @@ class _$ShortPassword<T>
   TResult maybeWhen<TResult extends Object>({
     TResult invalidEmail(T failedValue),
     TResult shortPassword(T failedValue),
+    TResult invalidRole(T failedValue),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -533,9 +553,11 @@ class _$ShortPassword<T>
   TResult map<TResult extends Object>({
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
+    @required TResult invalidRole(InvalidRole<T> value),
   }) {
     assert(invalidEmail != null);
     assert(shortPassword != null);
+    assert(invalidRole != null);
     return shortPassword(this);
   }
 
@@ -544,6 +566,7 @@ class _$ShortPassword<T>
   TResult maybeMap<TResult extends Object>({
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
+    TResult invalidRole(InvalidRole<T> value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -562,4 +585,142 @@ abstract class ShortPassword<T> implements AuthValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $InvalidRoleCopyWith<T, $Res>
+    implements $AuthValueFailureCopyWith<T, $Res> {
+  factory $InvalidRoleCopyWith(
+          InvalidRole<T> value, $Res Function(InvalidRole<T>) then) =
+      _$InvalidRoleCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$InvalidRoleCopyWithImpl<T, $Res>
+    extends _$AuthValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidRoleCopyWith<T, $Res> {
+  _$InvalidRoleCopyWithImpl(
+      InvalidRole<T> _value, $Res Function(InvalidRole<T>) _then)
+      : super(_value, (v) => _then(v as InvalidRole<T>));
+
+  @override
+  InvalidRole<T> get _value => super._value as InvalidRole<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(InvalidRole<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$InvalidRole<T> with DiagnosticableTreeMixin implements InvalidRole<T> {
+  const _$InvalidRole({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthValueFailure<$T>.invalidRole(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthValueFailure<$T>.invalidRole'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidRole<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidRoleCopyWith<T, InvalidRole<T>> get copyWith =>
+      _$InvalidRoleCopyWithImpl<T, InvalidRole<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
+    @required TResult invalidRole(T failedValue),
+  }) {
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidRole != null);
+    return invalidRole(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
+    TResult invalidRole(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidRole != null) {
+      return invalidRole(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult shortPassword(ShortPassword<T> value),
+    @required TResult invalidRole(InvalidRole<T> value),
+  }) {
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(invalidRole != null);
+    return invalidRole(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult shortPassword(ShortPassword<T> value),
+    TResult invalidRole(InvalidRole<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidRole != null) {
+      return invalidRole(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidRole<T> implements AuthValueFailure<T> {
+  const factory InvalidRole({@required T failedValue}) = _$InvalidRole<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $InvalidRoleCopyWith<T, InvalidRole<T>> get copyWith;
 }

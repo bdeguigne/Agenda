@@ -5,6 +5,7 @@ import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -15,15 +16,17 @@ import './firebase_user_mapper.dart';
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseFirestore _firebaseFirestore;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
-
-  @override
-  Option<app.User> getSignedInUser() =>
-      optionOf(_firebaseAuth.currentUser?.toDomain());
+  FirebaseAuthFacade(
+      this._firebaseAuth, this._googleSignIn, this._firebaseFirestore);
 
   @override
-  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
+  Future<Option<app.User>> getSignedInUser() async =>
+      optionOf(await _firebaseFirestore.toDomain(_firebaseAuth.currentUser));
+
+  @override
+  Future<Either<AuthFailure, app.User>> registerWithEmailAndPassword({
     EmailAddress emailAddress,
     Password password,
   }) async {
@@ -31,11 +34,24 @@ class FirebaseAuthFacade implements IAuthFacade {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final UserCredential createdUser =
+          await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
       );
-      return right(unit);
+      final User firebaseUser = createdUser.user;
+      _firebaseFirestore.collection("users").doc(firebaseUser.uid).set(
+        {
+          "email": emailAddressStr,
+          "role": "student",
+        },
+      );
+      return right(
+        app.User(
+          email: EmailAddress(emailAddressStr),
+          role: Role("student"),
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
         return left(const AuthFailure.emailAlreadyInUse());
@@ -46,18 +62,19 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, app.User>> signInWithEmailAndPassword({
     EmailAddress emailAddress,
     Password password,
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      final UserCredential createdUser =
+          await _firebaseAuth.signInWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
       );
-      return right(unit);
+      return right(await _firebaseFirestore.toDomain(createdUser.user));
     } on FirebaseAuthException catch (e) {
       if (e.code == "wrong-password" || e.code == "user-not-found") {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
@@ -68,7 +85,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+  Future<Either<AuthFailure, app.User>> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -82,8 +99,23 @@ class FirebaseAuthFacade implements IAuthFacade {
         idToken: googleAuthentication.idToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return right(unit);
+      final UserCredential createdUser =
+          await _firebaseAuth.signInWithCredential(authCredential);
+
+      final User firebaseUser = createdUser.user;
+      final DocumentReference documentRef =
+          _firebaseFirestore.collection("users").doc(firebaseUser.uid);
+      final DocumentSnapshot document = await documentRef.get();
+      if (!document.exists) {
+        final data = {
+          "email": firebaseUser.email,
+          "role": "student",
+        };
+        documentRef.set(data);
+
+        return right(app.User.fromJson(data));
+      }
+      return right(app.User.fromJson(document.data()));
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     } on PlatformException catch (_) {

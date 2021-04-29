@@ -805,7 +805,7 @@ class _$SignInFormStateTearOff {
       @required Password password,
       @required bool showErrorMessages,
       @required bool isSubmitting,
-      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
+      @required Option<Either<AuthFailure, User>> authFailureOrSuccessOption}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
@@ -826,7 +826,7 @@ mixin _$SignInFormState {
   Password get password;
   bool get showErrorMessages;
   bool get isSubmitting;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, User>> get authFailureOrSuccessOption;
 
   @JsonKey(ignore: true)
   $SignInFormStateCopyWith<SignInFormState> get copyWith;
@@ -842,7 +842,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, User>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -874,7 +874,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption as Option<Either<AuthFailure, User>>,
     ));
   }
 }
@@ -891,7 +891,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, User>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -925,7 +925,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption as Option<Either<AuthFailure, User>>,
     ));
   }
 }
@@ -955,7 +955,7 @@ class _$_SignInFormState
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, User>> authFailureOrSuccessOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1024,7 +1024,7 @@ abstract class _SignInFormState implements SignInFormState {
           @required
               bool isSubmitting,
           @required
-              Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) =
+              Option<Either<AuthFailure, User>> authFailureOrSuccessOption}) =
       _$_SignInFormState;
 
   @override
@@ -1036,7 +1036,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, User>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith;

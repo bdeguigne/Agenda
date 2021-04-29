@@ -16,4 +16,7 @@ abstract class AuthValueFailure<T> with _$AuthValueFailure<T> {
   const factory AuthValueFailure.shortPassword({
     @required T failedValue,
   }) = ShortPassword<T>;
+  const factory AuthValueFailure.invalidRole({
+    @required T failedValue,
+  }) = InvalidRole<T>;
 }

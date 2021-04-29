@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:agenda/domain/auth/i_auth_facade.dart';
+import 'package:agenda/domain/auth/user.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +16,7 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
 
-  AuthBloc(this._authFacade) : super(const AuthState.initial());
+  AuthBloc(this._authFacade) : super(AuthState.initial());
 
   @override
   Stream<AuthState> mapEventToState(
@@ -22,15 +24,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
-        final userOption = _authFacade.getSignedInUser();
+        final userOption = await _authFacade.getSignedInUser();
         yield userOption.fold(
-          () => const AuthState.unauthenticated(),
-          (_) => const AuthState.authenticated(),
+          () => state.copyWith(user: none()),
+          (loggedUser) => state.copyWith(user: some(loggedUser)),
         );
+      },
+      userUpdated: (e) async* {
+        yield state.copyWith(user: some(e.user));
       },
       signedOut: (e) async* {
         await _authFacade.signOut();
-        yield const AuthState.unauthenticated();
+        yield state.copyWith(user: none());
       },
     );
   }

@@ -1,4 +1,4 @@
-import 'package:agenda/domain/auth/auth_failure.dart';
+import 'package:agenda/domain/auth/user.dart';
 import 'package:dartz/dartz.dart';
 
 import 'failures.dart';
@@ -23,4 +23,19 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
       AuthValueFailure.invalidEmail(failedValue: input),
     ));
   }
+}
+
+Either<ValueFailure<String>, String> validateRole(String role) {
+  if (role == RoleTypes.student) {
+    return right(RoleTypes.student);
+  }
+  if (role == RoleTypes.teacher) {
+    return right(RoleTypes.teacher);
+  }
+  if (role == RoleTypes.admin) {
+    return right(RoleTypes.admin);
+  }
+  return left(
+    ValueFailure.auth(AuthValueFailure.invalidRole(failedValue: role)),
+  );
 }

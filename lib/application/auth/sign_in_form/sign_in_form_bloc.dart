@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
+import 'package:agenda/domain/auth/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -55,13 +56,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function({
+    Future<Either<AuthFailure, User>> Function({
       @required EmailAddress emailAddress,
       @required Password password,
     })
         forwardedCall,
   ) async* {
-    Either<AuthFailure, Unit> failureOrSuccess;
+    Either<AuthFailure, User> failureOrSuccess;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
