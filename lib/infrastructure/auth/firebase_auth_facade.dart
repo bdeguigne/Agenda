@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
+import 'package:agenda/domain/core/value_object.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,6 +49,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       );
       return right(
         app.User(
+          id: UniqueId.fromUniqueString(firebaseUser.uid),
           email: EmailAddress(emailAddressStr),
           role: Role("student"),
         ),
@@ -113,9 +115,13 @@ class FirebaseAuthFacade implements IAuthFacade {
         };
         documentRef.set(data);
 
-        return right(app.User.fromJson(data));
+        return right(app.User.fromJson(data).copyWith(
+          id: UniqueId.fromUniqueString(firebaseUser.uid),
+        ));
       }
-      return right(app.User.fromJson(document.data()));
+      return right(app.User.fromJson(document.data()).copyWith(
+        id: UniqueId.fromUniqueString(firebaseUser.uid),
+      ));
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     } on PlatformException catch (_) {

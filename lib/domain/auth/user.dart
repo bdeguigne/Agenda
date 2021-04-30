@@ -1,4 +1,5 @@
 import 'package:agenda/domain/auth/auth_value_objects.dart';
+import 'package:agenda/domain/core/value_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -13,7 +14,7 @@ class RoleTypes {
 @freezed
 abstract class User with _$User {
   const factory User({
-    // @JsonKey(ignore: true) UniqueId id,
+    @JsonKey(ignore: true) UniqueId id,
     @required EmailAddress email,
     @required Role role,
   }) = _User;

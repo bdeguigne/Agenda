@@ -17,8 +17,12 @@ class _$UserTearOff {
   const _$UserTearOff();
 
 // ignore: unused_element
-  _User call({@required EmailAddress email, @required Role role}) {
+  _User call(
+      {@JsonKey(ignore: true) UniqueId id,
+      @required EmailAddress email,
+      @required Role role}) {
     return _User(
+      id: id,
       email: email,
       role: role,
     );
@@ -36,7 +40,8 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-// @JsonKey(ignore: true) UniqueId id,
+  @JsonKey(ignore: true)
+  UniqueId get id;
   EmailAddress get email;
   Role get role;
 
@@ -49,7 +54,8 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({EmailAddress email, Role role});
+  $Res call(
+      {@JsonKey(ignore: true) UniqueId id, EmailAddress email, Role role});
 }
 
 /// @nodoc
@@ -62,10 +68,12 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
+    Object id = freezed,
     Object email = freezed,
     Object role = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as UniqueId,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
     ));
@@ -77,7 +85,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({EmailAddress email, Role role});
+  $Res call(
+      {@JsonKey(ignore: true) UniqueId id, EmailAddress email, Role role});
 }
 
 /// @nodoc
@@ -91,10 +100,12 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object id = freezed,
     Object email = freezed,
     Object role = freezed,
   }) {
     return _then(_User(
+      id: id == freezed ? _value.id : id as UniqueId,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
     ));
@@ -105,27 +116,35 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_User implements _User {
-  const _$_User({@required this.email, @required this.role})
+  const _$_User(
+      {@JsonKey(ignore: true) this.id,
+      @required this.email,
+      @required this.role})
       : assert(email != null),
         assert(role != null);
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
 
-  @override // @JsonKey(ignore: true) UniqueId id,
+  @override
+  @JsonKey(ignore: true)
+  final UniqueId id;
+  @override
   final EmailAddress email;
   @override
   final Role role;
 
   @override
   String toString() {
-    return 'User(email: $email, role: $role)';
+    return 'User(id: $id, email: $email, role: $role)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _User &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.role, role) ||
@@ -135,6 +154,7 @@ class _$_User implements _User {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(role);
 
@@ -150,12 +170,17 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({@required EmailAddress email, @required Role role}) =
-      _$_User;
+  const factory _User(
+      {@JsonKey(ignore: true) UniqueId id,
+      @required EmailAddress email,
+      @required Role role}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
-  @override // @JsonKey(ignore: true) UniqueId id,
+  @override
+  @JsonKey(ignore: true)
+  UniqueId get id;
+  @override
   EmailAddress get email;
   @override
   Role get role;
