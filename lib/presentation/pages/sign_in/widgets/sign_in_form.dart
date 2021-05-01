@@ -8,6 +8,7 @@ class SignInForm extends StatelessWidget {
   final String Function() onPasswordValidate;
   final void Function() onSignInPressed;
   final void Function() onRegisterPressed;
+  final void Function() onSignUpPressed;
   final void Function() onGoogleSignInPressed;
 
   const SignInForm({
@@ -19,6 +20,7 @@ class SignInForm extends StatelessWidget {
     @required this.onPasswordValidate,
     @required this.onSignInPressed,
     @required this.onRegisterPressed,
+    @required this.onSignUpPressed,
     @required this.onGoogleSignInPressed,
   }) : super(key: key);
 
@@ -67,28 +69,24 @@ class SignInForm extends StatelessWidget {
               validator: (_) => onPasswordValidate(),
             ),
             const SizedBox(height: 24),
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(
-                    height: 45,
-                    child: TextButton(
-                      onPressed: () => onSignInPressed(),
-                      child: const Text("Sign In"),
-                    ),
-                  ),
+            Expanded(
+              child: SizedBox(
+                height: 45,
+                child: ElevatedButton(
+                  onPressed: () => onSignInPressed(),
+                  child: const Text("Sign In"),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: SizedBox(
-                    height: 45,
-                    child: TextButton(
-                      onPressed: () => onRegisterPressed(),
-                      child: const Text("Register"),
-                    ),
-                  ),
+              ),
+            ),
+            const SizedBox(height: 32),
+            Expanded(
+              child: SizedBox(
+                height: 45,
+                child: OutlinedButton(
+                  onPressed: () => onSignUpPressed(),
+                  child: const Text("Sign Up"),
                 ),
-              ],
+              ),
             ),
             const SizedBox(height: 22),
             Row(
@@ -99,7 +97,7 @@ class SignInForm extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 22, right: 22),
+                  padding: EdgeInsets.only(left: 12, right: 12),
                   child: Text("Or"),
                 ),
                 Expanded(

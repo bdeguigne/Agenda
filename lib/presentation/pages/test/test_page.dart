@@ -2,14 +2,14 @@ import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/homework/homework_bloc.dart';
 import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
-import 'package:agenda/presentation/pages/home/widgets/home_widget.dart';
+import 'package:agenda/presentation/pages/test/widgets/test_widget.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class TestPage extends StatelessWidget {
+  const TestPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +52,14 @@ class HomePage extends StatelessWidget {
                     child: Text("Waiting for user..."),
                   );
                 },
-                (user) => HomeWidget(
+                (user) => TestWidget(
+                  user: user,
                   onSignOutPressed: () =>
                       context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+                  onCreateHomeworkPressed: () =>
+                      context.read<HomeworkBloc>().add(
+                            const HomeworkEvent.created(),
+                          ),
                 ),
               );
             },
