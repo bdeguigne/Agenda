@@ -69,23 +69,19 @@ class SignInForm extends StatelessWidget {
               validator: (_) => onPasswordValidate(),
             ),
             const SizedBox(height: 24),
-            Expanded(
-              child: SizedBox(
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () => onSignInPressed(),
-                  child: const Text("Sign In"),
-                ),
+            SizedBox(
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () => onSignInPressed(),
+                child: const Text("Sign In"),
               ),
             ),
             const SizedBox(height: 32),
-            Expanded(
-              child: SizedBox(
-                height: 45,
-                child: OutlinedButton(
-                  onPressed: () => onSignUpPressed(),
-                  child: const Text("Sign Up"),
-                ),
+            SizedBox(
+              height: 45,
+              child: OutlinedButton(
+                onPressed: () => onSignUpPressed(),
+                child: const Text("Sign Up"),
               ),
             ),
             const SizedBox(height: 22),
