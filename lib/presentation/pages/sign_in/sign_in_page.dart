@@ -67,9 +67,6 @@ class SignInPage extends StatelessWidget {
               onSignInPressed: () => context.read<SignInFormBloc>().add(
                     const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                   ),
-              onRegisterPressed: () => context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.registerWithEmailAndPasswordPressed(),
-                  ),
               onSignUpPressed: () =>
                   ExtendedNavigator.of(context).pushRegisterWidget(),
               onGoogleSignInPressed: () => context

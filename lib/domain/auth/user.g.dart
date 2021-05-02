@@ -12,10 +12,14 @@ _$_User _$_$_UserFromJson(Map<String, dynamic> json) {
         ? null
         : EmailAddress.fromJson(json['email'] as String),
     role: json['role'] == null ? null : Role.fromJson(json['role'] as String),
+    picture: json['picture'] == null
+        ? null
+        : ProfilePicture.fromJson(json['picture'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_UserToJson(_$_User instance) => <String, dynamic>{
       'email': instance.email,
       'role': instance.role,
+      'picture': instance.picture,
     };

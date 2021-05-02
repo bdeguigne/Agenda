@@ -20,11 +20,13 @@ class _$UserTearOff {
   _User call(
       {@JsonKey(ignore: true) UniqueId id,
       @required EmailAddress email,
-      @required Role role}) {
+      @required Role role,
+      @required ProfilePicture picture}) {
     return _User(
       id: id,
       email: email,
       role: role,
+      picture: picture,
     );
   }
 
@@ -44,6 +46,7 @@ mixin _$User {
   UniqueId get id;
   EmailAddress get email;
   Role get role;
+  ProfilePicture get picture;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -55,7 +58,12 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) UniqueId id, EmailAddress email, Role role});
+      {@JsonKey(ignore: true) UniqueId id,
+      EmailAddress email,
+      Role role,
+      ProfilePicture picture});
+
+  $ProfilePictureCopyWith<$Res> get picture;
 }
 
 /// @nodoc
@@ -71,12 +79,24 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object id = freezed,
     Object email = freezed,
     Object role = freezed,
+    Object picture = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
+      picture: picture == freezed ? _value.picture : picture as ProfilePicture,
     ));
+  }
+
+  @override
+  $ProfilePictureCopyWith<$Res> get picture {
+    if (_value.picture == null) {
+      return null;
+    }
+    return $ProfilePictureCopyWith<$Res>(_value.picture, (value) {
+      return _then(_value.copyWith(picture: value));
+    });
   }
 }
 
@@ -86,7 +106,13 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) UniqueId id, EmailAddress email, Role role});
+      {@JsonKey(ignore: true) UniqueId id,
+      EmailAddress email,
+      Role role,
+      ProfilePicture picture});
+
+  @override
+  $ProfilePictureCopyWith<$Res> get picture;
 }
 
 /// @nodoc
@@ -103,11 +129,13 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object id = freezed,
     Object email = freezed,
     Object role = freezed,
+    Object picture = freezed,
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
+      picture: picture == freezed ? _value.picture : picture as ProfilePicture,
     ));
   }
 }
@@ -119,9 +147,11 @@ class _$_User implements _User {
   const _$_User(
       {@JsonKey(ignore: true) this.id,
       @required this.email,
-      @required this.role})
+      @required this.role,
+      @required this.picture})
       : assert(email != null),
-        assert(role != null);
+        assert(role != null),
+        assert(picture != null);
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
@@ -133,10 +163,12 @@ class _$_User implements _User {
   final EmailAddress email;
   @override
   final Role role;
+  @override
+  final ProfilePicture picture;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, role: $role)';
+    return 'User(id: $id, email: $email, role: $role, picture: $picture)';
   }
 
   @override
@@ -148,7 +180,9 @@ class _$_User implements _User {
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)));
+                const DeepCollectionEquality().equals(other.role, role)) &&
+            (identical(other.picture, picture) ||
+                const DeepCollectionEquality().equals(other.picture, picture)));
   }
 
   @override
@@ -156,7 +190,8 @@ class _$_User implements _User {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(role);
+      const DeepCollectionEquality().hash(role) ^
+      const DeepCollectionEquality().hash(picture);
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +208,8 @@ abstract class _User implements User {
   const factory _User(
       {@JsonKey(ignore: true) UniqueId id,
       @required EmailAddress email,
-      @required Role role}) = _$_User;
+      @required Role role,
+      @required ProfilePicture picture}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -184,6 +220,8 @@ abstract class _User implements User {
   EmailAddress get email;
   @override
   Role get role;
+  @override
+  ProfilePicture get picture;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith;

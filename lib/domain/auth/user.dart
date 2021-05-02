@@ -1,5 +1,6 @@
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/core/value_object.dart';
+import 'package:agenda/domain/profile/profile_picture.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -17,6 +18,7 @@ abstract class User with _$User {
     @JsonKey(ignore: true) UniqueId id,
     @required EmailAddress email,
     @required Role role,
+    @required ProfilePicture picture,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

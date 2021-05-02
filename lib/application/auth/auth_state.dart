@@ -6,5 +6,7 @@ abstract class AuthState with _$AuthState {
     @required Option<User> user,
   }) = _AuthState;
 
-  factory AuthState.initial() => AuthState(user: none());
+  factory AuthState.initial() => AuthState(
+        user: none(),
+      );
 }

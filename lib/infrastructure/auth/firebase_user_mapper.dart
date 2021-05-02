@@ -5,14 +5,19 @@ import 'package:agenda/domain/auth/user.dart';
 
 extension FirebaseFirestoreDomainX on FirebaseFirestore {
   Future<User> toDomain(firebase.User firebaseUser) async {
+    print("FIREBASE USER $firebaseUser");
     if (firebaseUser == null) {
       return null;
     }
     final DocumentSnapshot document =
         await collection("users").doc(firebaseUser.uid).get();
 
-    return User.fromJson(document.data()).copyWith(
-      id: UniqueId.fromUniqueString(firebaseUser.uid),
-    );
+    if (document.exists) {
+      return User.fromJson(document.data()).copyWith(
+        id: UniqueId.fromUniqueString(firebaseUser.uid),
+      );
+    } else {
+      return null;
+    }
   }
 }

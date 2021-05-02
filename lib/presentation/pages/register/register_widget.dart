@@ -9,7 +9,8 @@ class RegisterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white10,
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: const Center(

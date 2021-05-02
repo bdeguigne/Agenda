@@ -1,12 +1,15 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
 import 'package:agenda/domain/core/value_object.dart';
+import 'package:agenda/domain/profile/profile_picture.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -18,9 +21,14 @@ class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firebaseFirestore;
+  final FirebaseStorage _firebaseStorage;
 
   FirebaseAuthFacade(
-      this._firebaseAuth, this._googleSignIn, this._firebaseFirestore);
+    this._firebaseAuth,
+    this._googleSignIn,
+    this._firebaseFirestore,
+    this._firebaseStorage,
+  );
 
   @override
   Future<Option<app.User>> getSignedInUser() async =>
@@ -41,18 +49,20 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       final User firebaseUser = createdUser.user;
-      _firebaseFirestore.collection("users").doc(firebaseUser.uid).set(
-        {
-          "email": emailAddressStr,
-          "role": "student",
-        },
-      );
+
+      final Map<String, dynamic> data = {
+        "email": emailAddressStr,
+        "role": "student",
+        "picture": ProfilePicture.defaultPicture().toJson(),
+      };
+      await _firebaseFirestore
+          .collection("users")
+          .doc(firebaseUser.uid)
+          .set(data);
+
       return right(
-        app.User(
-          id: UniqueId.fromUniqueString(firebaseUser.uid),
-          email: EmailAddress(emailAddressStr),
-          role: Role("student"),
-        ),
+        app.User.fromJson(data)
+            .copyWith(id: UniqueId.fromUniqueString(firebaseUser.uid)),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
@@ -105,15 +115,21 @@ class FirebaseAuthFacade implements IAuthFacade {
           await _firebaseAuth.signInWithCredential(authCredential);
 
       final User firebaseUser = createdUser.user;
+
+      final ProfilePicture profilePicture =
+          ProfilePicture.fromPhotoUrl(firebaseUser.photoURL);
+
       final DocumentReference documentRef =
           _firebaseFirestore.collection("users").doc(firebaseUser.uid);
+
       final DocumentSnapshot document = await documentRef.get();
       if (!document.exists) {
         final data = {
           "email": firebaseUser.email,
           "role": "student",
+          "picture": profilePicture.toJson()
         };
-        documentRef.set(data);
+        await documentRef.set(data);
 
         return right(app.User.fromJson(data).copyWith(
           id: UniqueId.fromUniqueString(firebaseUser.uid),
@@ -125,6 +141,30 @@ class FirebaseAuthFacade implements IAuthFacade {
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     } on PlatformException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> changeProfilePicture(File file) async {
+    try {
+      final String userId = _firebaseAuth.currentUser.uid;
+      final String path = 'profilePictures/$userId';
+
+      await _firebaseStorage.ref(path).putFile(file);
+
+      await _firebaseFirestore.collection("users").doc(userId).update({
+        "picture": {
+          "photoUrl": path,
+          "isStorage": true,
+        },
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.code == 'canceled') {
+        return left(const AuthFailure.cancelledByUser());
+      }
       return left(const AuthFailure.serverError());
     }
   }

@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield* event.map(
       authCheckRequested: (e) async* {
         final userOption = await _authFacade.getSignedInUser();
+
         yield userOption.fold(
           () => state.copyWith(user: none()),
           (loggedUser) => state.copyWith(user: some(loggedUser)),
