@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SignInForm extends StatelessWidget {
+class SignUpForm extends StatelessWidget {
   final bool autoValidate;
   final void Function(String value) onEmailChanged;
   final String Function() onEmailValidate;
   final void Function(String value) onPasswordChanged;
   final String Function() onPasswordValidate;
   final void Function() onSignInPressed;
+  final void Function() onRegisterPressed;
   final void Function() onSignUpPressed;
   final void Function() onGoogleSignInPressed;
 
-  const SignInForm({
+  const SignUpForm({
     Key key,
     @required this.autoValidate,
     @required this.onEmailChanged,
@@ -18,6 +19,7 @@ class SignInForm extends StatelessWidget {
     @required this.onPasswordChanged,
     @required this.onPasswordValidate,
     @required this.onSignInPressed,
+    @required this.onRegisterPressed,
     @required this.onSignUpPressed,
     @required this.onGoogleSignInPressed,
   }) : super(key: key);

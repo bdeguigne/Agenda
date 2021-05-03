@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/home/home_page.dart';
 import '../pages/profile/profile_page.dart';
-import '../pages/register/register_widget.dart';
+import '../pages/register/register_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/splash/splash_page.dart';
 
@@ -19,13 +19,13 @@ class Routes {
   static const String splashPage = '/';
   static const String homePage = '/home-page';
   static const String signInPage = '/sign-in-page';
-  static const String registerWidget = '/register-widget';
+  static const String registerPage = '/register-page';
   static const String profilePage = '/profile-page';
   static const all = <String>{
     splashPage,
     homePage,
     signInPage,
-    registerWidget,
+    registerPage,
     profilePage,
   };
 }
@@ -37,7 +37,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.homePage, page: HomePage),
     RouteDef(Routes.signInPage, page: SignInPage),
-    RouteDef(Routes.registerWidget, page: RegisterWidget),
+    RouteDef(Routes.registerPage, page: RegisterPage),
     RouteDef(Routes.profilePage, page: ProfilePage),
   ];
   @override
@@ -61,9 +61,9 @@ class AppRouter extends RouterBase {
         settings: data,
       );
     },
-    RegisterWidget: (data) {
+    RegisterPage: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const RegisterWidget(),
+        builder: (context) => const RegisterPage(),
         settings: data,
       );
     },
@@ -87,7 +87,7 @@ extension AppRouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
 
-  Future<dynamic> pushRegisterWidget() => push<dynamic>(Routes.registerWidget);
+  Future<dynamic> pushRegisterPage() => push<dynamic>(Routes.registerPage);
 
   Future<dynamic> pushProfilePage() => push<dynamic>(Routes.profilePage);
 }

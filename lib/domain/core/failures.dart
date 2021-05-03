@@ -19,4 +19,7 @@ abstract class AuthValueFailure<T> with _$AuthValueFailure<T> {
   const factory AuthValueFailure.invalidRole({
     @required T failedValue,
   }) = InvalidRole<T>;
+  const factory AuthValueFailure.invalidName({
+    @required T failedValue,
+  }) = InvalidName<T>;
 }

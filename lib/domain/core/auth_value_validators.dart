@@ -20,22 +20,34 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return right(input);
   } else {
     return left(ValueFailure.auth(
-      AuthValueFailure.invalidEmail(failedValue: input),
+      AuthValueFailure.shortPassword(failedValue: input),
     ));
   }
 }
 
 Either<ValueFailure<String>, String> validateRole(String role) {
-  if (role == RoleTypes.student) {
+  if (role.toLowerCase() == RoleTypes.student) {
     return right(RoleTypes.student);
   }
-  if (role == RoleTypes.teacher) {
+  if (role.toLowerCase() == RoleTypes.teacher) {
     return right(RoleTypes.teacher);
   }
-  if (role == RoleTypes.admin) {
+  if (role.toLowerCase() == RoleTypes.admin) {
     return right(RoleTypes.admin);
   }
   return left(
     ValueFailure.auth(AuthValueFailure.invalidRole(failedValue: role)),
   );
+}
+
+Either<ValueFailure<String>, String> validateName(String input) {
+  if (RegExp(r"^[\p{L} ,.'-]*$",
+          caseSensitive: false, unicode: true, dotAll: true)
+      .hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(ValueFailure.auth(
+      AuthValueFailure.invalidName(failedValue: input),
+    ));
+  }
 }

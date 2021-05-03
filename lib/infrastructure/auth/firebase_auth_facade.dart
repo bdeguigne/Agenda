@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/auth_failure.dart';
 import 'package:agenda/domain/auth/i_auth_facade.dart';
+import 'package:agenda/domain/auth/register_failure.dart';
 import 'package:agenda/domain/core/value_object.dart';
 import 'package:agenda/domain/profile/profile_picture.dart';
 import 'package:dartz/dartz.dart';
@@ -35,14 +36,25 @@ class FirebaseAuthFacade implements IAuthFacade {
       optionOf(await _firebaseFirestore.toDomain(_firebaseAuth.currentUser));
 
   @override
-  Future<Either<AuthFailure, app.User>> registerWithEmailAndPassword({
+  Future<Either<RegisterFailure, app.User>> register({
+    Name firstName,
+    Name lastName,
     EmailAddress emailAddress,
     Password password,
+    Password confirmPassword,
+    Role role,
   }) async {
-    // Pour tester les getOrCrash : Supprimer les verifications d'email dans Application layer
+    final firstNameStr = firstName.getOrCrash();
+    final lastNameStr = lastName.getOrCrash();
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
+    final confirmPasswordStr = confirmPassword.getOrCrash();
+    final roleStr = role.getOrCrash();
+
     try {
+      if (passwordStr != confirmPasswordStr) {
+        return left(const RegisterFailure.passwordNotMatch());
+      }
       final UserCredential createdUser =
           await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddressStr,
@@ -51,8 +63,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       final User firebaseUser = createdUser.user;
 
       final Map<String, dynamic> data = {
+        "firstName": firstNameStr,
+        "lastName": lastNameStr,
         "email": emailAddressStr,
-        "role": "student",
+        "role": roleStr,
         "picture": ProfilePicture.defaultPicture().toJson(),
       };
       await _firebaseFirestore
@@ -66,10 +80,12 @@ class FirebaseAuthFacade implements IAuthFacade {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
-        return left(const AuthFailure.emailAlreadyInUse());
+        return left(const RegisterFailure.emailAlreadyInUse());
       } else {
-        return left(const AuthFailure.serverError());
+        return left(const RegisterFailure.serverError());
       }
+    } on FirebaseException {
+      return left(const RegisterFailure.serverError());
     }
   }
 
@@ -125,6 +141,8 @@ class FirebaseAuthFacade implements IAuthFacade {
       final DocumentSnapshot document = await documentRef.get();
       if (!document.exists) {
         final data = {
+          "firstName": firebaseUser.displayName,
+          "lastName": "",
           "email": firebaseUser.email,
           "role": "student",
           "picture": profilePicture.toJson()

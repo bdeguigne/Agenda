@@ -1,3 +1,4 @@
+import 'package:agenda/domain/auth/user.dart';
 import 'package:agenda/domain/core/auth_value_validators.dart';
 import 'package:agenda/domain/core/value_object.dart';
 import 'package:dartz/dartz.dart';
@@ -24,7 +25,7 @@ class EmailAddress extends ValueObject<String> {
       EmailAddress._(validateEmailAddress(jsonValue));
 
   Map<String, dynamic> toJson() => {
-        'email': "email",
+        'email': value.getOrElse(() => null),
       };
 }
 
@@ -43,6 +44,7 @@ class Password extends ValueObject<String> {
   const Password._(this.value);
 }
 
+@immutable
 class Role extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
@@ -54,11 +56,37 @@ class Role extends ValueObject<String> {
     );
   }
 
+  factory Role.toDefault() {
+    return Role._(
+      right(RoleTypes.student),
+    );
+  }
+
   const Role._(this.value);
 
   factory Role.fromJson(String jsonValue) => Role._(validateRole(jsonValue));
 
   Map<String, dynamic> toJson() => {
-        'role': "role",
+        'role': value.getOrElse(() => null),
       };
+}
+
+@immutable
+class Name extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Name(String name) {
+    assert(name != null);
+
+    return Name._(
+      validateName(name),
+    );
+  }
+
+  factory Name.fromJson(String jsonValue) => Name._(validateName(jsonValue));
+
+  Map<String, dynamic> toJson() => {"name": value.getOrElse(() => null)};
+
+  const Name._(this.value);
 }

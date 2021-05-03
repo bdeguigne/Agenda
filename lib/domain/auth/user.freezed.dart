@@ -19,11 +19,15 @@ class _$UserTearOff {
 // ignore: unused_element
   _User call(
       {@JsonKey(ignore: true) UniqueId id,
+      @required Name firstName,
+      @required Name lastName,
       @required EmailAddress email,
       @required Role role,
       @required ProfilePicture picture}) {
     return _User(
       id: id,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       role: role,
       picture: picture,
@@ -44,6 +48,8 @@ const $User = _$UserTearOff();
 mixin _$User {
   @JsonKey(ignore: true)
   UniqueId get id;
+  Name get firstName;
+  Name get lastName;
   EmailAddress get email;
   Role get role;
   ProfilePicture get picture;
@@ -59,6 +65,8 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) UniqueId id,
+      Name firstName,
+      Name lastName,
       EmailAddress email,
       Role role,
       ProfilePicture picture});
@@ -77,12 +85,16 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
     Object email = freezed,
     Object role = freezed,
     Object picture = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
+      firstName: firstName == freezed ? _value.firstName : firstName as Name,
+      lastName: lastName == freezed ? _value.lastName : lastName as Name,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
       picture: picture == freezed ? _value.picture : picture as ProfilePicture,
@@ -107,6 +119,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(ignore: true) UniqueId id,
+      Name firstName,
+      Name lastName,
       EmailAddress email,
       Role role,
       ProfilePicture picture});
@@ -127,12 +141,16 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
     Object email = freezed,
     Object role = freezed,
     Object picture = freezed,
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
+      firstName: firstName == freezed ? _value.firstName : firstName as Name,
+      lastName: lastName == freezed ? _value.lastName : lastName as Name,
       email: email == freezed ? _value.email : email as EmailAddress,
       role: role == freezed ? _value.role : role as Role,
       picture: picture == freezed ? _value.picture : picture as ProfilePicture,
@@ -146,10 +164,14 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User implements _User {
   const _$_User(
       {@JsonKey(ignore: true) this.id,
+      @required this.firstName,
+      @required this.lastName,
       @required this.email,
       @required this.role,
       @required this.picture})
-      : assert(email != null),
+      : assert(firstName != null),
+        assert(lastName != null),
+        assert(email != null),
         assert(role != null),
         assert(picture != null);
 
@@ -160,6 +182,10 @@ class _$_User implements _User {
   @JsonKey(ignore: true)
   final UniqueId id;
   @override
+  final Name firstName;
+  @override
+  final Name lastName;
+  @override
   final EmailAddress email;
   @override
   final Role role;
@@ -168,7 +194,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, role: $role, picture: $picture)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, email: $email, role: $role, picture: $picture)';
   }
 
   @override
@@ -177,6 +203,12 @@ class _$_User implements _User {
         (other is _User &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.firstName, firstName) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.role, role) ||
@@ -189,6 +221,8 @@ class _$_User implements _User {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(picture);
@@ -207,6 +241,8 @@ class _$_User implements _User {
 abstract class _User implements User {
   const factory _User(
       {@JsonKey(ignore: true) UniqueId id,
+      @required Name firstName,
+      @required Name lastName,
       @required EmailAddress email,
       @required Role role,
       @required ProfilePicture picture}) = _$_User;
@@ -216,6 +252,10 @@ abstract class _User implements User {
   @override
   @JsonKey(ignore: true)
   UniqueId get id;
+  @override
+  Name get firstName;
+  @override
+  Name get lastName;
   @override
   EmailAddress get email;
   @override
