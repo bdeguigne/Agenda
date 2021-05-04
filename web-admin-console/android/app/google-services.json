@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "107905869160",
+    "project_id": "agenda-82f5a",
+    "storage_bucket": "agenda-82f5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107905869160:android:f5c7ae84f96442ddd262dd",
+        "android_client_info": {
+          "package_name": "com.bdeguigne.agenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107905869160-ue550jeeocn7vlotapsd97eoi38k13sc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bdeguigne.agenda",
+            "certificate_hash": "e58e70323575a50a035b948f73d14ded72061d5e"
+          }
+        },
+        {
+          "client_id": "107905869160-vkgdnd0r4apb6mmj68injqmdrcd7dkv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpz47BOiCBavk61NskfnJ-_9vxcDiia6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107905869160-vkgdnd0r4apb6mmj68injqmdrcd7dkv5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "107905869160-bltr4f3i9j0os7m0m4q82qur96sge456.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bdeguigne.agenda"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
