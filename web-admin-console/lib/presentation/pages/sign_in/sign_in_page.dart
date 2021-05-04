@@ -1,3 +1,4 @@
+import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
@@ -32,7 +33,12 @@ class SignInPage extends StatelessWidget {
                   ).toSnackBar,
                 );
               },
-              (_) => ExtendedNavigator.of(context).replace(Routes.homePage),
+              (_) {
+                ExtendedNavigator.of(context).replace(Routes.homePage);
+                context
+                    .read<AuthBloc>()
+                    .add(const AuthEvent.authCheckRequested());
+              },
             ),
           );
         },

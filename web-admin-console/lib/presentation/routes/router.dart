@@ -1,4 +1,5 @@
 import 'package:agenda/presentation/pages/home/home_page.dart';
+import 'package:agenda/presentation/pages/home/users_list/users_list_provider.dart';
 import 'package:agenda/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:agenda/presentation/pages/splash/splash_page.dart';
 import 'package:auto_route/auto_route_annotations.dart';

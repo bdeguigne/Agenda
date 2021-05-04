@@ -63,8 +63,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       final User firebaseUser = createdUser.user;
 
       final Map<String, dynamic> data = {
-        "firstName": firstNameStr,
-        "lastName": lastNameStr,
+        "displayName": "$firstNameStr $lastNameStr",
         "email": emailAddressStr,
         "role": roleStr,
         "picture": ProfilePicture.defaultPicture().toJson(),
@@ -141,8 +140,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       final DocumentSnapshot document = await documentRef.get();
       if (!document.exists) {
         final data = {
-          "firstName": firebaseUser.displayName,
-          "lastName": "",
+          "displayName": firebaseUser.displayName,
           "email": firebaseUser.email,
           "role": "student",
           "picture": profilePicture.toJson()

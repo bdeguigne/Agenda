@@ -16,8 +16,7 @@ class RoleTypes {
 abstract class User with _$User {
   const factory User({
     @JsonKey(ignore: true) UniqueId id,
-    @required Name firstName,
-    @required Name lastName,
+    @required Name displayName,
     @required EmailAddress email,
     @required Role role,
     @required ProfilePicture picture,
