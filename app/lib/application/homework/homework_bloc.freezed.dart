@@ -17,6 +17,16 @@ class _$HomeworkEventTearOff {
   Created created() {
     return const Created();
   }
+
+// ignore: unused_element
+  GetAll getAll() {
+    return const GetAll();
+  }
+
+// ignore: unused_element
+  GetAllUsers getAllUsers() {
+    return const GetAllUsers();
+  }
 }
 
 /// @nodoc
@@ -28,19 +38,27 @@ mixin _$HomeworkEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult created(),
+    @required TResult getAll(),
+    @required TResult getAllUsers(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult created(),
+    TResult getAll(),
+    TResult getAllUsers(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult created(Created value),
+    @required TResult getAll(GetAll value),
+    @required TResult getAllUsers(GetAllUsers value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult created(Created value),
+    TResult getAll(GetAll value),
+    TResult getAllUsers(GetAllUsers value),
     @required TResult orElse(),
   });
 }
@@ -99,8 +117,12 @@ class _$Created implements Created {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult created(),
+    @required TResult getAll(),
+    @required TResult getAllUsers(),
   }) {
     assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
     return created();
   }
 
@@ -108,6 +130,8 @@ class _$Created implements Created {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult created(),
+    TResult getAll(),
+    TResult getAllUsers(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -121,8 +145,12 @@ class _$Created implements Created {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult created(Created value),
+    @required TResult getAll(GetAll value),
+    @required TResult getAllUsers(GetAllUsers value),
   }) {
     assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
     return created(this);
   }
 
@@ -130,6 +158,8 @@ class _$Created implements Created {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult created(Created value),
+    TResult getAll(GetAll value),
+    TResult getAllUsers(GetAllUsers value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -142,6 +172,196 @@ class _$Created implements Created {
 
 abstract class Created implements HomeworkEvent {
   const factory Created() = _$Created;
+}
+
+/// @nodoc
+abstract class $GetAllCopyWith<$Res> {
+  factory $GetAllCopyWith(GetAll value, $Res Function(GetAll) then) =
+      _$GetAllCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetAllCopyWithImpl<$Res> extends _$HomeworkEventCopyWithImpl<$Res>
+    implements $GetAllCopyWith<$Res> {
+  _$GetAllCopyWithImpl(GetAll _value, $Res Function(GetAll) _then)
+      : super(_value, (v) => _then(v as GetAll));
+
+  @override
+  GetAll get _value => super._value as GetAll;
+}
+
+/// @nodoc
+class _$GetAll implements GetAll {
+  const _$GetAll();
+
+  @override
+  String toString() {
+    return 'HomeworkEvent.getAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult created(),
+    @required TResult getAll(),
+    @required TResult getAllUsers(),
+  }) {
+    assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
+    return getAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult created(),
+    TResult getAll(),
+    TResult getAllUsers(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAll != null) {
+      return getAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult created(Created value),
+    @required TResult getAll(GetAll value),
+    @required TResult getAllUsers(GetAllUsers value),
+  }) {
+    assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
+    return getAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult created(Created value),
+    TResult getAll(GetAll value),
+    TResult getAllUsers(GetAllUsers value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAll != null) {
+      return getAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetAll implements HomeworkEvent {
+  const factory GetAll() = _$GetAll;
+}
+
+/// @nodoc
+abstract class $GetAllUsersCopyWith<$Res> {
+  factory $GetAllUsersCopyWith(
+          GetAllUsers value, $Res Function(GetAllUsers) then) =
+      _$GetAllUsersCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetAllUsersCopyWithImpl<$Res> extends _$HomeworkEventCopyWithImpl<$Res>
+    implements $GetAllUsersCopyWith<$Res> {
+  _$GetAllUsersCopyWithImpl(
+      GetAllUsers _value, $Res Function(GetAllUsers) _then)
+      : super(_value, (v) => _then(v as GetAllUsers));
+
+  @override
+  GetAllUsers get _value => super._value as GetAllUsers;
+}
+
+/// @nodoc
+class _$GetAllUsers implements GetAllUsers {
+  const _$GetAllUsers();
+
+  @override
+  String toString() {
+    return 'HomeworkEvent.getAllUsers()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetAllUsers);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult created(),
+    @required TResult getAll(),
+    @required TResult getAllUsers(),
+  }) {
+    assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
+    return getAllUsers();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult created(),
+    TResult getAll(),
+    TResult getAllUsers(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAllUsers != null) {
+      return getAllUsers();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult created(Created value),
+    @required TResult getAll(GetAll value),
+    @required TResult getAllUsers(GetAllUsers value),
+  }) {
+    assert(created != null);
+    assert(getAll != null);
+    assert(getAllUsers != null);
+    return getAllUsers(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult created(Created value),
+    TResult getAll(GetAll value),
+    TResult getAllUsers(GetAllUsers value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAllUsers != null) {
+      return getAllUsers(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetAllUsers implements HomeworkEvent {
+  const factory GetAllUsers() = _$GetAllUsers;
 }
 
 /// @nodoc

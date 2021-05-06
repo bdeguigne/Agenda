@@ -65,7 +65,12 @@ class FirebaseAuthFacade implements IAuthFacade {
       final Map<String, dynamic> data = {
         "displayName": "$firstNameStr $lastNameStr",
         "email": emailAddressStr,
-        "role": roleStr,
+        "permissions": {
+          "role": roleStr,
+          "rights": [
+            "HOMEWORKS_R",
+          ]
+        },
         "picture": ProfilePicture.defaultPicture().toJson(),
       };
       await _firebaseFirestore
@@ -142,7 +147,12 @@ class FirebaseAuthFacade implements IAuthFacade {
         final data = {
           "displayName": firebaseUser.displayName,
           "email": firebaseUser.email,
-          "role": "student",
+          "permissions": {
+            "role": "student",
+            "rights": [
+              "HOMEWORKS_R",
+            ]
+          },
           "picture": profilePicture.toJson()
         };
         await documentRef.set(data);

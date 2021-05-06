@@ -23,20 +23,38 @@ class HomeworkBloc extends Bloc<HomeworkEvent, HomeworkState> {
   Stream<HomeworkState> mapEventToState(
     HomeworkEvent event,
   ) async* {
-    yield* event.map(
-      created: (e) async* {
-        yield state.copyWith(
-          isCreating: true,
-          homeworkFailureOrSuccessOption: none(),
-        );
-        final failureOrSuccess = await _homeworkRepository.create(
-          Homework(id: UniqueId.fromUniqueString("DZDZDQZD"), name: "Test"),
-        );
-        yield state.copyWith(
-          isCreating: false,
-          homeworkFailureOrSuccessOption: some(failureOrSuccess),
-        );
-      },
-    );
+    yield* event.map(created: (e) async* {
+      yield state.copyWith(
+        isCreating: true,
+        homeworkFailureOrSuccessOption: none(),
+      );
+      final failureOrSuccess = await _homeworkRepository.create(
+        Homework(id: UniqueId.fromUniqueString("DZDZDQZD"), name: "Test"),
+      );
+      yield state.copyWith(
+        isCreating: false,
+        homeworkFailureOrSuccessOption: some(failureOrSuccess),
+      );
+    }, getAll: (e) async* {
+      yield state.copyWith(
+        isCreating: true,
+        homeworkFailureOrSuccessOption: none(),
+      );
+      final failureOrSuccess = await _homeworkRepository.getAll();
+      yield state.copyWith(
+        isCreating: false,
+        homeworkFailureOrSuccessOption: some(failureOrSuccess),
+      );
+    }, getAllUsers: (e) async* {
+      yield state.copyWith(
+        isCreating: true,
+        homeworkFailureOrSuccessOption: none(),
+      );
+      final failureOrSuccess = await _homeworkRepository.getAllUsers();
+      yield state.copyWith(
+        isCreating: false,
+        homeworkFailureOrSuccessOption: some(failureOrSuccess),
+      );
+    });
   }
 }

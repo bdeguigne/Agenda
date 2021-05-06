@@ -14,6 +14,7 @@ import '../pages/profile/profile_page.dart';
 import '../pages/register/register_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/splash/splash_page.dart';
+import '../pages/test/test_page.dart';
 
 class Routes {
   static const String splashPage = '/';
@@ -21,12 +22,14 @@ class Routes {
   static const String signInPage = '/sign-in-page';
   static const String registerPage = '/register-page';
   static const String profilePage = '/profile-page';
+  static const String testPage = '/test-page';
   static const all = <String>{
     splashPage,
     homePage,
     signInPage,
     registerPage,
     profilePage,
+    testPage,
   };
 }
 
@@ -39,6 +42,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.registerPage, page: RegisterPage),
     RouteDef(Routes.profilePage, page: ProfilePage),
+    RouteDef(Routes.testPage, page: TestPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -73,6 +77,12 @@ class AppRouter extends RouterBase {
         settings: data,
       );
     },
+    TestPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const TestPage(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -90,4 +100,6 @@ extension AppRouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushRegisterPage() => push<dynamic>(Routes.registerPage);
 
   Future<dynamic> pushProfilePage() => push<dynamic>(Routes.profilePage);
+
+  Future<dynamic> pushTestPage() => push<dynamic>(Routes.testPage);
 }

@@ -16,6 +16,24 @@ class TestPage extends StatelessWidget {
     final AuthBloc _authBloc = BlocProvider.of<AuthBloc>(context);
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white10,
+        iconTheme: const IconThemeData(color: Colors.black),
+        elevation: 0,
+        toolbarHeight: 72,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: IconButton(
+              icon: const Icon(
+                Icons.account_circle_outlined,
+                size: 35,
+              ),
+              onPressed: () => ExtendedNavigator.of(context).pushProfilePage(),
+            ),
+          ),
+        ],
+      ),
       body: BlocProvider(
         create: (context) => getIt<HomeworkBloc>(),
         child: BlocListener<HomeworkBloc, HomeworkState>(
@@ -56,10 +74,16 @@ class TestPage extends StatelessWidget {
                   user: user,
                   onSignOutPressed: () =>
                       context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+                  onSeeHomeworkPressed: () => context.read<HomeworkBloc>().add(
+                        const HomeworkEvent.getAll(),
+                      ),
                   onCreateHomeworkPressed: () =>
                       context.read<HomeworkBloc>().add(
                             const HomeworkEvent.created(),
                           ),
+                  onOnlyAdminPressed: () => context.read<HomeworkBloc>().add(
+                        const HomeworkEvent.getAllUsers(),
+                      ),
                 ),
               );
             },

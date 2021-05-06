@@ -18,9 +18,23 @@ abstract class User with _$User {
     @JsonKey(ignore: true) UniqueId id,
     @required Name displayName,
     @required EmailAddress email,
-    @required Role role,
+    @required Permissions permissions,
     @required ProfilePicture picture,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+}
+
+@freezed
+@immutable
+abstract class Permissions with _$Permissions {
+  const factory Permissions({
+    @required Role role,
+  }) = _Permissions;
+
+  factory Permissions.fromJson(Map<String, dynamic> json) =>
+      Permissions(role: Role(json["role"] as String));
+
+  @override
+  Map<String, dynamic> toJson() => {'permissions': role.toJson()};
 }

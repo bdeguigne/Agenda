@@ -41,7 +41,7 @@ class ProfileWidget extends StatelessWidget {
           ),
           const SizedBox(height: 18),
           Center(
-            child: Text("Role : ${user.role.getOrCrash()}"),
+            child: Text("Role : ${user.permissions.role.getOrCrash()}"),
           ),
         ],
       ),

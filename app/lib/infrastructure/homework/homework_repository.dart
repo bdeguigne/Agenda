@@ -29,4 +29,46 @@ class HomeworkRepository implements IHomeworkRepository {
       }
     }
   }
+
+  @override
+  Future<Either<HomeworkFailure, Unit>> getAll() async {
+    try {
+      final doc = await _firebaseFirestore.collection("homeworks").get();
+
+      final homeworkList = doc.docs.toList();
+
+      homeworkList.forEach((element) {
+        print("Homework : ${element.data()}");
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.code == "permission-denied") {
+        return left(const HomeworkFailure.insufficientPermission());
+      } else {
+        return left(const HomeworkFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<HomeworkFailure, Unit>> getAllUsers() async {
+    try {
+      final doc = await _firebaseFirestore.collection("users").get();
+
+      final usersList = doc.docs.toList();
+
+      usersList.forEach((element) {
+        print("User : ${element.data()}");
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.code == "permission-denied") {
+        return left(const HomeworkFailure.insufficientPermission());
+      } else {
+        return left(const HomeworkFailure.unexpected());
+      }
+    }
+  }
 }

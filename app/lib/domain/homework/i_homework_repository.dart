@@ -6,6 +6,8 @@ abstract class IHomeworkRepository {
   // Stream<Either<HomeworkFailure, List<Homework>>> watchAll();
   // Stream<Either<HomeworkFailure, List<Homework>>> watchUncompleted();
   Future<Either<HomeworkFailure, Unit>> create(Homework homework);
+  Future<Either<HomeworkFailure, Unit>> getAll();
+  Future<Either<HomeworkFailure, Unit>> getAllUsers();
   // Future<Either<HomeworkFailure, Unit>> update(Homework note);
   // Future<Either<HomeworkFailure, Unit>> delete(Homework note);
 }
