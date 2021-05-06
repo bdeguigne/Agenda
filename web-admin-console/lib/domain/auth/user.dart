@@ -20,9 +20,11 @@ abstract class User with _$User {
     @JsonKey(ignore: true) UniqueId id,
     @required Name displayName,
     @required EmailAddress email,
-    @required Role role,
+    @required Permissions permissions,
     @required ProfilePicture picture,
   }) = _User;
+
+  const User._();
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
@@ -31,4 +33,20 @@ abstract class User with _$User {
       id: UniqueId.fromUniqueString(doc.id),
     );
   }
+
+  bool get isAdmin => permissions.role.getOrCrash() == RoleTypes.admin;
+}
+
+@freezed
+@immutable
+abstract class Permissions with _$Permissions {
+  const factory Permissions({
+    @required Role role,
+  }) = _Permissions;
+
+  factory Permissions.fromJson(Map<String, dynamic> json) =>
+      Permissions(role: Role(json["role"] as String));
+
+  @override
+  Map<String, dynamic> toJson() => {'permissions': role.toJson()};
 }

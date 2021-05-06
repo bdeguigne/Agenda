@@ -23,13 +23,22 @@ class UsersWatcherBloc extends Bloc<UsersWatcherEvent, UsersWatcherState> {
     UsersWatcherEvent event,
   ) async* {
     yield* event.map(watchAll: (e) async* {
-      _usersRepository.watchAll().listen((failureOrUsers) =>
-          add(UsersWatcherEvent.usersReceived(failureOrUsers)));
+      _usersRepository
+          .watchAll(
+            (failure) => add(
+              UsersWatcherEvent.usersReceived(left(failure)),
+            ),
+          )
+          .listen(
+            (users) => add(
+              UsersWatcherEvent.usersReceived(right(users)),
+            ),
+          );
     }, test: (e) async* {
       _usersRepository.testEvent();
     }, usersReceived: (e) async* {
       yield e.failureOrUsers.fold(
-        (f) => null,
+        (failure) => UsersWatcherState.loadFailure(failure),
         (List<User> users) => UsersWatcherState.loadSuccess(users),
       );
     });

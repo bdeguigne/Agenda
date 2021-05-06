@@ -34,6 +34,8 @@ class _ShowProfilePictureState extends State<ShowProfilePicture> {
         builder: (BuildContext context, AsyncSnapshot<String> imageUrl) {
           if (imageUrl.hasData) {
             return buildImageContent(imageUrl.data);
+          } else if (imageUrl.hasError) {
+            return const Icon(Icons.error);
           } else {
             return const CircularProgressIndicator();
           }

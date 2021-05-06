@@ -417,6 +417,13 @@ class _$UsersWatcherStateTearOff {
       users,
     );
   }
+
+// ignore: unused_element
+  LoadFailure loadFailure(UserFailure failure) {
+    return LoadFailure(
+      failure,
+    );
+  }
 }
 
 /// @nodoc
@@ -429,22 +436,26 @@ mixin _$UsersWatcherState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadSuccess(List<User> users),
+    @required TResult loadFailure(UserFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadSuccess(List<User> users),
+    TResult loadFailure(UserFailure failure),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loadSuccess(LoadSuccess value),
+    @required TResult loadFailure(LoadFailure value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loadSuccess(LoadSuccess value),
+    TResult loadFailure(LoadFailure value),
     @required TResult orElse(),
   });
 }
@@ -504,9 +515,11 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadSuccess(List<User> users),
+    @required TResult loadFailure(UserFailure failure),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
+    assert(loadFailure != null);
     return initial();
   }
 
@@ -515,6 +528,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadSuccess(List<User> users),
+    TResult loadFailure(UserFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -529,9 +543,11 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loadSuccess(LoadSuccess value),
+    @required TResult loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
+    assert(loadFailure != null);
     return initial(this);
   }
 
@@ -540,6 +556,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loadSuccess(LoadSuccess value),
+    TResult loadFailure(LoadFailure value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -617,9 +634,11 @@ class _$LoadSuccess implements LoadSuccess {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loadSuccess(List<User> users),
+    @required TResult loadFailure(UserFailure failure),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
+    assert(loadFailure != null);
     return loadSuccess(users);
   }
 
@@ -628,6 +647,7 @@ class _$LoadSuccess implements LoadSuccess {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loadSuccess(List<User> users),
+    TResult loadFailure(UserFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -642,9 +662,11 @@ class _$LoadSuccess implements LoadSuccess {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loadSuccess(LoadSuccess value),
+    @required TResult loadFailure(LoadFailure value),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
+    assert(loadFailure != null);
     return loadSuccess(this);
   }
 
@@ -653,6 +675,7 @@ class _$LoadSuccess implements LoadSuccess {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loadSuccess(LoadSuccess value),
+    TResult loadFailure(LoadFailure value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -669,4 +692,139 @@ abstract class LoadSuccess implements UsersWatcherState {
   List<User> get users;
   @JsonKey(ignore: true)
   $LoadSuccessCopyWith<LoadSuccess> get copyWith;
+}
+
+/// @nodoc
+abstract class $LoadFailureCopyWith<$Res> {
+  factory $LoadFailureCopyWith(
+          LoadFailure value, $Res Function(LoadFailure) then) =
+      _$LoadFailureCopyWithImpl<$Res>;
+  $Res call({UserFailure failure});
+
+  $UserFailureCopyWith<$Res> get failure;
+}
+
+/// @nodoc
+class _$LoadFailureCopyWithImpl<$Res>
+    extends _$UsersWatcherStateCopyWithImpl<$Res>
+    implements $LoadFailureCopyWith<$Res> {
+  _$LoadFailureCopyWithImpl(
+      LoadFailure _value, $Res Function(LoadFailure) _then)
+      : super(_value, (v) => _then(v as LoadFailure));
+
+  @override
+  LoadFailure get _value => super._value as LoadFailure;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(LoadFailure(
+      failure == freezed ? _value.failure : failure as UserFailure,
+    ));
+  }
+
+  @override
+  $UserFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $UserFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$LoadFailure implements LoadFailure {
+  const _$LoadFailure(this.failure) : assert(failure != null);
+
+  @override
+  final UserFailure failure;
+
+  @override
+  String toString() {
+    return 'UsersWatcherState.loadFailure(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LoadFailure &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @JsonKey(ignore: true)
+  @override
+  $LoadFailureCopyWith<LoadFailure> get copyWith =>
+      _$LoadFailureCopyWithImpl<LoadFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadSuccess(List<User> users),
+    @required TResult loadFailure(UserFailure failure),
+  }) {
+    assert(initial != null);
+    assert(loadSuccess != null);
+    assert(loadFailure != null);
+    return loadFailure(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadSuccess(List<User> users),
+    TResult loadFailure(UserFailure failure),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadFailure != null) {
+      return loadFailure(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadSuccess(LoadSuccess value),
+    @required TResult loadFailure(LoadFailure value),
+  }) {
+    assert(initial != null);
+    assert(loadSuccess != null);
+    assert(loadFailure != null);
+    return loadFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadSuccess(LoadSuccess value),
+    TResult loadFailure(LoadFailure value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadFailure != null) {
+      return loadFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadFailure implements UsersWatcherState {
+  const factory LoadFailure(UserFailure failure) = _$LoadFailure;
+
+  UserFailure get failure;
+  @JsonKey(ignore: true)
+  $LoadFailureCopyWith<LoadFailure> get copyWith;
 }

@@ -13,16 +13,18 @@ class UsersRepository implements IUsersRepository {
   UsersRepository(this._firestore);
 
   @override
-  Stream<Either<UserFailure, List<User>>> watchAll() async* {
-    try {
-      yield* _firestore.collection("users").snapshots().map(
-            (snapshot) => right<UserFailure, List<User>>(
-              snapshot.docs.map((doc) => User.fromFirestore(doc)).toList(),
-            ),
-          );
-    } on FirebaseException {
-      yield left(const UserFailure.unexptected());
-    }
+  Stream<List<User>> watchAll(Function(UserFailure) onError) async* {
+    yield* _firestore.collection("users").snapshots().map(
+      (snapshot) {
+        return snapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
+      },
+    ).handleError((e) {
+      if (e is FirebaseException && e.code == "permission-denied") {
+        return onError(const UserFailure.insufficientPermission());
+      } else {
+        return onError(const UserFailure.unexptected());
+      }
+    });
   }
 
   @override

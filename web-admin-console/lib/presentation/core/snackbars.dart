@@ -20,12 +20,11 @@ class ErrorSnackBar implements AppSnackBar {
   @override
   SnackBar get toSnackBar => SnackBar(
         content: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.close, color: Colors.white),
             const SizedBox(width: 20),
-            Expanded(
-              child: Text(snackBarMessage),
-            ),
+            Text(snackBarMessage),
           ],
         ),
         behavior: SnackBarBehavior.floating,

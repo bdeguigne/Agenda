@@ -21,8 +21,15 @@ class FirebaseAuthFacade implements IAuthFacade {
   );
 
   @override
-  Future<Option<app.User>> getSignedInUser() async =>
-      optionOf(await _firebaseFirestore.toDomain(_firebaseAuth.currentUser));
+  Future<Option<app.User>> getSignedInUser() async {
+    final user = await _firebaseFirestore.toDomain(_firebaseAuth.currentUser);
+
+    if (user != null && user.isAdmin) {
+      return some(user);
+    }
+
+    return none();
+  }
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
@@ -48,9 +55,11 @@ class FirebaseAuthFacade implements IAuthFacade {
         ),
         (document) {
           final data = document.data();
-          final String role = data["role"] as String;
+          print("DATAAA $data");
+          final app.Permissions permissions = app.Permissions.fromJson(
+              data["permissions"] as Map<String, dynamic>);
 
-          if (role == app.RoleTypes.admin) {
+          if (permissions.role == Role(app.RoleTypes.admin)) {
             return right(unit);
           }
 
