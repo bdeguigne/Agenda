@@ -14,7 +14,7 @@ class UserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,6 +85,55 @@ class UserInfo extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(user.email.getOrCrash()),
+        const SizedBox(height: 8),
+        const Divider(),
+        const SizedBox(height: 8),
+        const Text(
+          "Permissions",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        const Text(
+          "ROLE",
+          style: TextStyle(
+            fontSize: 12,
+            color: Color(0xffcacaca),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(user.permissions.role.getOrCrash()),
+        if (user.permissions.rights.isNotEmpty)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 20),
+              const Text(
+                "RIGHTS",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xffcacaca),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: user.permissions.rights
+                    .map(
+                      (right) => Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Chip(
+                          label: Text(right),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ],
+          )
       ],
     );
   }

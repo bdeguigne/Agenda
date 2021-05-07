@@ -1,0 +1,88 @@
+rules_version = '2';
+
+function isProfilePicture(picture) {
+	return picture.size() == 2
+			&& picture.photoUrl is string
+      && picture.isStorage is bool
+}
+
+function isUser(user) {
+	return user.size() == 4
+      && user.displayName is string
+  		&& user.email is string
+  		&& user.permissions is map
+      && isProfilePicture(user.picture)
+}
+
+function isHomework(data) {
+	return data.size() == 2
+  		&& data.subject is string
+      && data.description is string
+}
+
+// Check if the new document is created by the same user that makes the request.
+// Usefull when the user signed up.
+function isOwnUser(request) {
+	return request.resource.id == request.auth.uid;
+}
+
+
+service cloud.firestore {
+  match /databases/{database}/documents {  
+  
+    function getRightsForUser(userId) {
+      return get(/databases/$(database)/documents/users/$(userId)).data.permissions.rights;
+    }
+    
+  	function canCreate(collection, userId) {
+    	let rights = getRightsForUser(userId);
+      
+      return collection.upper() + "_C" in rights;
+    }
+    
+    function canRead(collection, userId) {
+    	let rights = getRightsForUser(userId);
+      
+      return collection.upper() + "_R" in rights;
+    }
+    
+    function canUpdate(collection, userId) {
+    	let rights = getRightsForUser(userId);
+      
+      return collection.upper() + "_U" in rights;
+    }
+    
+    function canDelete(collection, userId) {
+    	let rights = getRightsForUser(userId);
+      
+      return collection.upper() + "_D" in rights;
+    }
+    
+    
+   	function isSameUser(documentUserId, requestUserId) {
+			return requestUserId == documentUserId;
+		}
+    
+    match /homeworks/{homeworkId} {
+    	allow create: if isHomework(request.resource.data) && canCreate("homeworks", request.auth.uid);
+    	allow read: if canRead("homeworks", request.auth.uid);
+      allow update: if canUpdate("homeworks", request.auth.uid);
+      allow delete: if canDelete("homeworks", request.auth.uid);
+    }
+  
+   	match /users/{userId} {
+    	allow create: if isUser(request.resource.data) && isOwnUser(request) || canCreate("users", request.auth.uid);
+      allow read: if isSameUser(userId, request.auth.uid) || canRead("users", request.auth.uid)
+      allow update: if isSameUser(userId, request.auth.uid) || canUpdate("users", request.auth.uid);
+      allow delete: if canDelete("users", request.auth.uid);
+    }
+      
+  	match /rights/{rightId} {
+      allow read: if canRead("rights", request.auth.uid);
+    }
+    
+    match /roles/{roleId} {
+      allow read: if canRead("roles", request.auth.uid);
+    }
+  }
+}

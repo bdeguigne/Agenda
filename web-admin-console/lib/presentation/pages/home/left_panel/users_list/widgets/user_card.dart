@@ -22,7 +22,7 @@ class UserCard extends StatelessWidget {
           padding: const EdgeInsets.all(22.0),
           child: Row(
             children: [
-              ShowProfilePicture(picture: user.picture),
+              // ShowProfilePicture(picture: user.picture),
               const SizedBox(width: 12),
               Text(user.displayName.getOrCrash()),
             ],
