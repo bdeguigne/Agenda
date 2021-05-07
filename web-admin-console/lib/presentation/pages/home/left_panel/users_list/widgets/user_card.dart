@@ -15,7 +15,7 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Colors.transparent,
       child: InkWell(
         onTap: () => onTap(user),
         child: Padding(

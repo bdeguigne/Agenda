@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:agenda/domain/auth/user.dart';
+import 'package:agenda/domain/core/repository_failure.dart';
 import 'package:agenda/domain/users/i_users_repository.dart';
-import 'package:agenda/domain/users/user_failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -34,8 +34,6 @@ class UsersWatcherBloc extends Bloc<UsersWatcherEvent, UsersWatcherState> {
               UsersWatcherEvent.usersReceived(right(users)),
             ),
           );
-    }, test: (e) async* {
-      _usersRepository.testEvent();
     }, usersReceived: (e) async* {
       yield e.failureOrUsers.fold(
         (failure) => UsersWatcherState.loadFailure(failure),

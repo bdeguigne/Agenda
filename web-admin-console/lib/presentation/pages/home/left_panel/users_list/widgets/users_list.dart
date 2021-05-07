@@ -1,15 +1,15 @@
-import 'dart:ui';
-
 import 'package:agenda/domain/auth/user.dart';
-import 'package:agenda/presentation/pages/home/users_list/widgets/user_card.dart';
+import 'package:agenda/presentation/pages/home/left_panel/users_list/widgets/user_card.dart';
 import 'package:flutter/material.dart';
 
 class UsersList extends StatelessWidget {
+  final Function(User user) onUserTapped;
   final List<User> users;
 
   const UsersList({
     Key key,
     @required this.users,
+    @required this.onUserTapped,
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class UsersList extends StatelessWidget {
           .map(
             (user) => UserCard(
               user: user,
-              onTap: (user) => print("TAP $user"),
+              onTap: (user) => onUserTapped(user),
             ),
           )
           .toList(),

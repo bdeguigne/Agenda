@@ -4,6 +4,5 @@ part of 'users_watcher_bloc.dart';
 abstract class UsersWatcherEvent with _$UsersWatcherEvent {
   const factory UsersWatcherEvent.watchAll() = WatchAll;
   const factory UsersWatcherEvent.usersReceived(
-      Either<UserFailure, List<User>> failureOrUsers) = UsersReceived;
-  const factory UsersWatcherEvent.test() = Test;
+      Either<RepositoryFailure, List<User>> failureOrUsers) = UsersReceived;
 }

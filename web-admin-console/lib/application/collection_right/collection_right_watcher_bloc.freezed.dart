@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'users_watcher_bloc.dart';
+part of 'collection_right_watcher_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,8 +10,8 @@ part of 'users_watcher_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$UsersWatcherEventTearOff {
-  const _$UsersWatcherEventTearOff();
+class _$CollectionRightWatcherEventTearOff {
+  const _$CollectionRightWatcherEventTearOff();
 
 // ignore: unused_element
   WatchAll watchAll() {
@@ -19,68 +19,66 @@ class _$UsersWatcherEventTearOff {
   }
 
 // ignore: unused_element
-  UsersReceived usersReceived(Either<UserFailure, List<User>> failureOrUsers) {
-    return UsersReceived(
-      failureOrUsers,
+  CollectionRightReceived collectionRightReceived(
+      Either<RepositoryFailure, List<CollectionRight>>
+          failureOrCollectionRight) {
+    return CollectionRightReceived(
+      failureOrCollectionRight,
     );
-  }
-
-// ignore: unused_element
-  Test test() {
-    return const Test();
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $UsersWatcherEvent = _$UsersWatcherEventTearOff();
+const $CollectionRightWatcherEvent = _$CollectionRightWatcherEventTearOff();
 
 /// @nodoc
-mixin _$UsersWatcherEvent {
+mixin _$CollectionRightWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
     @required
-        TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    @required TResult test(),
+        TResult collectionRightReceived(
+            Either<RepositoryFailure, List<CollectionRight>>
+                failureOrCollectionRight),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    TResult test(),
+    TResult collectionRightReceived(
+        Either<RepositoryFailure, List<CollectionRight>>
+            failureOrCollectionRight),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(WatchAll value),
-    @required TResult usersReceived(UsersReceived value),
-    @required TResult test(Test value),
+    @required TResult collectionRightReceived(CollectionRightReceived value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(WatchAll value),
-    TResult usersReceived(UsersReceived value),
-    TResult test(Test value),
+    TResult collectionRightReceived(CollectionRightReceived value),
     @required TResult orElse(),
   });
 }
 
 /// @nodoc
-abstract class $UsersWatcherEventCopyWith<$Res> {
-  factory $UsersWatcherEventCopyWith(
-          UsersWatcherEvent value, $Res Function(UsersWatcherEvent) then) =
-      _$UsersWatcherEventCopyWithImpl<$Res>;
+abstract class $CollectionRightWatcherEventCopyWith<$Res> {
+  factory $CollectionRightWatcherEventCopyWith(
+          CollectionRightWatcherEvent value,
+          $Res Function(CollectionRightWatcherEvent) then) =
+      _$CollectionRightWatcherEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UsersWatcherEventCopyWithImpl<$Res>
-    implements $UsersWatcherEventCopyWith<$Res> {
-  _$UsersWatcherEventCopyWithImpl(this._value, this._then);
+class _$CollectionRightWatcherEventCopyWithImpl<$Res>
+    implements $CollectionRightWatcherEventCopyWith<$Res> {
+  _$CollectionRightWatcherEventCopyWithImpl(this._value, this._then);
 
-  final UsersWatcherEvent _value;
+  final CollectionRightWatcherEvent _value;
   // ignore: unused_field
-  final $Res Function(UsersWatcherEvent) _then;
+  final $Res Function(CollectionRightWatcherEvent) _then;
 }
 
 /// @nodoc
@@ -90,7 +88,8 @@ abstract class $WatchAllCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WatchAllCopyWithImpl<$Res> extends _$UsersWatcherEventCopyWithImpl<$Res>
+class _$WatchAllCopyWithImpl<$Res>
+    extends _$CollectionRightWatcherEventCopyWithImpl<$Res>
     implements $WatchAllCopyWith<$Res> {
   _$WatchAllCopyWithImpl(WatchAll _value, $Res Function(WatchAll) _then)
       : super(_value, (v) => _then(v as WatchAll));
@@ -105,7 +104,7 @@ class _$WatchAll implements WatchAll {
 
   @override
   String toString() {
-    return 'UsersWatcherEvent.watchAll()';
+    return 'CollectionRightWatcherEvent.watchAll()';
   }
 
   @override
@@ -121,12 +120,12 @@ class _$WatchAll implements WatchAll {
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
     @required
-        TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    @required TResult test(),
+        TResult collectionRightReceived(
+            Either<RepositoryFailure, List<CollectionRight>>
+                failureOrCollectionRight),
   }) {
     assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
+    assert(collectionRightReceived != null);
     return watchAll();
   }
 
@@ -134,8 +133,9 @@ class _$WatchAll implements WatchAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    TResult test(),
+    TResult collectionRightReceived(
+        Either<RepositoryFailure, List<CollectionRight>>
+            failureOrCollectionRight),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -149,12 +149,10 @@ class _$WatchAll implements WatchAll {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(WatchAll value),
-    @required TResult usersReceived(UsersReceived value),
-    @required TResult test(Test value),
+    @required TResult collectionRightReceived(CollectionRightReceived value),
   }) {
     assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
+    assert(collectionRightReceived != null);
     return watchAll(this);
   }
 
@@ -162,8 +160,7 @@ class _$WatchAll implements WatchAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(WatchAll value),
-    TResult usersReceived(UsersReceived value),
-    TResult test(Test value),
+    TResult collectionRightReceived(CollectionRightReceived value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -174,97 +171,105 @@ class _$WatchAll implements WatchAll {
   }
 }
 
-abstract class WatchAll implements UsersWatcherEvent {
+abstract class WatchAll implements CollectionRightWatcherEvent {
   const factory WatchAll() = _$WatchAll;
 }
 
 /// @nodoc
-abstract class $UsersReceivedCopyWith<$Res> {
-  factory $UsersReceivedCopyWith(
-          UsersReceived value, $Res Function(UsersReceived) then) =
-      _$UsersReceivedCopyWithImpl<$Res>;
-  $Res call({Either<UserFailure, List<User>> failureOrUsers});
+abstract class $CollectionRightReceivedCopyWith<$Res> {
+  factory $CollectionRightReceivedCopyWith(CollectionRightReceived value,
+          $Res Function(CollectionRightReceived) then) =
+      _$CollectionRightReceivedCopyWithImpl<$Res>;
+  $Res call(
+      {Either<RepositoryFailure, List<CollectionRight>>
+          failureOrCollectionRight});
 }
 
 /// @nodoc
-class _$UsersReceivedCopyWithImpl<$Res>
-    extends _$UsersWatcherEventCopyWithImpl<$Res>
-    implements $UsersReceivedCopyWith<$Res> {
-  _$UsersReceivedCopyWithImpl(
-      UsersReceived _value, $Res Function(UsersReceived) _then)
-      : super(_value, (v) => _then(v as UsersReceived));
+class _$CollectionRightReceivedCopyWithImpl<$Res>
+    extends _$CollectionRightWatcherEventCopyWithImpl<$Res>
+    implements $CollectionRightReceivedCopyWith<$Res> {
+  _$CollectionRightReceivedCopyWithImpl(CollectionRightReceived _value,
+      $Res Function(CollectionRightReceived) _then)
+      : super(_value, (v) => _then(v as CollectionRightReceived));
 
   @override
-  UsersReceived get _value => super._value as UsersReceived;
+  CollectionRightReceived get _value => super._value as CollectionRightReceived;
 
   @override
   $Res call({
-    Object failureOrUsers = freezed,
+    Object failureOrCollectionRight = freezed,
   }) {
-    return _then(UsersReceived(
-      failureOrUsers == freezed
-          ? _value.failureOrUsers
-          : failureOrUsers as Either<UserFailure, List<User>>,
+    return _then(CollectionRightReceived(
+      failureOrCollectionRight == freezed
+          ? _value.failureOrCollectionRight
+          : failureOrCollectionRight
+              as Either<RepositoryFailure, List<CollectionRight>>,
     ));
   }
 }
 
 /// @nodoc
-class _$UsersReceived implements UsersReceived {
-  const _$UsersReceived(this.failureOrUsers) : assert(failureOrUsers != null);
+class _$CollectionRightReceived implements CollectionRightReceived {
+  const _$CollectionRightReceived(this.failureOrCollectionRight)
+      : assert(failureOrCollectionRight != null);
 
   @override
-  final Either<UserFailure, List<User>> failureOrUsers;
+  final Either<RepositoryFailure, List<CollectionRight>>
+      failureOrCollectionRight;
 
   @override
   String toString() {
-    return 'UsersWatcherEvent.usersReceived(failureOrUsers: $failureOrUsers)';
+    return 'CollectionRightWatcherEvent.collectionRightReceived(failureOrCollectionRight: $failureOrCollectionRight)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UsersReceived &&
-            (identical(other.failureOrUsers, failureOrUsers) ||
-                const DeepCollectionEquality()
-                    .equals(other.failureOrUsers, failureOrUsers)));
+        (other is CollectionRightReceived &&
+            (identical(
+                    other.failureOrCollectionRight, failureOrCollectionRight) ||
+                const DeepCollectionEquality().equals(
+                    other.failureOrCollectionRight, failureOrCollectionRight)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(failureOrUsers);
+      const DeepCollectionEquality().hash(failureOrCollectionRight);
 
   @JsonKey(ignore: true)
   @override
-  $UsersReceivedCopyWith<UsersReceived> get copyWith =>
-      _$UsersReceivedCopyWithImpl<UsersReceived>(this, _$identity);
+  $CollectionRightReceivedCopyWith<CollectionRightReceived> get copyWith =>
+      _$CollectionRightReceivedCopyWithImpl<CollectionRightReceived>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
     @required
-        TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    @required TResult test(),
+        TResult collectionRightReceived(
+            Either<RepositoryFailure, List<CollectionRight>>
+                failureOrCollectionRight),
   }) {
     assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
-    return usersReceived(failureOrUsers);
+    assert(collectionRightReceived != null);
+    return collectionRightReceived(failureOrCollectionRight);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    TResult test(),
+    TResult collectionRightReceived(
+        Either<RepositoryFailure, List<CollectionRight>>
+            failureOrCollectionRight),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (usersReceived != null) {
-      return usersReceived(failureOrUsers);
+    if (collectionRightReceived != null) {
+      return collectionRightReceived(failureOrCollectionRight);
     }
     return orElse();
   }
@@ -273,138 +278,41 @@ class _$UsersReceived implements UsersReceived {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(WatchAll value),
-    @required TResult usersReceived(UsersReceived value),
-    @required TResult test(Test value),
+    @required TResult collectionRightReceived(CollectionRightReceived value),
   }) {
     assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
-    return usersReceived(this);
+    assert(collectionRightReceived != null);
+    return collectionRightReceived(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(WatchAll value),
-    TResult usersReceived(UsersReceived value),
-    TResult test(Test value),
+    TResult collectionRightReceived(CollectionRightReceived value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (usersReceived != null) {
-      return usersReceived(this);
+    if (collectionRightReceived != null) {
+      return collectionRightReceived(this);
     }
     return orElse();
   }
 }
 
-abstract class UsersReceived implements UsersWatcherEvent {
-  const factory UsersReceived(Either<UserFailure, List<User>> failureOrUsers) =
-      _$UsersReceived;
+abstract class CollectionRightReceived implements CollectionRightWatcherEvent {
+  const factory CollectionRightReceived(
+      Either<RepositoryFailure, List<CollectionRight>>
+          failureOrCollectionRight) = _$CollectionRightReceived;
 
-  Either<UserFailure, List<User>> get failureOrUsers;
+  Either<RepositoryFailure, List<CollectionRight>> get failureOrCollectionRight;
   @JsonKey(ignore: true)
-  $UsersReceivedCopyWith<UsersReceived> get copyWith;
+  $CollectionRightReceivedCopyWith<CollectionRightReceived> get copyWith;
 }
 
 /// @nodoc
-abstract class $TestCopyWith<$Res> {
-  factory $TestCopyWith(Test value, $Res Function(Test) then) =
-      _$TestCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$TestCopyWithImpl<$Res> extends _$UsersWatcherEventCopyWithImpl<$Res>
-    implements $TestCopyWith<$Res> {
-  _$TestCopyWithImpl(Test _value, $Res Function(Test) _then)
-      : super(_value, (v) => _then(v as Test));
-
-  @override
-  Test get _value => super._value as Test;
-}
-
-/// @nodoc
-class _$Test implements Test {
-  const _$Test();
-
-  @override
-  String toString() {
-    return 'UsersWatcherEvent.test()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Test);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult watchAll(),
-    @required
-        TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    @required TResult test(),
-  }) {
-    assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
-    return test();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult watchAll(),
-    TResult usersReceived(Either<UserFailure, List<User>> failureOrUsers),
-    TResult test(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (test != null) {
-      return test();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult watchAll(WatchAll value),
-    @required TResult usersReceived(UsersReceived value),
-    @required TResult test(Test value),
-  }) {
-    assert(watchAll != null);
-    assert(usersReceived != null);
-    assert(test != null);
-    return test(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult watchAll(WatchAll value),
-    TResult usersReceived(UsersReceived value),
-    TResult test(Test value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (test != null) {
-      return test(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Test implements UsersWatcherEvent {
-  const factory Test() = _$Test;
-}
-
-/// @nodoc
-class _$UsersWatcherStateTearOff {
-  const _$UsersWatcherStateTearOff();
+class _$CollectionRightWatcherStateTearOff {
+  const _$CollectionRightWatcherStateTearOff();
 
 // ignore: unused_element
   _Initial initial() {
@@ -412,14 +320,14 @@ class _$UsersWatcherStateTearOff {
   }
 
 // ignore: unused_element
-  LoadSuccess loadSuccess(List<User> users) {
+  LoadSuccess loadSuccess(List<CollectionRight> collectionRights) {
     return LoadSuccess(
-      users,
+      collectionRights,
     );
   }
 
 // ignore: unused_element
-  LoadFailure loadFailure(UserFailure failure) {
+  LoadFailure loadFailure(RepositoryFailure failure) {
     return LoadFailure(
       failure,
     );
@@ -428,21 +336,21 @@ class _$UsersWatcherStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $UsersWatcherState = _$UsersWatcherStateTearOff();
+const $CollectionRightWatcherState = _$CollectionRightWatcherStateTearOff();
 
 /// @nodoc
-mixin _$UsersWatcherState {
+mixin _$CollectionRightWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<User> users),
-    @required TResult loadFailure(UserFailure failure),
+    @required TResult loadSuccess(List<CollectionRight> collectionRights),
+    @required TResult loadFailure(RepositoryFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<User> users),
-    TResult loadFailure(UserFailure failure),
+    TResult loadSuccess(List<CollectionRight> collectionRights),
+    TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -461,20 +369,21 @@ mixin _$UsersWatcherState {
 }
 
 /// @nodoc
-abstract class $UsersWatcherStateCopyWith<$Res> {
-  factory $UsersWatcherStateCopyWith(
-          UsersWatcherState value, $Res Function(UsersWatcherState) then) =
-      _$UsersWatcherStateCopyWithImpl<$Res>;
+abstract class $CollectionRightWatcherStateCopyWith<$Res> {
+  factory $CollectionRightWatcherStateCopyWith(
+          CollectionRightWatcherState value,
+          $Res Function(CollectionRightWatcherState) then) =
+      _$CollectionRightWatcherStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UsersWatcherStateCopyWithImpl<$Res>
-    implements $UsersWatcherStateCopyWith<$Res> {
-  _$UsersWatcherStateCopyWithImpl(this._value, this._then);
+class _$CollectionRightWatcherStateCopyWithImpl<$Res>
+    implements $CollectionRightWatcherStateCopyWith<$Res> {
+  _$CollectionRightWatcherStateCopyWithImpl(this._value, this._then);
 
-  final UsersWatcherState _value;
+  final CollectionRightWatcherState _value;
   // ignore: unused_field
-  final $Res Function(UsersWatcherState) _then;
+  final $Res Function(CollectionRightWatcherState) _then;
 }
 
 /// @nodoc
@@ -484,7 +393,8 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$UsersWatcherStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res>
+    extends _$CollectionRightWatcherStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -499,7 +409,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'UsersWatcherState.initial()';
+    return 'CollectionRightWatcherState.initial()';
   }
 
   @override
@@ -514,8 +424,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<User> users),
-    @required TResult loadFailure(UserFailure failure),
+    @required TResult loadSuccess(List<CollectionRight> collectionRights),
+    @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
@@ -527,8 +437,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<User> users),
-    TResult loadFailure(UserFailure failure),
+    TResult loadSuccess(List<CollectionRight> collectionRights),
+    TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -567,7 +477,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements UsersWatcherState {
+abstract class _Initial implements CollectionRightWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -576,12 +486,12 @@ abstract class $LoadSuccessCopyWith<$Res> {
   factory $LoadSuccessCopyWith(
           LoadSuccess value, $Res Function(LoadSuccess) then) =
       _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<User> users});
+  $Res call({List<CollectionRight> collectionRights});
 }
 
 /// @nodoc
 class _$LoadSuccessCopyWithImpl<$Res>
-    extends _$UsersWatcherStateCopyWithImpl<$Res>
+    extends _$CollectionRightWatcherStateCopyWithImpl<$Res>
     implements $LoadSuccessCopyWith<$Res> {
   _$LoadSuccessCopyWithImpl(
       LoadSuccess _value, $Res Function(LoadSuccess) _then)
@@ -592,37 +502,41 @@ class _$LoadSuccessCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object users = freezed,
+    Object collectionRights = freezed,
   }) {
     return _then(LoadSuccess(
-      users == freezed ? _value.users : users as List<User>,
+      collectionRights == freezed
+          ? _value.collectionRights
+          : collectionRights as List<CollectionRight>,
     ));
   }
 }
 
 /// @nodoc
 class _$LoadSuccess implements LoadSuccess {
-  const _$LoadSuccess(this.users) : assert(users != null);
+  const _$LoadSuccess(this.collectionRights) : assert(collectionRights != null);
 
   @override
-  final List<User> users;
+  final List<CollectionRight> collectionRights;
 
   @override
   String toString() {
-    return 'UsersWatcherState.loadSuccess(users: $users)';
+    return 'CollectionRightWatcherState.loadSuccess(collectionRights: $collectionRights)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LoadSuccess &&
-            (identical(other.users, users) ||
-                const DeepCollectionEquality().equals(other.users, users)));
+            (identical(other.collectionRights, collectionRights) ||
+                const DeepCollectionEquality()
+                    .equals(other.collectionRights, collectionRights)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(users);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(collectionRights);
 
   @JsonKey(ignore: true)
   @override
@@ -633,26 +547,26 @@ class _$LoadSuccess implements LoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<User> users),
-    @required TResult loadFailure(UserFailure failure),
+    @required TResult loadSuccess(List<CollectionRight> collectionRights),
+    @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadSuccess(users);
+    return loadSuccess(collectionRights);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<User> users),
-    TResult loadFailure(UserFailure failure),
+    TResult loadSuccess(List<CollectionRight> collectionRights),
+    TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
-      return loadSuccess(users);
+      return loadSuccess(collectionRights);
     }
     return orElse();
   }
@@ -686,10 +600,11 @@ class _$LoadSuccess implements LoadSuccess {
   }
 }
 
-abstract class LoadSuccess implements UsersWatcherState {
-  const factory LoadSuccess(List<User> users) = _$LoadSuccess;
+abstract class LoadSuccess implements CollectionRightWatcherState {
+  const factory LoadSuccess(List<CollectionRight> collectionRights) =
+      _$LoadSuccess;
 
-  List<User> get users;
+  List<CollectionRight> get collectionRights;
   @JsonKey(ignore: true)
   $LoadSuccessCopyWith<LoadSuccess> get copyWith;
 }
@@ -699,14 +614,14 @@ abstract class $LoadFailureCopyWith<$Res> {
   factory $LoadFailureCopyWith(
           LoadFailure value, $Res Function(LoadFailure) then) =
       _$LoadFailureCopyWithImpl<$Res>;
-  $Res call({UserFailure failure});
+  $Res call({RepositoryFailure failure});
 
-  $UserFailureCopyWith<$Res> get failure;
+  $RepositoryFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
 class _$LoadFailureCopyWithImpl<$Res>
-    extends _$UsersWatcherStateCopyWithImpl<$Res>
+    extends _$CollectionRightWatcherStateCopyWithImpl<$Res>
     implements $LoadFailureCopyWith<$Res> {
   _$LoadFailureCopyWithImpl(
       LoadFailure _value, $Res Function(LoadFailure) _then)
@@ -720,16 +635,16 @@ class _$LoadFailureCopyWithImpl<$Res>
     Object failure = freezed,
   }) {
     return _then(LoadFailure(
-      failure == freezed ? _value.failure : failure as UserFailure,
+      failure == freezed ? _value.failure : failure as RepositoryFailure,
     ));
   }
 
   @override
-  $UserFailureCopyWith<$Res> get failure {
+  $RepositoryFailureCopyWith<$Res> get failure {
     if (_value.failure == null) {
       return null;
     }
-    return $UserFailureCopyWith<$Res>(_value.failure, (value) {
+    return $RepositoryFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -740,11 +655,11 @@ class _$LoadFailure implements LoadFailure {
   const _$LoadFailure(this.failure) : assert(failure != null);
 
   @override
-  final UserFailure failure;
+  final RepositoryFailure failure;
 
   @override
   String toString() {
-    return 'UsersWatcherState.loadFailure(failure: $failure)';
+    return 'CollectionRightWatcherState.loadFailure(failure: $failure)';
   }
 
   @override
@@ -768,8 +683,8 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<User> users),
-    @required TResult loadFailure(UserFailure failure),
+    @required TResult loadSuccess(List<CollectionRight> collectionRights),
+    @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
@@ -781,8 +696,8 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<User> users),
-    TResult loadFailure(UserFailure failure),
+    TResult loadSuccess(List<CollectionRight> collectionRights),
+    TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -821,10 +736,10 @@ class _$LoadFailure implements LoadFailure {
   }
 }
 
-abstract class LoadFailure implements UsersWatcherState {
-  const factory LoadFailure(UserFailure failure) = _$LoadFailure;
+abstract class LoadFailure implements CollectionRightWatcherState {
+  const factory LoadFailure(RepositoryFailure failure) = _$LoadFailure;
 
-  UserFailure get failure;
+  RepositoryFailure get failure;
   @JsonKey(ignore: true)
   $LoadFailureCopyWith<LoadFailure> get copyWith;
 }
