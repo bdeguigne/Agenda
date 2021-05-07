@@ -33,10 +33,12 @@ Map<String, dynamic> _$_$_UserToJson(_$_User instance) => <String, dynamic>{
 _$_Permissions _$_$_PermissionsFromJson(Map<String, dynamic> json) {
   return _$_Permissions(
     role: json['role'] == null ? null : Role.fromJson(json['role'] as String),
+    rights: (json['rights'] as List)?.map((e) => e as String)?.toList(),
   );
 }
 
 Map<String, dynamic> _$_$_PermissionsToJson(_$_Permissions instance) =>
     <String, dynamic>{
       'role': instance.role,
+      'rights': instance.rights,
     };

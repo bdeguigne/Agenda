@@ -1,5 +1,8 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
-import 'package:agenda/application/users/users_details/user_details_bloc.dart';
+import 'package:agenda/application/details/details_bloc.dart';
+import 'package:agenda/application/roles/roles_watcher_bloc.dart';
+import 'package:agenda/application/selector/selector_bloc.dart';
+import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/pages/home/widgets/home_widget.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -14,8 +17,15 @@ class HomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserDetailsBloc(),
+          create: (context) => DetailsBloc(),
         ),
+        BlocProvider(
+          create: (context) => getIt<RolesWatcherBloc>()
+            ..add(const RolesWatcherEvent.watchAll()),
+        ),
+        BlocProvider(
+          create: (context) => SelectorBloc(),
+        )
       ],
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {

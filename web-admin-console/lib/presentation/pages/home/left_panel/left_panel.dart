@@ -15,17 +15,9 @@ class LeftPanel extends StatelessWidget {
       child: Container(
         color: Colors.white,
         width: 250,
-        child: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => getIt<UsersWatcherBloc>()
-                ..add(const UsersWatcherEvent.watchAll()),
-            ),
-            BlocProvider(
-              create: (context) => getIt<RolesWatcherBloc>()
-                ..add(const RolesWatcherEvent.watchAll()),
-            ),
-          ],
+        child: BlocProvider(
+          create: (context) => getIt<UsersWatcherBloc>()
+            ..add(const UsersWatcherEvent.watchAll()),
           child: const LeftTabBar(),
         ),
       ),

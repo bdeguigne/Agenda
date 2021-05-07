@@ -1,3 +1,4 @@
+import 'package:agenda/domain/collection_right/right.dart';
 import 'package:agenda/domain/core/value_object.dart';
 import 'package:agenda/domain/profile/profile_picture.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -42,10 +43,12 @@ abstract class User with _$User {
 abstract class Permissions with _$Permissions {
   const factory Permissions({
     @required Role role,
+    @required List<String> rights,
   }) = _Permissions;
 
   factory Permissions.fromJson(Map<String, dynamic> json) =>
-      Permissions(role: Role(json["role"] as String));
+      _$PermissionsFromJson(json);
+  // Permissions(role: Role(json["role"] as String));
 
   @override
   Map<String, dynamic> toJson() => {'permissions': role.toJson()};

@@ -1,6 +1,7 @@
 import 'package:agenda/domain/collection_right/right.dart';
-import 'package:agenda/presentation/pages/home/rights/widgets/expansion_list.dart';
 import 'package:flutter/material.dart';
+
+import 'expansion_list.dart';
 
 class RightsList extends StatelessWidget {
   final List<CollectionRight> collectionRights;

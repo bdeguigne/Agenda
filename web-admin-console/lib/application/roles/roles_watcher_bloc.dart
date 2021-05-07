@@ -39,10 +39,7 @@ class RolesWatcherBloc extends Bloc<RolesWatcherEvent, RolesWatcherState> {
       rolesReceived: (e) async* {
         yield e.failureOrRoles.fold(
           (failure) => RolesWatcherState.loadFailure(failure),
-          (List<Roles> roles) {
-            print("ROOOLES $roles");
-            return RolesWatcherState.loadSuccess(roles);
-          },
+          (List<Roles> roles) => RolesWatcherState.loadSuccess(roles),
         );
       },
     );

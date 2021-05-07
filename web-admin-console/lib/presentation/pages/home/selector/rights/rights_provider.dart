@@ -1,16 +1,17 @@
-import 'package:agenda/application/details/details_bloc.dart';
-import 'package:agenda/application/roles/roles_watcher_bloc.dart';
+import 'package:agenda/application/collection_right/collection_right_watcher_bloc.dart';
+import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
-import 'package:agenda/presentation/pages/home/left_panel/roles/widgets/roles_list.dart';
+import 'package:agenda/presentation/pages/home/selector/rights/widgets/rights_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RolesProvider extends StatelessWidget {
-  const RolesProvider({Key key}) : super(key: key);
+class RightsProvider extends StatelessWidget {
+  const RightsProvider({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RolesWatcherBloc, RolesWatcherState>(
+    return BlocConsumer<CollectionRightWatcherBloc,
+        CollectionRightWatcherState>(
       listener: (context, state) {
         state.maybeWhen(
           loadFailure: (failure) {
@@ -24,21 +25,19 @@ class RolesProvider extends StatelessWidget {
               ).toSnackBar,
             );
           },
-          orElse: () {},
+          orElse: () => null,
         );
       },
       builder: (context, state) {
         return state.map(
-          initial: (_) => const Center(child: CircularProgressIndicator()),
+          initial: (_) => const Center(
+            child: CircularProgressIndicator(),
+          ),
           loadFailure: (_) => const Center(
-            child: Text("Could not load roles."),
+            child: Text("Could not load rights"),
           ),
-          loadSuccess: (success) => RolesList(
-            roles: success.roles,
-            onRoleTapped: (role) => context
-                .read<DetailsBloc>()
-                .add(DetailsEvent.roleReceived(role)),
-          ),
+          loadSuccess: (success) =>
+              RightsList(collectionRights: success.collectionRights),
         );
       },
     );

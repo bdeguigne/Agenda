@@ -2,10 +2,13 @@ import 'package:agenda/domain/roles/roles.dart';
 import 'package:flutter/material.dart';
 
 class RolesList extends StatelessWidget {
+  final Function(Roles role) onRoleTapped;
   final List<Roles> roles;
+
   const RolesList({
     Key key,
     @required this.roles,
+    @required this.onRoleTapped,
   }) : super(key: key);
 
   @override
@@ -14,7 +17,7 @@ class RolesList extends StatelessWidget {
       children: roles
           .map(
             (role) => ListTile(
-              onTap: () {},
+              onTap: () => onRoleTapped(role),
               title: Text(role.name),
             ),
           )

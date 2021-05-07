@@ -1,7 +1,7 @@
+import 'package:agenda/presentation/pages/home/details/details_provider.dart';
 import 'package:agenda/presentation/pages/home/left_panel/left_panel.dart';
-import 'package:agenda/presentation/pages/home/left_panel/users_list/users_list_provider.dart';
-import 'package:agenda/presentation/pages/home/rights/rights_provider.dart';
-import 'package:agenda/presentation/pages/home/user_details/user_details_provider.dart';
+import 'package:agenda/presentation/pages/home/selector/rights/rights_provider.dart';
+import 'package:agenda/presentation/pages/home/selector/selector_provider.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -32,11 +32,11 @@ class HomeWidget extends StatelessWidget {
         ],
       ),
       body: Row(
-        // children: users.map((e) => Text(e.email.getOrCrash())).toList(),
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           LeftPanel(),
-          UserDetailsProvider(),
-          RightsProvider(),
+          DetailsProvider(),
+          SelectorProvider(),
         ],
       ),
     );

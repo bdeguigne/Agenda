@@ -1,4 +1,4 @@
-import 'package:agenda/application/users/users_details/user_details_bloc.dart';
+import 'package:agenda/application/details/details_bloc.dart';
 import 'package:agenda/application/users/users_watcher/users_watcher_bloc.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
 import 'package:agenda/presentation/pages/home/left_panel/users_list/widgets/users_list.dart';
@@ -35,8 +35,8 @@ class UsersListProvider extends StatelessWidget {
           ),
           loadSuccess: (users) => UsersList(
             users: users.users,
-            onUserTapped: (user) => context.read<UserDetailsBloc>().add(
-                  UserDetailsEvent.userReceived(user),
+            onUserTapped: (user) => context.read<DetailsBloc>().add(
+                  DetailsEvent.userReceived(user),
                 ),
           ),
         );
