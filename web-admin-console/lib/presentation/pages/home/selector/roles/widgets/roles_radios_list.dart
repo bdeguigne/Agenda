@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 class RolesRadiosList extends StatefulWidget {
   final List<Roles> roles;
+  final Function(Roles role) onRoleSelected;
 
   const RolesRadiosList({
     Key key,
     @required this.roles,
+    @required this.onRoleSelected,
   }) : super(key: key);
 
   @override
@@ -64,7 +66,7 @@ class _RolesRadiosListState extends State<RolesRadiosList> {
               SizedBox(
                 height: 45,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => widget.onRoleSelected(_selectedRole),
                   child: const Text("Assign this role"),
                 ),
               ),

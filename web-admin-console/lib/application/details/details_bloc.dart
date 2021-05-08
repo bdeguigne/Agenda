@@ -18,7 +18,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
   ) async* {
     yield* event.map(
       userReceived: (e) async* {
-        yield DetailsState.userSelected(e.user);
+        yield DetailsState.userSelected(e.userIndex);
       },
       roleReceived: (e) async* {
         yield DetailsState.roleSelected(e.role);

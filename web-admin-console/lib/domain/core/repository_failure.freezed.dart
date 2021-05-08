@@ -14,7 +14,7 @@ class _$RepositoryFailureTearOff {
   const _$RepositoryFailureTearOff();
 
 // ignore: unused_element
-  _Unexpected unexptected() {
+  _Unexpected unexpected() {
     return const _Unexpected();
   }
 
@@ -37,26 +37,26 @@ const $RepositoryFailure = _$RepositoryFailureTearOff();
 mixin _$RepositoryFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult unexptected(),
+    @required TResult unexpected(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult unexptected(),
+    TResult unexpected(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult unexptected(_Unexpected value),
+    @required TResult unexpected(_Unexpected value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult unexptected(_Unexpected value),
+    TResult unexpected(_Unexpected value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
     @required TResult orElse(),
@@ -105,7 +105,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'RepositoryFailure.unexptected()';
+    return 'RepositoryFailure.unexpected()';
   }
 
   @override
@@ -119,27 +119,27 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult unexptected(),
+    @required TResult unexpected(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
-    return unexptected();
+    return unexpected();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult unexptected(),
+    TResult unexpected(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (unexptected != null) {
-      return unexptected();
+    if (unexpected != null) {
+      return unexpected();
     }
     return orElse();
   }
@@ -147,27 +147,27 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult unexptected(_Unexpected value),
+    @required TResult unexpected(_Unexpected value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
-    return unexptected(this);
+    return unexpected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult unexptected(_Unexpected value),
+    TResult unexpected(_Unexpected value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (unexptected != null) {
-      return unexptected(this);
+    if (unexpected != null) {
+      return unexpected(this);
     }
     return orElse();
   }
@@ -216,11 +216,11 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult unexptected(),
+    @required TResult unexpected(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     return insufficientPermission();
@@ -229,7 +229,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult unexptected(),
+    TResult unexpected(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
     @required TResult orElse(),
@@ -244,11 +244,11 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult unexptected(_Unexpected value),
+    @required TResult unexpected(_Unexpected value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     return insufficientPermission(this);
@@ -257,7 +257,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult unexptected(_Unexpected value),
+    TResult unexpected(_Unexpected value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
     @required TResult orElse(),
@@ -313,11 +313,11 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult unexptected(),
+    @required TResult unexpected(),
     @required TResult insufficientPermission(),
     @required TResult unableToUpdate(),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     return unableToUpdate();
@@ -326,7 +326,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult unexptected(),
+    TResult unexpected(),
     TResult insufficientPermission(),
     TResult unableToUpdate(),
     @required TResult orElse(),
@@ -341,11 +341,11 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult unexptected(_Unexpected value),
+    @required TResult unexpected(_Unexpected value),
     @required TResult insufficientPermission(_InsufficientPermission value),
     @required TResult unableToUpdate(_UnableToUpdate value),
   }) {
-    assert(unexptected != null);
+    assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     return unableToUpdate(this);
@@ -354,7 +354,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult unexptected(_Unexpected value),
+    TResult unexpected(_Unexpected value),
     TResult insufficientPermission(_InsufficientPermission value),
     TResult unableToUpdate(_UnableToUpdate value),
     @required TResult orElse(),

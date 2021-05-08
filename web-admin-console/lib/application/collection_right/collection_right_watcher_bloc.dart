@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:agenda/domain/collection_right/collection_right_failure.dart';
-import 'package:agenda/domain/collection_right/i_repository.dart';
+import 'package:agenda/domain/collection_right/i_rights_repository.dart';
 import 'package:agenda/domain/collection_right/right.dart';
 import 'package:agenda/domain/core/repository_failure.dart';
 import 'package:bloc/bloc.dart';
@@ -16,7 +16,7 @@ part 'collection_right_watcher_bloc.freezed.dart';
 @injectable
 class CollectionRightWatcherBloc
     extends Bloc<CollectionRightWatcherEvent, CollectionRightWatcherState> {
-  final IRepository _repository;
+  final IRightsRepository _repository;
 
   CollectionRightWatcherBloc(this._repository) : super(const _Initial());
 
@@ -27,7 +27,7 @@ class CollectionRightWatcherBloc
     yield* event.map(
       watchAll: (e) async* {
         _repository
-            .watchAllCollectionRight(
+            .watchAll(
               (failure) => add(
                 CollectionRightWatcherEvent.collectionRightReceived(
                     left(failure)),

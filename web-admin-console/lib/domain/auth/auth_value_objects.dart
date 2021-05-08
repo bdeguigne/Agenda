@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:agenda/domain/core/failures.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 @immutable
 class EmailAddress extends ValueObject<String> {
@@ -23,9 +24,8 @@ class EmailAddress extends ValueObject<String> {
   factory EmailAddress.fromJson(String jsonValue) =>
       EmailAddress._(validateEmailAddress(jsonValue));
 
-  Map<String, dynamic> toJson() => {
-        'email': value.getOrElse(() => null),
-      };
+  // Map<String, dynamic> toJson() => {'email': value.fold((l) => null, id)};
+  Map<String, dynamic> toJson() => {'email': "test"};
 }
 
 @immutable

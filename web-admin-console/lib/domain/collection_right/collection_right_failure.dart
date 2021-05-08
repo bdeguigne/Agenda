@@ -4,7 +4,7 @@
 
 // @freezed
 // abstract class CollectionRightFailure with _$CollectionRightFailure {
-//   const factory CollectionRightFailure.unexptected() = _Unexpected;
+//   const factory CollectionRightFailure.unexpected() = _Unexpected;
 //   const factory CollectionRightFailure.insufficientPermission() =
 //       _InsufficientPermission;
 //   const factory CollectionRightFailure.unableToUpdate() = _UnableToUpdate;

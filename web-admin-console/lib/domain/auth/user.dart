@@ -49,7 +49,4 @@ abstract class Permissions with _$Permissions {
   factory Permissions.fromJson(Map<String, dynamic> json) =>
       _$PermissionsFromJson(json);
   // Permissions(role: Role(json["role"] as String));
-
-  @override
-  Map<String, dynamic> toJson() => {'permissions': role.toJson()};
 }

@@ -3,7 +3,7 @@ import 'package:agenda/presentation/pages/home/left_panel/users_list/widgets/use
 import 'package:flutter/material.dart';
 
 class UsersList extends StatelessWidget {
-  final Function(User user) onUserTapped;
+  final Function(int userIndex) onUserTapped;
   final List<User> users;
 
   const UsersList({
@@ -19,7 +19,7 @@ class UsersList extends StatelessWidget {
           .map(
             (user) => UserCard(
               user: user,
-              onTap: (user) => onUserTapped(user),
+              onTap: (user) => onUserTapped(users.indexOf(user)),
             ),
           )
           .toList(),

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:agenda/domain/collection_right/i_repository.dart';
 import 'package:agenda/domain/core/repository_failure.dart';
+import 'package:agenda/domain/roles/i_roles_repository.dart';
 import 'package:agenda/domain/roles/roles.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -14,7 +14,7 @@ part 'roles_watcher_bloc.freezed.dart';
 
 @injectable
 class RolesWatcherBloc extends Bloc<RolesWatcherEvent, RolesWatcherState> {
-  final IRepository _repository;
+  final IRolesRepository _repository;
 
   RolesWatcherBloc(this._repository) : super(const _Initial());
 
@@ -25,14 +25,14 @@ class RolesWatcherBloc extends Bloc<RolesWatcherEvent, RolesWatcherState> {
     yield* event.map(
       watchAll: (e) async* {
         _repository
-            .watchAllRoles(
+            .watchAll(
               (failure) => add(
                 RolesWatcherEvent.rolesReceived(left(failure)),
               ),
             )
             .listen(
-              (users) => add(
-                RolesWatcherEvent.rolesReceived(right(users)),
+              (roles) => add(
+                RolesWatcherEvent.rolesReceived(right(roles)),
               ),
             );
       },

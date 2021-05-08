@@ -29,7 +29,7 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'Value($value)';
+  String toString() => '$value';
 }
 
 class UniqueId extends ValueObject<String> {

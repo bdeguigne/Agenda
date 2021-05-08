@@ -18,7 +18,7 @@ class RightsProvider extends StatelessWidget {
             return ScaffoldMessenger.of(context).showSnackBar(
               AppSnackBar.errorSnackBar(
                 failure.map(
-                  unexptected: (_) => "Something went wrong",
+                  unexpected: (_) => "Something went wrong",
                   insufficientPermission: (_) => "Insufficient permission",
                   unableToUpdate: (_) => "Unable to update",
                 ),
