@@ -278,7 +278,7 @@ class _$PermissionsTearOff {
   const _$PermissionsTearOff();
 
 // ignore: unused_element
-  _Permissions call({@required Role role, @required List<String> rights}) {
+  _Permissions call({@required String role, @required List<String> rights}) {
     return _Permissions(
       role: role,
       rights: rights,
@@ -297,7 +297,7 @@ const $Permissions = _$PermissionsTearOff();
 
 /// @nodoc
 mixin _$Permissions {
-  Role get role;
+  String get role;
   List<String> get rights;
 
   Map<String, dynamic> toJson();
@@ -310,7 +310,7 @@ abstract class $PermissionsCopyWith<$Res> {
   factory $PermissionsCopyWith(
           Permissions value, $Res Function(Permissions) then) =
       _$PermissionsCopyWithImpl<$Res>;
-  $Res call({Role role, List<String> rights});
+  $Res call({String role, List<String> rights});
 }
 
 /// @nodoc
@@ -327,7 +327,7 @@ class _$PermissionsCopyWithImpl<$Res> implements $PermissionsCopyWith<$Res> {
     Object rights = freezed,
   }) {
     return _then(_value.copyWith(
-      role: role == freezed ? _value.role : role as Role,
+      role: role == freezed ? _value.role : role as String,
       rights: rights == freezed ? _value.rights : rights as List<String>,
     ));
   }
@@ -340,7 +340,7 @@ abstract class _$PermissionsCopyWith<$Res>
           _Permissions value, $Res Function(_Permissions) then) =
       __$PermissionsCopyWithImpl<$Res>;
   @override
-  $Res call({Role role, List<String> rights});
+  $Res call({String role, List<String> rights});
 }
 
 /// @nodoc
@@ -359,7 +359,7 @@ class __$PermissionsCopyWithImpl<$Res> extends _$PermissionsCopyWithImpl<$Res>
     Object rights = freezed,
   }) {
     return _then(_Permissions(
-      role: role == freezed ? _value.role : role as Role,
+      role: role == freezed ? _value.role : role as String,
       rights: rights == freezed ? _value.rights : rights as List<String>,
     ));
   }
@@ -377,7 +377,7 @@ class _$_Permissions implements _Permissions {
       _$_$_PermissionsFromJson(json);
 
   @override
-  final Role role;
+  final String role;
   @override
   final List<String> rights;
 
@@ -415,13 +415,13 @@ class _$_Permissions implements _Permissions {
 
 abstract class _Permissions implements Permissions {
   const factory _Permissions(
-      {@required Role role, @required List<String> rights}) = _$_Permissions;
+      {@required String role, @required List<String> rights}) = _$_Permissions;
 
   factory _Permissions.fromJson(Map<String, dynamic> json) =
       _$_Permissions.fromJson;
 
   @override
-  Role get role;
+  String get role;
   @override
   List<String> get rights;
   @override

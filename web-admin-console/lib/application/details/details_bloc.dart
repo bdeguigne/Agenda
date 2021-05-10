@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:agenda/domain/auth/user.dart';
-import 'package:agenda/domain/roles/roles.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,7 +19,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
         yield DetailsState.userSelected(e.userIndex);
       },
       roleReceived: (e) async* {
-        yield DetailsState.roleSelected(e.role);
+        yield DetailsState.roleSelected(e.roleIndex);
       },
     );
   }

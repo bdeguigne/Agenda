@@ -1,5 +1,5 @@
 import 'package:agenda/application/details/details_bloc.dart';
-import 'package:agenda/application/roles/roles_watcher_bloc.dart';
+import 'package:agenda/application/roles/roles_watcher/roles_watcher_bloc.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
 import 'package:agenda/presentation/pages/home/left_panel/roles/widgets/roles_list.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +35,9 @@ class RolesProvider extends StatelessWidget {
           ),
           loadSuccess: (success) => RolesList(
             roles: success.roles,
-            onRoleTapped: (role) => context
+            onRoleTapped: (roleIndex) => context
                 .read<DetailsBloc>()
-                .add(DetailsEvent.roleReceived(role)),
+                .add(DetailsEvent.roleReceived(roleIndex)),
           ),
         );
       },

@@ -1,6 +1,7 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/details/details_bloc.dart';
-import 'package:agenda/application/roles/roles_watcher_bloc.dart';
+import 'package:agenda/application/roles/roles_actor/roles_actor_bloc.dart';
+import 'package:agenda/application/roles/roles_watcher/roles_watcher_bloc.dart';
 import 'package:agenda/application/selector/selector_bloc.dart';
 import 'package:agenda/application/users/users_actor/users_actor_bloc.dart';
 import 'package:agenda/application/users/users_watcher/users_watcher_bloc.dart';
@@ -36,6 +37,9 @@ class HomePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<UsersActorBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<RolesActorBloc>(),
         ),
       ],
       child: BlocConsumer<AuthBloc, AuthState>(

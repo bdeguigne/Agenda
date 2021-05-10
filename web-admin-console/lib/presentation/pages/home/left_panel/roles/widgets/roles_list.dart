@@ -1,9 +1,9 @@
-import 'package:agenda/domain/roles/roles.dart';
+import 'package:agenda/domain/roles/role.dart';
 import 'package:flutter/material.dart';
 
 class RolesList extends StatelessWidget {
-  final Function(Roles role) onRoleTapped;
-  final List<Roles> roles;
+  final Function(int roleIndex) onRoleTapped;
+  final List<Role> roles;
 
   const RolesList({
     Key key,
@@ -13,15 +13,21 @@ class RolesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: roles
-          .map(
-            (role) => ListTile(
-              onTap: () => onRoleTapped(role),
-              title: Text(role.name),
-            ),
-          )
-          .toList(),
+    final ScrollController controller = ScrollController();
+
+    return Scrollbar(
+      controller: controller,
+      child: ListView(
+        controller: controller,
+        children: roles
+            .map(
+              (role) => ListTile(
+                onTap: () => onRoleTapped(roles.indexOf(role)),
+                title: Text(role.name),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

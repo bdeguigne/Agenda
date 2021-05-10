@@ -269,7 +269,7 @@ class __$RightCopyWithImpl<$Res> extends _$RightCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Right extends _Right {

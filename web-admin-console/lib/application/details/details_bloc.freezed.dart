@@ -21,9 +21,9 @@ class _$DetailsEventTearOff {
   }
 
 // ignore: unused_element
-  _RolesReceived roleReceived(Roles role) {
+  _RolesReceived roleReceived(int roleIndex) {
     return _RolesReceived(
-      role,
+      roleIndex,
     );
   }
 }
@@ -37,12 +37,12 @@ mixin _$DetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult userReceived(int userIndex),
-    @required TResult roleReceived(Roles role),
+    @required TResult roleReceived(int roleIndex),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult userReceived(int userIndex),
-    TResult roleReceived(Roles role),
+    TResult roleReceived(int roleIndex),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -137,7 +137,7 @@ class _$_UsersReceived implements _UsersReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult userReceived(int userIndex),
-    @required TResult roleReceived(Roles role),
+    @required TResult roleReceived(int roleIndex),
   }) {
     assert(userReceived != null);
     assert(roleReceived != null);
@@ -148,7 +148,7 @@ class _$_UsersReceived implements _UsersReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult userReceived(int userIndex),
-    TResult roleReceived(Roles role),
+    TResult roleReceived(int roleIndex),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -197,9 +197,7 @@ abstract class _$RolesReceivedCopyWith<$Res> {
   factory _$RolesReceivedCopyWith(
           _RolesReceived value, $Res Function(_RolesReceived) then) =
       __$RolesReceivedCopyWithImpl<$Res>;
-  $Res call({Roles role});
-
-  $RolesCopyWith<$Res> get role;
+  $Res call({int roleIndex});
 }
 
 /// @nodoc
@@ -215,47 +213,38 @@ class __$RolesReceivedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object role = freezed,
+    Object roleIndex = freezed,
   }) {
     return _then(_RolesReceived(
-      role == freezed ? _value.role : role as Roles,
+      roleIndex == freezed ? _value.roleIndex : roleIndex as int,
     ));
-  }
-
-  @override
-  $RolesCopyWith<$Res> get role {
-    if (_value.role == null) {
-      return null;
-    }
-    return $RolesCopyWith<$Res>(_value.role, (value) {
-      return _then(_value.copyWith(role: value));
-    });
   }
 }
 
 /// @nodoc
 class _$_RolesReceived implements _RolesReceived {
-  const _$_RolesReceived(this.role) : assert(role != null);
+  const _$_RolesReceived(this.roleIndex) : assert(roleIndex != null);
 
   @override
-  final Roles role;
+  final int roleIndex;
 
   @override
   String toString() {
-    return 'DetailsEvent.roleReceived(role: $role)';
+    return 'DetailsEvent.roleReceived(roleIndex: $roleIndex)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RolesReceived &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)));
+            (identical(other.roleIndex, roleIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.roleIndex, roleIndex)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(role);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(roleIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -266,23 +255,23 @@ class _$_RolesReceived implements _RolesReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult userReceived(int userIndex),
-    @required TResult roleReceived(Roles role),
+    @required TResult roleReceived(int roleIndex),
   }) {
     assert(userReceived != null);
     assert(roleReceived != null);
-    return roleReceived(role);
+    return roleReceived(roleIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult userReceived(int userIndex),
-    TResult roleReceived(Roles role),
+    TResult roleReceived(int roleIndex),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (roleReceived != null) {
-      return roleReceived(role);
+      return roleReceived(roleIndex);
     }
     return orElse();
   }
@@ -314,9 +303,9 @@ class _$_RolesReceived implements _RolesReceived {
 }
 
 abstract class _RolesReceived implements DetailsEvent {
-  const factory _RolesReceived(Roles role) = _$_RolesReceived;
+  const factory _RolesReceived(int roleIndex) = _$_RolesReceived;
 
-  Roles get role;
+  int get roleIndex;
   @JsonKey(ignore: true)
   _$RolesReceivedCopyWith<_RolesReceived> get copyWith;
 }
@@ -338,9 +327,9 @@ class _$DetailsStateTearOff {
   }
 
 // ignore: unused_element
-  _RolesSelected roleSelected(Roles role) {
+  _RolesSelected roleSelected(int roleIndex) {
     return _RolesSelected(
-      role,
+      roleIndex,
     );
   }
 }
@@ -355,13 +344,13 @@ mixin _$DetailsState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult userSelected(int userIndex),
-    @required TResult roleSelected(Roles role),
+    @required TResult roleSelected(int roleIndex),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult userSelected(int userIndex),
-    TResult roleSelected(Roles role),
+    TResult roleSelected(int roleIndex),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -433,7 +422,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult userSelected(int userIndex),
-    @required TResult roleSelected(Roles role),
+    @required TResult roleSelected(int roleIndex),
   }) {
     assert(initial != null);
     assert(userSelected != null);
@@ -446,7 +435,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult userSelected(int userIndex),
-    TResult roleSelected(Roles role),
+    TResult roleSelected(int roleIndex),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -552,7 +541,7 @@ class _$_UserSelected implements _UserSelected {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult userSelected(int userIndex),
-    @required TResult roleSelected(Roles role),
+    @required TResult roleSelected(int roleIndex),
   }) {
     assert(initial != null);
     assert(userSelected != null);
@@ -565,7 +554,7 @@ class _$_UserSelected implements _UserSelected {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult userSelected(int userIndex),
-    TResult roleSelected(Roles role),
+    TResult roleSelected(int roleIndex),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -617,9 +606,7 @@ abstract class _$RolesSelectedCopyWith<$Res> {
   factory _$RolesSelectedCopyWith(
           _RolesSelected value, $Res Function(_RolesSelected) then) =
       __$RolesSelectedCopyWithImpl<$Res>;
-  $Res call({Roles role});
-
-  $RolesCopyWith<$Res> get role;
+  $Res call({int roleIndex});
 }
 
 /// @nodoc
@@ -635,47 +622,38 @@ class __$RolesSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object role = freezed,
+    Object roleIndex = freezed,
   }) {
     return _then(_RolesSelected(
-      role == freezed ? _value.role : role as Roles,
+      roleIndex == freezed ? _value.roleIndex : roleIndex as int,
     ));
-  }
-
-  @override
-  $RolesCopyWith<$Res> get role {
-    if (_value.role == null) {
-      return null;
-    }
-    return $RolesCopyWith<$Res>(_value.role, (value) {
-      return _then(_value.copyWith(role: value));
-    });
   }
 }
 
 /// @nodoc
 class _$_RolesSelected implements _RolesSelected {
-  const _$_RolesSelected(this.role) : assert(role != null);
+  const _$_RolesSelected(this.roleIndex) : assert(roleIndex != null);
 
   @override
-  final Roles role;
+  final int roleIndex;
 
   @override
   String toString() {
-    return 'DetailsState.roleSelected(role: $role)';
+    return 'DetailsState.roleSelected(roleIndex: $roleIndex)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RolesSelected &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)));
+            (identical(other.roleIndex, roleIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.roleIndex, roleIndex)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(role);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(roleIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -687,12 +665,12 @@ class _$_RolesSelected implements _RolesSelected {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult userSelected(int userIndex),
-    @required TResult roleSelected(Roles role),
+    @required TResult roleSelected(int roleIndex),
   }) {
     assert(initial != null);
     assert(userSelected != null);
     assert(roleSelected != null);
-    return roleSelected(role);
+    return roleSelected(roleIndex);
   }
 
   @override
@@ -700,12 +678,12 @@ class _$_RolesSelected implements _RolesSelected {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult userSelected(int userIndex),
-    TResult roleSelected(Roles role),
+    TResult roleSelected(int roleIndex),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (roleSelected != null) {
-      return roleSelected(role);
+      return roleSelected(roleIndex);
     }
     return orElse();
   }
@@ -740,9 +718,9 @@ class _$_RolesSelected implements _RolesSelected {
 }
 
 abstract class _RolesSelected implements DetailsState {
-  const factory _RolesSelected(Roles role) = _$_RolesSelected;
+  const factory _RolesSelected(int roleIndex) = _$_RolesSelected;
 
-  Roles get role;
+  int get roleIndex;
   @JsonKey(ignore: true)
   _$RolesSelectedCopyWith<_RolesSelected> get copyWith;
 }

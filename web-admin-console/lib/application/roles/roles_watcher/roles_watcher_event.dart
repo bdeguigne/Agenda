@@ -4,5 +4,5 @@ part of 'roles_watcher_bloc.dart';
 abstract class RolesWatcherEvent with _$RolesWatcherEvent {
   const factory RolesWatcherEvent.watchAll() = WatchAll;
   const factory RolesWatcherEvent.rolesReceived(
-      Either<RepositoryFailure, List<Roles>> failureOrRoles) = RolesReceived;
+      Either<RepositoryFailure, List<Role>> failureOrRoles) = RolesReceived;
 }

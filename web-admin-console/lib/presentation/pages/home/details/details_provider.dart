@@ -1,6 +1,9 @@
 import 'package:agenda/application/details/details_bloc.dart';
+import 'package:agenda/application/roles/roles_actor/roles_actor_bloc.dart';
+import 'package:agenda/application/roles/roles_watcher/roles_watcher_bloc.dart';
 import 'package:agenda/application/selector/selector_bloc.dart';
 import 'package:agenda/application/users/users_watcher/users_watcher_bloc.dart';
+import 'package:agenda/domain/roles/role.dart';
 import 'package:agenda/presentation/pages/home/details/widgets/role_info.dart';
 import 'package:agenda/presentation/pages/home/details/widgets/user_info.dart';
 import 'package:flutter/material.dart';
@@ -56,8 +59,37 @@ class _DetailsProviderState extends State<DetailsProvider> {
       );
     }
     if (type == "role") {
-      return const Center(
-        child: Text("ROLE"),
+      return BlocBuilder<RolesWatcherBloc, RolesWatcherState>(
+        builder: (context, state) {
+          return state.map(
+            initial: (_) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            loadFailure: (_) => const Center(
+              child: Text("Could not load roles"),
+            ),
+            loadSuccess: (success) {
+              final Role role = success.roles.elementAt(_handler.index);
+              context
+                  .read<SelectorBloc>()
+                  .add(SelectorEvent.initRights(role.rights));
+              return RoleInfo(
+                onApplyTapped: () => context.read<RolesActorBloc>().add(
+                      RolesActorEvent.roleUpdated(
+                        role.copyWith(
+                          rights:
+                              context.read<SelectorBloc>().state.selectedRights,
+                        ),
+                      ),
+                    ),
+                onEditTapped: () => context
+                    .read<SelectorBloc>()
+                    .add(const SelectorEvent.rightsShowed()),
+                role: role,
+              );
+            },
+          );
+        },
       );
       // roleSelected: (role) => RoleInfo(role: role.role),
     }
@@ -92,10 +124,9 @@ class _DetailsProviderState extends State<DetailsProvider> {
                         _handler = DetailsHandler.userSelected(user.userIndex);
                       });
                     },
-                    roleSelected: (_) {
-                      // TODO Handle role
+                    roleSelected: (role) {
                       setState(() {
-                        _handler = DetailsHandler.roleSelected(0);
+                        _handler = DetailsHandler.roleSelected(role.roleIndex);
                       });
                     },
                   );

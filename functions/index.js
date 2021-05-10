@@ -18,7 +18,7 @@ async function updateUserRights(userId, role, snapshot) {
     });
 
     if (rights.length > 0) {
-        console.log("OOKKAY", userId);
+        console.log("Rights not empty", rights, role);
         return admin.firestore().collection("users").doc(userId).update({
             "permissions.rights": rights
         }).catch((error) => {
@@ -28,6 +28,38 @@ async function updateUserRights(userId, role, snapshot) {
     }
     return null;
 }
+
+exports.updateUsersRole = functions.firestore.document("/roles/{documentId}").onUpdate((change, context) => {
+    const updatedDocument = change.after.data();
+    const role = updatedDocument.name;
+    const updatedRole = [];
+
+    function iterateUsers(usersDocument, role) {
+        return usersDocument.forEach((doc) => {
+            const data = doc.data();
+            if (data.permissions.role === role) {
+                console.log(`This user is a ${role}, updated...`);
+                admin.firestore().collection("users").doc(doc.id).update({
+                    "permissions.rights": updatedRole
+                })
+            } else {
+                console.log(`This user (${data.permissions.role}) is not a ${role}`);
+            }
+        })
+    }
+
+    if (updatedDocument.rights.length > 0) {
+        updatedDocument.rights.forEach((right) => {
+            updatedRole.push(right.slug);
+        })
+
+        return admin.firestore().collection("users").get()
+            .then(snapshotDoc => iterateUsers(snapshotDoc, role));
+    }
+
+    return null;
+
+})
 
 
 exports.grabAndAssignRightsToUserOnUpdate = functions.firestore.document('/users/{userId}').onUpdate((change, context) => {
@@ -39,6 +71,7 @@ exports.grabAndAssignRightsToUserOnUpdate = functions.firestore.document('/users
     const role = updatedDocument.permissions.role;
 
     if (lastRole == role) {
+        console.log("Role did not changed.");
         return null;
     }
 

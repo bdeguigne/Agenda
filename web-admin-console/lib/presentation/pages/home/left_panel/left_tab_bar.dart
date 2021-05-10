@@ -11,7 +11,7 @@ class LeftTabBar extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 60,
+          toolbarHeight: 50,
           backgroundColor: Colors.white,
           elevation: 1,
           bottom: const TabBar(

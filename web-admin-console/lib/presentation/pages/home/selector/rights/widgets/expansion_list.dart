@@ -1,18 +1,17 @@
 import 'package:agenda/domain/collection_right/right.dart';
-import 'package:flutter/material.dart';
-
+import 'package:agenda/presentation/pages/home/selector/rights/widgets/right_checkbox.dart';
 import 'package:flutter/material.dart';
 
 class ExpansionItem {
+  List<Right> expandedValue;
+  String headerValue;
+  bool isExpanded;
+
   ExpansionItem({
     @required this.expandedValue,
     @required this.headerValue,
     this.isExpanded = false,
   });
-
-  List<Right> expandedValue;
-  String headerValue;
-  bool isExpanded;
 }
 
 List<ExpansionItem> generateItems(List<CollectionRight> items) {
@@ -25,11 +24,17 @@ List<ExpansionItem> generateItems(List<CollectionRight> items) {
 }
 
 class ExpansionList extends StatefulWidget {
+  final List<Right> selectedRight;
+  final Function(Right) onSelected;
+  final Function(Right) onDeselected;
   final List<CollectionRight> collectionRights;
 
   const ExpansionList({
     Key key,
     @required this.collectionRights,
+    @required this.onSelected,
+    @required this.onDeselected,
+    @required this.selectedRight,
   }) : super(key: key);
 
   @override
@@ -65,9 +70,11 @@ class _ExpansionListState extends State<ExpansionList> {
           },
           body: Column(
             children: item.expandedValue
-                .map((Right right) => ListTile(
-                      title: Text(right.name),
-                      subtitle: Text(right.slug),
+                .map((Right right) => RightCheckbox(
+                      isSelected: widget.selectedRight.contains(right),
+                      right: right,
+                      onSelected: widget.onSelected,
+                      onDeselected: widget.onDeselected,
                     ))
                 .toList(),
           ),

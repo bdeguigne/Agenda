@@ -9,10 +9,11 @@ import 'auth_value_objects.dart';
 part 'user.freezed.dart';
 part 'user.g.dart';
 
-class RoleTypes {
-  static const student = "student";
-  static const teacher = "teacher";
-  static const admin = "admin";
+bool isUserAdmin(Permissions permissions) {
+  return permissions.rights.contains("USERS_R") &&
+      permissions.rights.contains("USERS_U") &&
+      permissions.rights.contains("RIGHTS_R") &&
+      permissions.rights.contains("RIGHTS_R");
 }
 
 @freezed
@@ -35,18 +36,17 @@ abstract class User with _$User {
     );
   }
 
-  bool get isAdmin => permissions.role.getOrCrash() == RoleTypes.admin;
+  bool get isAdmin => isUserAdmin(permissions);
 }
 
 @freezed
 @immutable
 abstract class Permissions with _$Permissions {
   const factory Permissions({
-    @required Role role,
+    @required String role,
     @required List<String> rights,
   }) = _Permissions;
 
   factory Permissions.fromJson(Map<String, dynamic> json) =>
       _$PermissionsFromJson(json);
-  // Permissions(role: Role(json["role"] as String));
 }

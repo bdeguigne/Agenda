@@ -1,6 +1,8 @@
 import 'package:agenda/application/collection_right/collection_right_watcher_bloc.dart';
+import 'package:agenda/application/roles/roles_actor/roles_actor_bloc.dart';
 import 'package:agenda/application/selector/selector_bloc.dart';
 import 'package:agenda/injection.dart';
+import 'package:agenda/presentation/core/snackbars.dart';
 import 'package:agenda/presentation/pages/home/selector/rights/rights_provider.dart';
 import 'package:agenda/presentation/pages/home/selector/roles/roles_selector.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +25,41 @@ class SelectorProvider extends StatelessWidget {
                 ..add(const CollectionRightWatcherEvent.watchAll()),
             ),
           ],
-          child: BlocBuilder<SelectorBloc, SelectorState>(
-            builder: (context, state) {
-              return state.map(
-                initial: (_) => const Center(
-                  child: Text("Select something first."),
+          child: BlocListener<RolesActorBloc, RolesActorState>(
+            listener: (context, state) {
+              state.maybeMap(
+                updateFailure: (failure) =>
+                    ScaffoldMessenger.of(context).showSnackBar(
+                  AppSnackBar.errorSnackBar(
+                    failure.failure.map(
+                      unexpected: (_) => "Something went wrong",
+                      insufficientPermission: (_) => "Insufficient permission",
+                      unableToUpdate: (_) => "Unable to update",
+                    ),
+                  ).toSnackBar,
                 ),
-                showRoles: (_) => const RolesSelector(),
-                showRights: (_) => const RightsProvider(),
+                updateSuccess: (_) => ScaffoldMessenger.of(context)
+                    .showSnackBar(AppSnackBar.successSnackBar(
+                            "Successfully updated this role")
+                        .toSnackBar),
+                orElse: () => null,
               );
             },
+            child: BlocBuilder<SelectorBloc, SelectorState>(
+              builder: (context, state) {
+                if (state.menu == SelectorMenu.rights) {
+                  return const RightsProvider();
+                } else if (state.menu == SelectorMenu.roles) {
+                  return RolesSelector(
+                    isLoading: state.isLoading,
+                  );
+                } else {
+                  return const Center(
+                    child: Text("Select something first."),
+                  );
+                }
+              },
+            ),
           ),
         ),
       ),

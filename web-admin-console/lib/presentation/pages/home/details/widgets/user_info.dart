@@ -26,33 +26,17 @@ class UserInfo extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 140,
-                  height: 40,
-                  child: OutlinedButton.icon(
-                    icon: const Icon(Icons.add),
-                    onPressed: () => onAddRoleTapped(),
-                    label: const Text("Add a role"),
-                  ),
-                ),
-                const SizedBox(
-                  width: 24,
-                ),
-                SizedBox(
-                  width: 120,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.red),
-                    ),
-                    child: const Text("Delete"),
-                  ),
-                ),
-              ],
-            )
+            // SizedBox(
+            //   width: 120,
+            //   height: 40,
+            //   child: ElevatedButton(
+            //     onPressed: () {},
+            //     style: ButtonStyle(
+            //       backgroundColor: MaterialStateProperty.all(Colors.red),
+            //     ),
+            //     child: const Text("Delete"),
+            //   ),
+            // ),
           ],
         ),
         const SizedBox(height: 24),
@@ -88,12 +72,26 @@ class UserInfo extends StatelessWidget {
         const SizedBox(height: 8),
         const Divider(),
         const SizedBox(height: 8),
-        const Text(
-          "Permissions",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "Permissions",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              width: 140,
+              height: 40,
+              child: OutlinedButton.icon(
+                icon: const Icon(Icons.edit_outlined),
+                onPressed: () => onAddRoleTapped(),
+                label: const Text("Edit role"),
+              ),
+            ),
+          ],
         ),
         const SizedBox(
           height: 24,
@@ -106,7 +104,7 @@ class UserInfo extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Text(user.permissions.role.getOrCrash()),
+        Text(user.permissions.role),
         if (user.permissions.rights.isNotEmpty)
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

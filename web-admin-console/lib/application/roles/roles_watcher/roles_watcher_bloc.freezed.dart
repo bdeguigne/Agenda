@@ -20,7 +20,7 @@ class _$RolesWatcherEventTearOff {
 
 // ignore: unused_element
   RolesReceived rolesReceived(
-      Either<RepositoryFailure, List<Roles>> failureOrRoles) {
+      Either<RepositoryFailure, List<Role>> failureOrRoles) {
     return RolesReceived(
       failureOrRoles,
     );
@@ -38,13 +38,12 @@ mixin _$RolesWatcherEvent {
     @required TResult watchAll(),
     @required
         TResult rolesReceived(
-            Either<RepositoryFailure, List<Roles>> failureOrRoles),
+            Either<RepositoryFailure, List<Role>> failureOrRoles),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult rolesReceived(
-        Either<RepositoryFailure, List<Roles>> failureOrRoles),
+    TResult rolesReceived(Either<RepositoryFailure, List<Role>> failureOrRoles),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -116,7 +115,7 @@ class _$WatchAll implements WatchAll {
     @required TResult watchAll(),
     @required
         TResult rolesReceived(
-            Either<RepositoryFailure, List<Roles>> failureOrRoles),
+            Either<RepositoryFailure, List<Role>> failureOrRoles),
   }) {
     assert(watchAll != null);
     assert(rolesReceived != null);
@@ -127,8 +126,7 @@ class _$WatchAll implements WatchAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult rolesReceived(
-        Either<RepositoryFailure, List<Roles>> failureOrRoles),
+    TResult rolesReceived(Either<RepositoryFailure, List<Role>> failureOrRoles),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -173,7 +171,7 @@ abstract class $RolesReceivedCopyWith<$Res> {
   factory $RolesReceivedCopyWith(
           RolesReceived value, $Res Function(RolesReceived) then) =
       _$RolesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<RepositoryFailure, List<Roles>> failureOrRoles});
+  $Res call({Either<RepositoryFailure, List<Role>> failureOrRoles});
 }
 
 /// @nodoc
@@ -194,7 +192,7 @@ class _$RolesReceivedCopyWithImpl<$Res>
     return _then(RolesReceived(
       failureOrRoles == freezed
           ? _value.failureOrRoles
-          : failureOrRoles as Either<RepositoryFailure, List<Roles>>,
+          : failureOrRoles as Either<RepositoryFailure, List<Role>>,
     ));
   }
 }
@@ -204,7 +202,7 @@ class _$RolesReceived implements RolesReceived {
   const _$RolesReceived(this.failureOrRoles) : assert(failureOrRoles != null);
 
   @override
-  final Either<RepositoryFailure, List<Roles>> failureOrRoles;
+  final Either<RepositoryFailure, List<Role>> failureOrRoles;
 
   @override
   String toString() {
@@ -236,7 +234,7 @@ class _$RolesReceived implements RolesReceived {
     @required TResult watchAll(),
     @required
         TResult rolesReceived(
-            Either<RepositoryFailure, List<Roles>> failureOrRoles),
+            Either<RepositoryFailure, List<Role>> failureOrRoles),
   }) {
     assert(watchAll != null);
     assert(rolesReceived != null);
@@ -247,8 +245,7 @@ class _$RolesReceived implements RolesReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult rolesReceived(
-        Either<RepositoryFailure, List<Roles>> failureOrRoles),
+    TResult rolesReceived(Either<RepositoryFailure, List<Role>> failureOrRoles),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -286,9 +283,9 @@ class _$RolesReceived implements RolesReceived {
 
 abstract class RolesReceived implements RolesWatcherEvent {
   const factory RolesReceived(
-      Either<RepositoryFailure, List<Roles>> failureOrRoles) = _$RolesReceived;
+      Either<RepositoryFailure, List<Role>> failureOrRoles) = _$RolesReceived;
 
-  Either<RepositoryFailure, List<Roles>> get failureOrRoles;
+  Either<RepositoryFailure, List<Role>> get failureOrRoles;
   @JsonKey(ignore: true)
   $RolesReceivedCopyWith<RolesReceived> get copyWith;
 }
@@ -303,7 +300,7 @@ class _$RolesWatcherStateTearOff {
   }
 
 // ignore: unused_element
-  LoadSuccess loadSuccess(List<Roles> roles) {
+  LoadSuccess loadSuccess(List<Role> roles) {
     return LoadSuccess(
       roles,
     );
@@ -326,13 +323,13 @@ mixin _$RolesWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Roles> roles),
+    @required TResult loadSuccess(List<Role> roles),
     @required TResult loadFailure(RepositoryFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Roles> roles),
+    TResult loadSuccess(List<Role> roles),
     TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   });
@@ -405,7 +402,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Roles> roles),
+    @required TResult loadSuccess(List<Role> roles),
     @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
@@ -418,7 +415,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Roles> roles),
+    TResult loadSuccess(List<Role> roles),
     TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {
@@ -467,7 +464,7 @@ abstract class $LoadSuccessCopyWith<$Res> {
   factory $LoadSuccessCopyWith(
           LoadSuccess value, $Res Function(LoadSuccess) then) =
       _$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<Roles> roles});
+  $Res call({List<Role> roles});
 }
 
 /// @nodoc
@@ -486,7 +483,7 @@ class _$LoadSuccessCopyWithImpl<$Res>
     Object roles = freezed,
   }) {
     return _then(LoadSuccess(
-      roles == freezed ? _value.roles : roles as List<Roles>,
+      roles == freezed ? _value.roles : roles as List<Role>,
     ));
   }
 }
@@ -496,7 +493,7 @@ class _$LoadSuccess implements LoadSuccess {
   const _$LoadSuccess(this.roles) : assert(roles != null);
 
   @override
-  final List<Roles> roles;
+  final List<Role> roles;
 
   @override
   String toString() {
@@ -524,7 +521,7 @@ class _$LoadSuccess implements LoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Roles> roles),
+    @required TResult loadSuccess(List<Role> roles),
     @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
@@ -537,7 +534,7 @@ class _$LoadSuccess implements LoadSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Roles> roles),
+    TResult loadSuccess(List<Role> roles),
     TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {
@@ -578,9 +575,9 @@ class _$LoadSuccess implements LoadSuccess {
 }
 
 abstract class LoadSuccess implements RolesWatcherState {
-  const factory LoadSuccess(List<Roles> roles) = _$LoadSuccess;
+  const factory LoadSuccess(List<Role> roles) = _$LoadSuccess;
 
-  List<Roles> get roles;
+  List<Role> get roles;
   @JsonKey(ignore: true)
   $LoadSuccessCopyWith<LoadSuccess> get copyWith;
 }
@@ -659,7 +656,7 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Roles> roles),
+    @required TResult loadSuccess(List<Role> roles),
     @required TResult loadFailure(RepositoryFailure failure),
   }) {
     assert(initial != null);
@@ -672,7 +669,7 @@ class _$LoadFailure implements LoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Roles> roles),
+    TResult loadSuccess(List<Role> roles),
     TResult loadFailure(RepositoryFailure failure),
     @required TResult orElse(),
   }) {

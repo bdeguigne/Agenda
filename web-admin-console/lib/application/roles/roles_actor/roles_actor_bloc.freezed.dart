@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'users_actor_bloc.dart';
+part of 'roles_actor_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,212 +10,67 @@ part of 'users_actor_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$UsersActorEventTearOff {
-  const _$UsersActorEventTearOff();
+class _$RolesActorEventTearOff {
+  const _$RolesActorEventTearOff();
 
 // ignore: unused_element
-  _Updated updated(Map<String, dynamic> data, UniqueId userId) {
-    return _Updated(
-      data,
-      userId,
-    );
-  }
-
-// ignore: unused_element
-  _RoleUpdated roleUpdated(User user, Role role) {
+  _RoleUpdated roleUpdated(Role role) {
     return _RoleUpdated(
-      user,
       role,
     );
   }
 
 // ignore: unused_element
-  _NoUserSelected noUserSelected() {
-    return const _NoUserSelected();
+  _NoRoleSelected noRoleSelected() {
+    return const _NoRoleSelected();
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $UsersActorEvent = _$UsersActorEventTearOff();
+const $RolesActorEvent = _$RolesActorEventTearOff();
 
 /// @nodoc
-mixin _$UsersActorEvent {
+mixin _$RolesActorEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult updated(Map<String, dynamic> data, UniqueId userId),
-    @required TResult roleUpdated(User user, Role role),
-    @required TResult noUserSelected(),
+    @required TResult roleUpdated(Role role),
+    @required TResult noRoleSelected(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult updated(Map<String, dynamic> data, UniqueId userId),
-    TResult roleUpdated(User user, Role role),
-    TResult noUserSelected(),
+    TResult roleUpdated(Role role),
+    TResult noRoleSelected(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult updated(_Updated value),
     @required TResult roleUpdated(_RoleUpdated value),
-    @required TResult noUserSelected(_NoUserSelected value),
+    @required TResult noRoleSelected(_NoRoleSelected value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult updated(_Updated value),
     TResult roleUpdated(_RoleUpdated value),
-    TResult noUserSelected(_NoUserSelected value),
+    TResult noRoleSelected(_NoRoleSelected value),
     @required TResult orElse(),
   });
 }
 
 /// @nodoc
-abstract class $UsersActorEventCopyWith<$Res> {
-  factory $UsersActorEventCopyWith(
-          UsersActorEvent value, $Res Function(UsersActorEvent) then) =
-      _$UsersActorEventCopyWithImpl<$Res>;
+abstract class $RolesActorEventCopyWith<$Res> {
+  factory $RolesActorEventCopyWith(
+          RolesActorEvent value, $Res Function(RolesActorEvent) then) =
+      _$RolesActorEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UsersActorEventCopyWithImpl<$Res>
-    implements $UsersActorEventCopyWith<$Res> {
-  _$UsersActorEventCopyWithImpl(this._value, this._then);
+class _$RolesActorEventCopyWithImpl<$Res>
+    implements $RolesActorEventCopyWith<$Res> {
+  _$RolesActorEventCopyWithImpl(this._value, this._then);
 
-  final UsersActorEvent _value;
+  final RolesActorEvent _value;
   // ignore: unused_field
-  final $Res Function(UsersActorEvent) _then;
-}
-
-/// @nodoc
-abstract class _$UpdatedCopyWith<$Res> {
-  factory _$UpdatedCopyWith(_Updated value, $Res Function(_Updated) then) =
-      __$UpdatedCopyWithImpl<$Res>;
-  $Res call({Map<String, dynamic> data, UniqueId userId});
-}
-
-/// @nodoc
-class __$UpdatedCopyWithImpl<$Res> extends _$UsersActorEventCopyWithImpl<$Res>
-    implements _$UpdatedCopyWith<$Res> {
-  __$UpdatedCopyWithImpl(_Updated _value, $Res Function(_Updated) _then)
-      : super(_value, (v) => _then(v as _Updated));
-
-  @override
-  _Updated get _value => super._value as _Updated;
-
-  @override
-  $Res call({
-    Object data = freezed,
-    Object userId = freezed,
-  }) {
-    return _then(_Updated(
-      data == freezed ? _value.data : data as Map<String, dynamic>,
-      userId == freezed ? _value.userId : userId as UniqueId,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_Updated implements _Updated {
-  const _$_Updated(this.data, this.userId)
-      : assert(data != null),
-        assert(userId != null);
-
-  @override
-  final Map<String, dynamic> data;
-  @override
-  final UniqueId userId;
-
-  @override
-  String toString() {
-    return 'UsersActorEvent.updated(data: $data, userId: $userId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _Updated &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)) &&
-            (identical(other.userId, userId) ||
-                const DeepCollectionEquality().equals(other.userId, userId)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(data) ^
-      const DeepCollectionEquality().hash(userId);
-
-  @JsonKey(ignore: true)
-  @override
-  _$UpdatedCopyWith<_Updated> get copyWith =>
-      __$UpdatedCopyWithImpl<_Updated>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult updated(Map<String, dynamic> data, UniqueId userId),
-    @required TResult roleUpdated(User user, Role role),
-    @required TResult noUserSelected(),
-  }) {
-    assert(updated != null);
-    assert(roleUpdated != null);
-    assert(noUserSelected != null);
-    return updated(data, userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult updated(Map<String, dynamic> data, UniqueId userId),
-    TResult roleUpdated(User user, Role role),
-    TResult noUserSelected(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (updated != null) {
-      return updated(data, userId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult updated(_Updated value),
-    @required TResult roleUpdated(_RoleUpdated value),
-    @required TResult noUserSelected(_NoUserSelected value),
-  }) {
-    assert(updated != null);
-    assert(roleUpdated != null);
-    assert(noUserSelected != null);
-    return updated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult updated(_Updated value),
-    TResult roleUpdated(_RoleUpdated value),
-    TResult noUserSelected(_NoUserSelected value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (updated != null) {
-      return updated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Updated implements UsersActorEvent {
-  const factory _Updated(Map<String, dynamic> data, UniqueId userId) =
-      _$_Updated;
-
-  Map<String, dynamic> get data;
-  UniqueId get userId;
-  @JsonKey(ignore: true)
-  _$UpdatedCopyWith<_Updated> get copyWith;
+  final $Res Function(RolesActorEvent) _then;
 }
 
 /// @nodoc
@@ -223,15 +78,14 @@ abstract class _$RoleUpdatedCopyWith<$Res> {
   factory _$RoleUpdatedCopyWith(
           _RoleUpdated value, $Res Function(_RoleUpdated) then) =
       __$RoleUpdatedCopyWithImpl<$Res>;
-  $Res call({User user, Role role});
+  $Res call({Role role});
 
-  $UserCopyWith<$Res> get user;
   $RoleCopyWith<$Res> get role;
 }
 
 /// @nodoc
 class __$RoleUpdatedCopyWithImpl<$Res>
-    extends _$UsersActorEventCopyWithImpl<$Res>
+    extends _$RolesActorEventCopyWithImpl<$Res>
     implements _$RoleUpdatedCopyWith<$Res> {
   __$RoleUpdatedCopyWithImpl(
       _RoleUpdated _value, $Res Function(_RoleUpdated) _then)
@@ -242,23 +96,11 @@ class __$RoleUpdatedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
     Object role = freezed,
   }) {
     return _then(_RoleUpdated(
-      user == freezed ? _value.user : user as User,
       role == freezed ? _value.role : role as Role,
     ));
-  }
-
-  @override
-  $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 
   @override
@@ -274,35 +116,27 @@ class __$RoleUpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_RoleUpdated implements _RoleUpdated {
-  const _$_RoleUpdated(this.user, this.role)
-      : assert(user != null),
-        assert(role != null);
+  const _$_RoleUpdated(this.role) : assert(role != null);
 
-  @override
-  final User user;
   @override
   final Role role;
 
   @override
   String toString() {
-    return 'UsersActorEvent.roleUpdated(user: $user, role: $role)';
+    return 'RolesActorEvent.roleUpdated(role: $role)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RoleUpdated &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.role, role) ||
                 const DeepCollectionEquality().equals(other.role, role)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(role);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(role);
 
   @JsonKey(ignore: true)
   @override
@@ -312,27 +146,24 @@ class _$_RoleUpdated implements _RoleUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult updated(Map<String, dynamic> data, UniqueId userId),
-    @required TResult roleUpdated(User user, Role role),
-    @required TResult noUserSelected(),
+    @required TResult roleUpdated(Role role),
+    @required TResult noRoleSelected(),
   }) {
-    assert(updated != null);
     assert(roleUpdated != null);
-    assert(noUserSelected != null);
-    return roleUpdated(user, role);
+    assert(noRoleSelected != null);
+    return roleUpdated(role);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult updated(Map<String, dynamic> data, UniqueId userId),
-    TResult roleUpdated(User user, Role role),
-    TResult noUserSelected(),
+    TResult roleUpdated(Role role),
+    TResult noRoleSelected(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (roleUpdated != null) {
-      return roleUpdated(user, role);
+      return roleUpdated(role);
     }
     return orElse();
   }
@@ -340,22 +171,19 @@ class _$_RoleUpdated implements _RoleUpdated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult updated(_Updated value),
     @required TResult roleUpdated(_RoleUpdated value),
-    @required TResult noUserSelected(_NoUserSelected value),
+    @required TResult noRoleSelected(_NoRoleSelected value),
   }) {
-    assert(updated != null);
     assert(roleUpdated != null);
-    assert(noUserSelected != null);
+    assert(noRoleSelected != null);
     return roleUpdated(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult updated(_Updated value),
     TResult roleUpdated(_RoleUpdated value),
-    TResult noUserSelected(_NoUserSelected value),
+    TResult noRoleSelected(_NoRoleSelected value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -366,46 +194,45 @@ class _$_RoleUpdated implements _RoleUpdated {
   }
 }
 
-abstract class _RoleUpdated implements UsersActorEvent {
-  const factory _RoleUpdated(User user, Role role) = _$_RoleUpdated;
+abstract class _RoleUpdated implements RolesActorEvent {
+  const factory _RoleUpdated(Role role) = _$_RoleUpdated;
 
-  User get user;
   Role get role;
   @JsonKey(ignore: true)
   _$RoleUpdatedCopyWith<_RoleUpdated> get copyWith;
 }
 
 /// @nodoc
-abstract class _$NoUserSelectedCopyWith<$Res> {
-  factory _$NoUserSelectedCopyWith(
-          _NoUserSelected value, $Res Function(_NoUserSelected) then) =
-      __$NoUserSelectedCopyWithImpl<$Res>;
+abstract class _$NoRoleSelectedCopyWith<$Res> {
+  factory _$NoRoleSelectedCopyWith(
+          _NoRoleSelected value, $Res Function(_NoRoleSelected) then) =
+      __$NoRoleSelectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NoUserSelectedCopyWithImpl<$Res>
-    extends _$UsersActorEventCopyWithImpl<$Res>
-    implements _$NoUserSelectedCopyWith<$Res> {
-  __$NoUserSelectedCopyWithImpl(
-      _NoUserSelected _value, $Res Function(_NoUserSelected) _then)
-      : super(_value, (v) => _then(v as _NoUserSelected));
+class __$NoRoleSelectedCopyWithImpl<$Res>
+    extends _$RolesActorEventCopyWithImpl<$Res>
+    implements _$NoRoleSelectedCopyWith<$Res> {
+  __$NoRoleSelectedCopyWithImpl(
+      _NoRoleSelected _value, $Res Function(_NoRoleSelected) _then)
+      : super(_value, (v) => _then(v as _NoRoleSelected));
 
   @override
-  _NoUserSelected get _value => super._value as _NoUserSelected;
+  _NoRoleSelected get _value => super._value as _NoRoleSelected;
 }
 
 /// @nodoc
-class _$_NoUserSelected implements _NoUserSelected {
-  const _$_NoUserSelected();
+class _$_NoRoleSelected implements _NoRoleSelected {
+  const _$_NoRoleSelected();
 
   @override
   String toString() {
-    return 'UsersActorEvent.noUserSelected()';
+    return 'RolesActorEvent.noRoleSelected()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NoUserSelected);
+    return identical(this, other) || (other is _NoRoleSelected);
   }
 
   @override
@@ -414,27 +241,24 @@ class _$_NoUserSelected implements _NoUserSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult updated(Map<String, dynamic> data, UniqueId userId),
-    @required TResult roleUpdated(User user, Role role),
-    @required TResult noUserSelected(),
+    @required TResult roleUpdated(Role role),
+    @required TResult noRoleSelected(),
   }) {
-    assert(updated != null);
     assert(roleUpdated != null);
-    assert(noUserSelected != null);
-    return noUserSelected();
+    assert(noRoleSelected != null);
+    return noRoleSelected();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult updated(Map<String, dynamic> data, UniqueId userId),
-    TResult roleUpdated(User user, Role role),
-    TResult noUserSelected(),
+    TResult roleUpdated(Role role),
+    TResult noRoleSelected(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (noUserSelected != null) {
-      return noUserSelected();
+    if (noRoleSelected != null) {
+      return noRoleSelected();
     }
     return orElse();
   }
@@ -442,39 +266,36 @@ class _$_NoUserSelected implements _NoUserSelected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult updated(_Updated value),
     @required TResult roleUpdated(_RoleUpdated value),
-    @required TResult noUserSelected(_NoUserSelected value),
+    @required TResult noRoleSelected(_NoRoleSelected value),
   }) {
-    assert(updated != null);
     assert(roleUpdated != null);
-    assert(noUserSelected != null);
-    return noUserSelected(this);
+    assert(noRoleSelected != null);
+    return noRoleSelected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult updated(_Updated value),
     TResult roleUpdated(_RoleUpdated value),
-    TResult noUserSelected(_NoUserSelected value),
+    TResult noRoleSelected(_NoRoleSelected value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (noUserSelected != null) {
-      return noUserSelected(this);
+    if (noRoleSelected != null) {
+      return noRoleSelected(this);
     }
     return orElse();
   }
 }
 
-abstract class _NoUserSelected implements UsersActorEvent {
-  const factory _NoUserSelected() = _$_NoUserSelected;
+abstract class _NoRoleSelected implements RolesActorEvent {
+  const factory _NoRoleSelected() = _$_NoRoleSelected;
 }
 
 /// @nodoc
-class _$UsersActorStateTearOff {
-  const _$UsersActorStateTearOff();
+class _$RolesActorStateTearOff {
+  const _$RolesActorStateTearOff();
 
 // ignore: unused_element
   _Initial initial() {
@@ -487,8 +308,8 @@ class _$UsersActorStateTearOff {
   }
 
 // ignore: unused_element
-  _NoUser noUser() {
-    return const _NoUser();
+  _NoRole noRoleSelected() {
+    return const _NoRole();
   }
 
 // ignore: unused_element
@@ -499,22 +320,22 @@ class _$UsersActorStateTearOff {
   }
 
 // ignore: unused_element
-  UpdateSuccess updateSuccess() {
-    return const UpdateSuccess();
+  _UpdateSuccess updateSuccess() {
+    return const _UpdateSuccess();
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $UsersActorState = _$UsersActorStateTearOff();
+const $RolesActorState = _$RolesActorStateTearOff();
 
 /// @nodoc
-mixin _$UsersActorState {
+mixin _$RolesActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   });
@@ -522,7 +343,7 @@ mixin _$UsersActorState {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
@@ -531,36 +352,36 @@ mixin _$UsersActorState {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   });
 }
 
 /// @nodoc
-abstract class $UsersActorStateCopyWith<$Res> {
-  factory $UsersActorStateCopyWith(
-          UsersActorState value, $Res Function(UsersActorState) then) =
-      _$UsersActorStateCopyWithImpl<$Res>;
+abstract class $RolesActorStateCopyWith<$Res> {
+  factory $RolesActorStateCopyWith(
+          RolesActorState value, $Res Function(RolesActorState) then) =
+      _$RolesActorStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UsersActorStateCopyWithImpl<$Res>
-    implements $UsersActorStateCopyWith<$Res> {
-  _$UsersActorStateCopyWithImpl(this._value, this._then);
+class _$RolesActorStateCopyWithImpl<$Res>
+    implements $RolesActorStateCopyWith<$Res> {
+  _$RolesActorStateCopyWithImpl(this._value, this._then);
 
-  final UsersActorState _value;
+  final RolesActorState _value;
   // ignore: unused_field
-  final $Res Function(UsersActorState) _then;
+  final $Res Function(RolesActorState) _then;
 }
 
 /// @nodoc
@@ -570,7 +391,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$UsersActorStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$RolesActorStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -585,7 +406,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'UsersActorState.initial()';
+    return 'RolesActorState.initial()';
   }
 
   @override
@@ -601,13 +422,13 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return initial();
@@ -618,7 +439,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
@@ -635,13 +456,13 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return initial(this);
@@ -652,9 +473,9 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -665,7 +486,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements UsersActorState {
+abstract class _Initial implements RolesActorState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -678,7 +499,7 @@ abstract class _$ActionInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$ActionInProgressCopyWithImpl<$Res>
-    extends _$UsersActorStateCopyWithImpl<$Res>
+    extends _$RolesActorStateCopyWithImpl<$Res>
     implements _$ActionInProgressCopyWith<$Res> {
   __$ActionInProgressCopyWithImpl(
       _ActionInProgress _value, $Res Function(_ActionInProgress) _then)
@@ -694,7 +515,7 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   String toString() {
-    return 'UsersActorState.actionInProgress()';
+    return 'RolesActorState.actionInProgress()';
   }
 
   @override
@@ -710,13 +531,13 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return actionInProgress();
@@ -727,7 +548,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
@@ -744,13 +565,13 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return actionInProgress(this);
@@ -761,9 +582,9 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -774,38 +595,38 @@ class _$_ActionInProgress implements _ActionInProgress {
   }
 }
 
-abstract class _ActionInProgress implements UsersActorState {
+abstract class _ActionInProgress implements RolesActorState {
   const factory _ActionInProgress() = _$_ActionInProgress;
 }
 
 /// @nodoc
-abstract class _$NoUserCopyWith<$Res> {
-  factory _$NoUserCopyWith(_NoUser value, $Res Function(_NoUser) then) =
-      __$NoUserCopyWithImpl<$Res>;
+abstract class _$NoRoleCopyWith<$Res> {
+  factory _$NoRoleCopyWith(_NoRole value, $Res Function(_NoRole) then) =
+      __$NoRoleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NoUserCopyWithImpl<$Res> extends _$UsersActorStateCopyWithImpl<$Res>
-    implements _$NoUserCopyWith<$Res> {
-  __$NoUserCopyWithImpl(_NoUser _value, $Res Function(_NoUser) _then)
-      : super(_value, (v) => _then(v as _NoUser));
+class __$NoRoleCopyWithImpl<$Res> extends _$RolesActorStateCopyWithImpl<$Res>
+    implements _$NoRoleCopyWith<$Res> {
+  __$NoRoleCopyWithImpl(_NoRole _value, $Res Function(_NoRole) _then)
+      : super(_value, (v) => _then(v as _NoRole));
 
   @override
-  _NoUser get _value => super._value as _NoUser;
+  _NoRole get _value => super._value as _NoRole;
 }
 
 /// @nodoc
-class _$_NoUser implements _NoUser {
-  const _$_NoUser();
+class _$_NoRole implements _NoRole {
+  const _$_NoRole();
 
   @override
   String toString() {
-    return 'UsersActorState.noUser()';
+    return 'RolesActorState.noRoleSelected()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NoUser);
+    return identical(this, other) || (other is _NoRole);
   }
 
   @override
@@ -816,16 +637,16 @@ class _$_NoUser implements _NoUser {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
-    return noUser();
+    return noRoleSelected();
   }
 
   @override
@@ -833,14 +654,14 @@ class _$_NoUser implements _NoUser {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (noUser != null) {
-      return noUser();
+    if (noRoleSelected != null) {
+      return noRoleSelected();
     }
     return orElse();
   }
@@ -850,16 +671,16 @@ class _$_NoUser implements _NoUser {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
-    return noUser(this);
+    return noRoleSelected(this);
   }
 
   @override
@@ -867,21 +688,21 @@ class _$_NoUser implements _NoUser {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (noUser != null) {
-      return noUser(this);
+    if (noRoleSelected != null) {
+      return noRoleSelected(this);
     }
     return orElse();
   }
 }
 
-abstract class _NoUser implements UsersActorState {
-  const factory _NoUser() = _$_NoUser;
+abstract class _NoRole implements RolesActorState {
+  const factory _NoRole() = _$_NoRole;
 }
 
 /// @nodoc
@@ -896,7 +717,7 @@ abstract class _$UpdateFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$UpdateFailureCopyWithImpl<$Res>
-    extends _$UsersActorStateCopyWithImpl<$Res>
+    extends _$RolesActorStateCopyWithImpl<$Res>
     implements _$UpdateFailureCopyWith<$Res> {
   __$UpdateFailureCopyWithImpl(
       _UpdateFailure _value, $Res Function(_UpdateFailure) _then)
@@ -934,7 +755,7 @@ class _$_UpdateFailure implements _UpdateFailure {
 
   @override
   String toString() {
-    return 'UsersActorState.updateFailure(failure: $failure)';
+    return 'RolesActorState.updateFailure(failure: $failure)';
   }
 
   @override
@@ -959,13 +780,13 @@ class _$_UpdateFailure implements _UpdateFailure {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return updateFailure(failure);
@@ -976,7 +797,7 @@ class _$_UpdateFailure implements _UpdateFailure {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
@@ -993,13 +814,13 @@ class _$_UpdateFailure implements _UpdateFailure {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return updateFailure(this);
@@ -1010,9 +831,9 @@ class _$_UpdateFailure implements _UpdateFailure {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1023,7 +844,7 @@ class _$_UpdateFailure implements _UpdateFailure {
   }
 }
 
-abstract class _UpdateFailure implements UsersActorState {
+abstract class _UpdateFailure implements RolesActorState {
   const factory _UpdateFailure(RepositoryFailure failure) = _$_UpdateFailure;
 
   RepositoryFailure get failure;
@@ -1032,36 +853,36 @@ abstract class _UpdateFailure implements UsersActorState {
 }
 
 /// @nodoc
-abstract class $UpdateSuccessCopyWith<$Res> {
-  factory $UpdateSuccessCopyWith(
-          UpdateSuccess value, $Res Function(UpdateSuccess) then) =
-      _$UpdateSuccessCopyWithImpl<$Res>;
+abstract class _$UpdateSuccessCopyWith<$Res> {
+  factory _$UpdateSuccessCopyWith(
+          _UpdateSuccess value, $Res Function(_UpdateSuccess) then) =
+      __$UpdateSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UpdateSuccessCopyWithImpl<$Res>
-    extends _$UsersActorStateCopyWithImpl<$Res>
-    implements $UpdateSuccessCopyWith<$Res> {
-  _$UpdateSuccessCopyWithImpl(
-      UpdateSuccess _value, $Res Function(UpdateSuccess) _then)
-      : super(_value, (v) => _then(v as UpdateSuccess));
+class __$UpdateSuccessCopyWithImpl<$Res>
+    extends _$RolesActorStateCopyWithImpl<$Res>
+    implements _$UpdateSuccessCopyWith<$Res> {
+  __$UpdateSuccessCopyWithImpl(
+      _UpdateSuccess _value, $Res Function(_UpdateSuccess) _then)
+      : super(_value, (v) => _then(v as _UpdateSuccess));
 
   @override
-  UpdateSuccess get _value => super._value as UpdateSuccess;
+  _UpdateSuccess get _value => super._value as _UpdateSuccess;
 }
 
 /// @nodoc
-class _$UpdateSuccess implements UpdateSuccess {
-  const _$UpdateSuccess();
+class _$_UpdateSuccess implements _UpdateSuccess {
+  const _$_UpdateSuccess();
 
   @override
   String toString() {
-    return 'UsersActorState.updateSuccess()';
+    return 'RolesActorState.updateSuccess()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UpdateSuccess);
+    return identical(this, other) || (other is _UpdateSuccess);
   }
 
   @override
@@ -1072,13 +893,13 @@ class _$UpdateSuccess implements UpdateSuccess {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult actionInProgress(),
-    @required TResult noUser(),
+    @required TResult noRoleSelected(),
     @required TResult updateFailure(RepositoryFailure failure),
     @required TResult updateSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return updateSuccess();
@@ -1089,7 +910,7 @@ class _$UpdateSuccess implements UpdateSuccess {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult actionInProgress(),
-    TResult noUser(),
+    TResult noRoleSelected(),
     TResult updateFailure(RepositoryFailure failure),
     TResult updateSuccess(),
     @required TResult orElse(),
@@ -1106,13 +927,13 @@ class _$UpdateSuccess implements UpdateSuccess {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult actionInProgress(_ActionInProgress value),
-    @required TResult noUser(_NoUser value),
+    @required TResult noRoleSelected(_NoRole value),
     @required TResult updateFailure(_UpdateFailure value),
-    @required TResult updateSuccess(UpdateSuccess value),
+    @required TResult updateSuccess(_UpdateSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
-    assert(noUser != null);
+    assert(noRoleSelected != null);
     assert(updateFailure != null);
     assert(updateSuccess != null);
     return updateSuccess(this);
@@ -1123,9 +944,9 @@ class _$UpdateSuccess implements UpdateSuccess {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult actionInProgress(_ActionInProgress value),
-    TResult noUser(_NoUser value),
+    TResult noRoleSelected(_NoRole value),
     TResult updateFailure(_UpdateFailure value),
-    TResult updateSuccess(UpdateSuccess value),
+    TResult updateSuccess(_UpdateSuccess value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1136,6 +957,6 @@ class _$UpdateSuccess implements UpdateSuccess {
   }
 }
 
-abstract class UpdateSuccess implements UsersActorState {
-  const factory UpdateSuccess() = _$UpdateSuccess;
+abstract class _UpdateSuccess implements RolesActorState {
+  const factory _UpdateSuccess() = _$_UpdateSuccess;
 }

@@ -44,6 +44,7 @@ class SignInPage extends StatelessWidget {
         },
         builder: (context, state) {
           return SignInForm(
+            isLoading: state.isSubmitting,
             showErrorMessages: state.showErrorMessages,
             onEmailChanged: (value) => context.read<SignInFormBloc>().add(
                   SignInFormEvent.emailChanged(value),

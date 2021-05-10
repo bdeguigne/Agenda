@@ -23,6 +23,7 @@ abstract class CollectionRight with _$CollectionRight {
 
 @freezed
 abstract class Right with _$Right {
+  @JsonSerializable(explicitToJson: true)
   const factory Right({
     @required String name,
     @required String slug,

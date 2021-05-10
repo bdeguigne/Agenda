@@ -1,14 +1,17 @@
-import 'package:agenda/domain/roles/roles.dart';
+import 'package:agenda/domain/roles/role.dart';
+import 'package:agenda/presentation/core/loading_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class RolesRadiosList extends StatefulWidget {
-  final List<Roles> roles;
-  final Function(Roles role) onRoleSelected;
+  final bool isLoading;
+  final List<Role> roles;
+  final Function(Role role) onRoleSelectedPressed;
 
   const RolesRadiosList({
     Key key,
     @required this.roles,
-    @required this.onRoleSelected,
+    @required this.onRoleSelectedPressed,
+    @required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -16,7 +19,7 @@ class RolesRadiosList extends StatefulWidget {
 }
 
 class _RolesRadiosListState extends State<RolesRadiosList> {
-  Roles _selectedRole;
+  Role _selectedRole;
 
   @override
   void initState() {
@@ -41,12 +44,12 @@ class _RolesRadiosListState extends State<RolesRadiosList> {
           return Column(
             children: widget.roles
                 .map(
-                  (Roles role) => ListTile(
+                  (Role role) => ListTile(
                     title: Text(role.name),
-                    leading: Radio<Roles>(
+                    leading: Radio<Role>(
                       value: role,
                       groupValue: _selectedRole,
-                      onChanged: (Roles value) {
+                      onChanged: (Role value) {
                         setState(() {
                           _selectedRole = value;
                         });
@@ -65,8 +68,9 @@ class _RolesRadiosListState extends State<RolesRadiosList> {
               const SizedBox(height: 12),
               SizedBox(
                 height: 45,
-                child: ElevatedButton(
-                  onPressed: () => widget.onRoleSelected(_selectedRole),
+                child: LoadingElevatedButton(
+                  isLoading: widget.isLoading,
+                  onPressed: () => widget.onRoleSelectedPressed(_selectedRole),
                   child: const Text("Assign this role"),
                 ),
               ),

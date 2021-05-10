@@ -44,33 +44,6 @@ class Password extends ValueObject<String> {
 }
 
 @immutable
-class Role extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory Role(String role) {
-    assert(role != null);
-    return Role._(
-      validateRole(role),
-    );
-  }
-
-  factory Role.toDefault() {
-    return Role._(
-      right(RoleTypes.student),
-    );
-  }
-
-  const Role._(this.value);
-
-  factory Role.fromJson(String jsonValue) => Role._(validateRole(jsonValue));
-
-  Map<String, dynamic> toJson() => {
-        'role': value.getOrElse(() => null),
-      };
-}
-
-@immutable
 class Name extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;

@@ -1,3 +1,4 @@
+import 'package:agenda/presentation/core/loading_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class SignInForm extends StatelessWidget {
@@ -7,6 +8,7 @@ class SignInForm extends StatelessWidget {
   final Function(String) onPasswordChanged;
   final String Function() onPasswordValidate;
   final Function() onSignIn;
+  final bool isLoading;
 
   const SignInForm({
     Key key,
@@ -16,6 +18,7 @@ class SignInForm extends StatelessWidget {
     @required this.onPasswordChanged,
     @required this.onPasswordValidate,
     @required this.onSignIn,
+    @required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -76,7 +79,8 @@ class SignInForm extends StatelessWidget {
                   const SizedBox(height: 26),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
+                    child: LoadingElevatedButton(
+                      isLoading: isLoading,
                       onPressed: () => onSignIn(),
                       child: const Padding(
                         padding: EdgeInsets.all(16.0),

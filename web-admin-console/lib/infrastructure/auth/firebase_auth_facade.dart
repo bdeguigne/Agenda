@@ -24,6 +24,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   Future<Option<app.User>> getSignedInUser() async {
     final user = await _firebaseFirestore.toDomain(_firebaseAuth.currentUser);
 
+// TODO HANDLE IS ADMIN
     if (user != null && user.isAdmin) {
       return some(user);
     }
@@ -55,20 +56,13 @@ class FirebaseAuthFacade implements IAuthFacade {
         ),
         (document) {
           final data = document.data();
-          print("DATAAA $data");
           final app.Permissions permissions = app.Permissions.fromJson(
               data["permissions"] as Map<String, dynamic>);
 
-          if (permissions.role == Role(app.RoleTypes.admin)) {
+          if (app.isUserAdmin(permissions)) {
             return right(unit);
           }
-
           return left(const AuthFailure.userIsNotAnAdmin());
-
-          // return right(
-          //   app.User.fromJson(doc.data())
-          //       .copyWith(id: UniqueId.fromUniqueString(firebaseUser.uid)),
-          // );
         },
       );
     } on FirebaseAuthException catch (e) {

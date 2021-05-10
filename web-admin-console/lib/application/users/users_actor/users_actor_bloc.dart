@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:agenda/domain/auth/auth_value_objects.dart';
 import 'package:agenda/domain/auth/user.dart';
 import 'package:agenda/domain/core/repository_failure.dart';
 import 'package:agenda/domain/core/value_object.dart';
-import 'package:agenda/domain/roles/roles.dart';
+import 'package:agenda/domain/roles/role.dart';
 import 'package:agenda/domain/users/i_users_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
