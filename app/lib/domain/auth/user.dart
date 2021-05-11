@@ -22,7 +22,13 @@ abstract class User with _$User {
     @required ProfilePicture picture,
   }) = _User;
 
+  const User._();
+
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  bool get isTeacher {
+    return permissions.isTeacher;
+  }
 }
 
 @freezed
@@ -30,11 +36,18 @@ abstract class User with _$User {
 abstract class Permissions with _$Permissions {
   const factory Permissions({
     @required Role role,
+    @required List<String> rights,
   }) = _Permissions;
 
-  factory Permissions.fromJson(Map<String, dynamic> json) =>
-      Permissions(role: Role(json["role"] as String));
+  const Permissions._();
 
-  @override
-  Map<String, dynamic> toJson() => {'permissions': role.toJson()};
+  factory Permissions.fromJson(Map<String, dynamic> json) =>
+      _$PermissionsFromJson(json);
+
+  bool get isTeacher {
+    return rights.contains("HOMEWORKS_C");
+  }
+
+  // @override
+  // Map<String, dynamic> toJson() => {'permissions': role.toJson()};
 }

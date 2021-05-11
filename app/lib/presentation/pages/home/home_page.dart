@@ -1,7 +1,9 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/homework/homework_bloc.dart';
+import 'package:agenda/application/navigation/navigation_bloc.dart';
 import 'package:agenda/injection.dart';
 import 'package:agenda/presentation/core/snackbars.dart';
+import 'package:agenda/presentation/pages/home/navigation.dart';
 import 'package:agenda/presentation/pages/home/widgets/home_widget.dart';
 import 'package:agenda/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -15,8 +17,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthBloc _authBloc = BlocProvider.of<AuthBloc>(context);
 
-    return BlocProvider(
-      create: (context) => getIt<HomeworkBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<HomeworkBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => NavigationBloc(),
+        ),
+      ],
       child: BlocListener<HomeworkBloc, HomeworkState>(
         listener: (context, state) {
           state.homeworkFailureOrSuccessOption.fold(
@@ -45,6 +54,7 @@ class HomePage extends StatelessWidget {
           builder: (context, AuthState state) {
             return context.read<AuthBloc>().state.user.fold(
               () {
+                ExtendedNavigator.of(context).replace(Routes.signInPage);
                 // TODO Message d'erreur et rediriger vers le login
                 return const Scaffold(
                   body: Center(
@@ -52,12 +62,13 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
-              (user) => HomeWidget(
-                onProfilePressed: () =>
-                    ExtendedNavigator.of(context).pushProfilePage(),
-                onSignOutPressed: () =>
-                    context.read<AuthBloc>().add(const AuthEvent.signedOut()),
-              ),
+              (user) => Navigation(user: user),
+              // (user) => HomeWidget(
+              //   onProfilePressed: () =>
+              //       ExtendedNavigator.of(context).pushProfilePage(),
+              //   onSignOutPressed: () =>
+              //       context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+              // ),
             );
           },
         ),

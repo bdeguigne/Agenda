@@ -63,6 +63,11 @@ flutter:
   assets:
     - assets/google.png
 
+  fonts:
+    - family:  Agenda
+      fonts:
+        - asset: fonts/Agenda.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
