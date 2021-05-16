@@ -1,5 +1,4 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
-import 'package:agenda/application/homework/homework_bloc.dart';
 import 'package:agenda/application/profile/profile_bloc.dart';
 import 'package:agenda/domain/auth/user.dart';
 import 'package:agenda/domain/profile/profile_picture.dart';

@@ -40,6 +40,9 @@ dependencies:
   json_serializable: ^3.5.1
   firebase_storage: ^8.0.5
   image_picker: ^0.7.4
+  googleapis: ^2.0.0
+  file_picker: 3.0.0
+  intl: ^0.17.0
 
 dev_dependencies:
   auto_route_generator: ^0.6.9

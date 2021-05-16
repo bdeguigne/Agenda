@@ -1,8 +1,9 @@
 import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/navigation/navigation_bloc.dart';
 import 'package:agenda/domain/auth/user.dart';
-import 'package:agenda/presentation/pages/home/widgets/bottom_navigation.dart';
-import 'package:agenda/presentation/pages/home/widgets/home_widget.dart';
+import 'package:agenda/presentation/navigation/widgets/bottom_navigation.dart';
+import 'package:agenda/presentation/pages/homework_form/homework_form_page.dart';
+import 'package:agenda/presentation/pages/tasks/task_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,16 +63,14 @@ class Navigation extends StatelessWidget {
             initial: (_) => const Center(
               child: CircularProgressIndicator(),
             ),
-            taskPage: (_) => HomeWidget(
+            taskPage: (_) => TaskPage(
               onSignOutPressed: () =>
                   context.read<AuthBloc>().add(const AuthEvent.signedOut()),
             ),
             calendarPage: (_) => const Center(
               child: Text("Calendar page"),
             ),
-            homeworkForm: (_) => const Center(
-              child: Text("Create homework form"),
-            ),
+            homeworkForm: (_) => const HomeworkFormPage(),
           );
         },
       ),

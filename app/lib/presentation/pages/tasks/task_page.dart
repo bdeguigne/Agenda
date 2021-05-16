@@ -1,14 +1,11 @@
-import 'package:agenda/presentation/pages/home/widgets/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
-class HomeWidget extends StatelessWidget {
+class TaskPage extends StatelessWidget {
   final Function() onSignOutPressed;
-  // final Function() onProfilePressed;
 
-  const HomeWidget({
+  const TaskPage({
     Key key,
     @required this.onSignOutPressed,
-    // @required this.onProfilePressed,
   }) : super(key: key);
 
   @override
@@ -17,7 +14,7 @@ class HomeWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Center(
-          child: Text("Home page"),
+          child: Text("Task"),
         ),
         ElevatedButton(
           onPressed: () => onSignOutPressed(),

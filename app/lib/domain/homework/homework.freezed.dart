@@ -8,17 +8,35 @@ part of 'homework.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+Homework _$HomeworkFromJson(Map<String, dynamic> json) {
+  return _Homework.fromJson(json);
+}
 
 /// @nodoc
 class _$HomeworkTearOff {
   const _$HomeworkTearOff();
 
 // ignore: unused_element
-  _Homework call({@required UniqueId id, @required String name}) {
+  _Homework call(
+      {@JsonKey(ignore: true) UniqueId id,
+      @required String title,
+      @required String subject,
+      @required String description,
+      @required DateTime deliveryDate,
+      @required List<Document> homeworkDocuments}) {
     return _Homework(
       id: id,
-      name: name,
+      title: title,
+      subject: subject,
+      description: description,
+      deliveryDate: deliveryDate,
+      homeworkDocuments: homeworkDocuments,
     );
+  }
+
+// ignore: unused_element
+  Homework fromJson(Map<String, Object> json) {
+    return Homework.fromJson(json);
   }
 }
 
@@ -28,10 +46,15 @@ const $Homework = _$HomeworkTearOff();
 
 /// @nodoc
 mixin _$Homework {
-  UniqueId
-      get id; // TODO Change homework name type by a value object for verification (max title length)
-  String get name;
+  @JsonKey(ignore: true)
+  UniqueId get id;
+  String get title;
+  String get subject;
+  String get description;
+  DateTime get deliveryDate;
+  List<Document> get homeworkDocuments;
 
+  Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
   $HomeworkCopyWith<Homework> get copyWith;
 }
@@ -40,7 +63,13 @@ mixin _$Homework {
 abstract class $HomeworkCopyWith<$Res> {
   factory $HomeworkCopyWith(Homework value, $Res Function(Homework) then) =
       _$HomeworkCopyWithImpl<$Res>;
-  $Res call({UniqueId id, String name});
+  $Res call(
+      {@JsonKey(ignore: true) UniqueId id,
+      String title,
+      String subject,
+      String description,
+      DateTime deliveryDate,
+      List<Document> homeworkDocuments});
 }
 
 /// @nodoc
@@ -54,11 +83,24 @@ class _$HomeworkCopyWithImpl<$Res> implements $HomeworkCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object name = freezed,
+    Object title = freezed,
+    Object subject = freezed,
+    Object description = freezed,
+    Object deliveryDate = freezed,
+    Object homeworkDocuments = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as String,
+      title: title == freezed ? _value.title : title as String,
+      subject: subject == freezed ? _value.subject : subject as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      deliveryDate: deliveryDate == freezed
+          ? _value.deliveryDate
+          : deliveryDate as DateTime,
+      homeworkDocuments: homeworkDocuments == freezed
+          ? _value.homeworkDocuments
+          : homeworkDocuments as List<Document>,
     ));
   }
 }
@@ -68,7 +110,13 @@ abstract class _$HomeworkCopyWith<$Res> implements $HomeworkCopyWith<$Res> {
   factory _$HomeworkCopyWith(_Homework value, $Res Function(_Homework) then) =
       __$HomeworkCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, String name});
+  $Res call(
+      {@JsonKey(ignore: true) UniqueId id,
+      String title,
+      String subject,
+      String description,
+      DateTime deliveryDate,
+      List<Document> homeworkDocuments});
 }
 
 /// @nodoc
@@ -83,29 +131,66 @@ class __$HomeworkCopyWithImpl<$Res> extends _$HomeworkCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object name = freezed,
+    Object title = freezed,
+    Object subject = freezed,
+    Object description = freezed,
+    Object deliveryDate = freezed,
+    Object homeworkDocuments = freezed,
   }) {
     return _then(_Homework(
       id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as String,
+      title: title == freezed ? _value.title : title as String,
+      subject: subject == freezed ? _value.subject : subject as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      deliveryDate: deliveryDate == freezed
+          ? _value.deliveryDate
+          : deliveryDate as DateTime,
+      homeworkDocuments: homeworkDocuments == freezed
+          ? _value.homeworkDocuments
+          : homeworkDocuments as List<Document>,
     ));
   }
 }
 
+@JsonSerializable(explicitToJson: true)
+
 /// @nodoc
-class _$_Homework implements _Homework {
-  const _$_Homework({@required this.id, @required this.name})
-      : assert(id != null),
-        assert(name != null);
+class _$_Homework extends _Homework {
+  const _$_Homework(
+      {@JsonKey(ignore: true) this.id,
+      @required this.title,
+      @required this.subject,
+      @required this.description,
+      @required this.deliveryDate,
+      @required this.homeworkDocuments})
+      : assert(title != null),
+        assert(subject != null),
+        assert(description != null),
+        assert(deliveryDate != null),
+        assert(homeworkDocuments != null),
+        super._();
+
+  factory _$_Homework.fromJson(Map<String, dynamic> json) =>
+      _$_$_HomeworkFromJson(json);
 
   @override
+  @JsonKey(ignore: true)
   final UniqueId id;
-  @override // TODO Change homework name type by a value object for verification (max title length)
-  final String name;
+  @override
+  final String title;
+  @override
+  final String subject;
+  @override
+  final String description;
+  @override
+  final DateTime deliveryDate;
+  @override
+  final List<Document> homeworkDocuments;
 
   @override
   String toString() {
-    return 'Homework(id: $id, name: $name)';
+    return 'Homework(id: $id, title: $title, subject: $subject, description: $description, deliveryDate: $deliveryDate, homeworkDocuments: $homeworkDocuments)';
   }
 
   @override
@@ -114,30 +199,68 @@ class _$_Homework implements _Homework {
         (other is _Homework &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.subject, subject) ||
+                const DeepCollectionEquality()
+                    .equals(other.subject, subject)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.deliveryDate, deliveryDate) ||
+                const DeepCollectionEquality()
+                    .equals(other.deliveryDate, deliveryDate)) &&
+            (identical(other.homeworkDocuments, homeworkDocuments) ||
+                const DeepCollectionEquality()
+                    .equals(other.homeworkDocuments, homeworkDocuments)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(subject) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(deliveryDate) ^
+      const DeepCollectionEquality().hash(homeworkDocuments);
 
   @JsonKey(ignore: true)
   @override
   _$HomeworkCopyWith<_Homework> get copyWith =>
       __$HomeworkCopyWithImpl<_Homework>(this, _$identity);
-}
-
-abstract class _Homework implements Homework {
-  const factory _Homework({@required UniqueId id, @required String name}) =
-      _$_Homework;
 
   @override
+  Map<String, dynamic> toJson() {
+    return _$_$_HomeworkToJson(this);
+  }
+}
+
+abstract class _Homework extends Homework {
+  const _Homework._() : super._();
+  const factory _Homework(
+      {@JsonKey(ignore: true) UniqueId id,
+      @required String title,
+      @required String subject,
+      @required String description,
+      @required DateTime deliveryDate,
+      @required List<Document> homeworkDocuments}) = _$_Homework;
+
+  factory _Homework.fromJson(Map<String, dynamic> json) = _$_Homework.fromJson;
+
+  @override
+  @JsonKey(ignore: true)
   UniqueId get id;
-  @override // TODO Change homework name type by a value object for verification (max title length)
-  String get name;
+  @override
+  String get title;
+  @override
+  String get subject;
+  @override
+  String get description;
+  @override
+  DateTime get deliveryDate;
+  @override
+  List<Document> get homeworkDocuments;
   @override
   @JsonKey(ignore: true)
   _$HomeworkCopyWith<_Homework> get copyWith;

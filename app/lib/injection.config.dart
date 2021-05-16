@@ -14,12 +14,13 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'application/auth/auth_bloc.dart' as _i14;
 import 'application/auth/register_form/register_form_bloc.dart' as _i12;
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i13;
-import 'application/homework/homework_bloc.dart' as _i15;
+import 'application/homework/document/document_bloc.dart' as _i15;
+import 'application/homework/homework_form/homework_form_bloc.dart' as _i16;
 import 'application/profile/profile_bloc.dart' as _i11;
 import 'domain/auth/i_auth_facade.dart' as _i7;
 import 'domain/homework/i_homework_repository.dart' as _i9;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i8;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i16;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i17;
 import 'infrastructure/homework/homework_repository.dart'
     as _i10; // ignore_for_file: unnecessary_lambdas
 
@@ -42,17 +43,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i6.GoogleSignIn>(),
       get<_i4.FirebaseFirestore>(),
       get<_i5.FirebaseStorage>()));
-  gh.lazySingleton<_i9.IHomeworkRepository>(
-      () => _i10.HomeworkRepository(get<_i4.FirebaseFirestore>()));
+  gh.lazySingleton<_i9.IHomeworkRepository>(() => _i10.HomeworkRepository(
+      get<_i4.FirebaseFirestore>(), get<_i5.FirebaseStorage>()));
   gh.factory<_i11.ProfileBloc>(() => _i11.ProfileBloc(get<_i7.IAuthFacade>()));
   gh.factory<_i12.RegisterFormBloc>(
       () => _i12.RegisterFormBloc(get<_i7.IAuthFacade>()));
   gh.factory<_i13.SignInFormBloc>(
       () => _i13.SignInFormBloc(get<_i7.IAuthFacade>()));
   gh.factory<_i14.AuthBloc>(() => _i14.AuthBloc(get<_i7.IAuthFacade>()));
-  gh.factory<_i15.HomeworkBloc>(
-      () => _i15.HomeworkBloc(get<_i9.IHomeworkRepository>()));
+  gh.factory<_i15.DocumentBloc>(
+      () => _i15.DocumentBloc(get<_i9.IHomeworkRepository>()));
+  gh.factory<_i16.HomeworkFormBloc>(
+      () => _i16.HomeworkFormBloc(get<_i9.IHomeworkRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i16.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i17.FirebaseInjectableModule {}
