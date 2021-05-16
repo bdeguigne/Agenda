@@ -1,30 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'homework.dart';
+part of 'homework_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-Homework _$HomeworkFromJson(Map<String, dynamic> json) {
-  return _Homework.fromJson(json);
+HomeworkDto _$HomeworkDtoFromJson(Map<String, dynamic> json) {
+  return _HomeworkDto.fromJson(json);
 }
 
 /// @nodoc
-class _$HomeworkTearOff {
-  const _$HomeworkTearOff();
+class _$HomeworkDtoTearOff {
+  const _$HomeworkDtoTearOff();
 
 // ignore: unused_element
-  _Homework call(
-      {@JsonKey(ignore: true) UniqueId id,
+  _HomeworkDto call(
+      {@JsonKey(ignore: true) String id,
       @required String title,
       @required String subject,
       @required String description,
       @required @TimestampConverter() DateTime deliveryDate,
       @required List<Document> homeworkDocuments}) {
-    return _Homework(
+    return _HomeworkDto(
       id: id,
       title: title,
       subject: subject,
@@ -35,19 +35,19 @@ class _$HomeworkTearOff {
   }
 
 // ignore: unused_element
-  Homework fromJson(Map<String, Object> json) {
-    return Homework.fromJson(json);
+  HomeworkDto fromJson(Map<String, Object> json) {
+    return HomeworkDto.fromJson(json);
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $Homework = _$HomeworkTearOff();
+const $HomeworkDto = _$HomeworkDtoTearOff();
 
 /// @nodoc
-mixin _$Homework {
+mixin _$HomeworkDto {
   @JsonKey(ignore: true)
-  UniqueId get id;
+  String get id;
   String get title;
   String get subject;
   String get description;
@@ -57,15 +57,16 @@ mixin _$Homework {
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
-  $HomeworkCopyWith<Homework> get copyWith;
+  $HomeworkDtoCopyWith<HomeworkDto> get copyWith;
 }
 
 /// @nodoc
-abstract class $HomeworkCopyWith<$Res> {
-  factory $HomeworkCopyWith(Homework value, $Res Function(Homework) then) =
-      _$HomeworkCopyWithImpl<$Res>;
+abstract class $HomeworkDtoCopyWith<$Res> {
+  factory $HomeworkDtoCopyWith(
+          HomeworkDto value, $Res Function(HomeworkDto) then) =
+      _$HomeworkDtoCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) UniqueId id,
+      {@JsonKey(ignore: true) String id,
       String title,
       String subject,
       String description,
@@ -74,12 +75,12 @@ abstract class $HomeworkCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeworkCopyWithImpl<$Res> implements $HomeworkCopyWith<$Res> {
-  _$HomeworkCopyWithImpl(this._value, this._then);
+class _$HomeworkDtoCopyWithImpl<$Res> implements $HomeworkDtoCopyWith<$Res> {
+  _$HomeworkDtoCopyWithImpl(this._value, this._then);
 
-  final Homework _value;
+  final HomeworkDto _value;
   // ignore: unused_field
-  final $Res Function(Homework) _then;
+  final $Res Function(HomeworkDto) _then;
 
   @override
   $Res call({
@@ -91,7 +92,7 @@ class _$HomeworkCopyWithImpl<$Res> implements $HomeworkCopyWith<$Res> {
     Object homeworkDocuments = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as UniqueId,
+      id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       subject: subject == freezed ? _value.subject : subject as String,
       description:
@@ -107,12 +108,14 @@ class _$HomeworkCopyWithImpl<$Res> implements $HomeworkCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HomeworkCopyWith<$Res> implements $HomeworkCopyWith<$Res> {
-  factory _$HomeworkCopyWith(_Homework value, $Res Function(_Homework) then) =
-      __$HomeworkCopyWithImpl<$Res>;
+abstract class _$HomeworkDtoCopyWith<$Res>
+    implements $HomeworkDtoCopyWith<$Res> {
+  factory _$HomeworkDtoCopyWith(
+          _HomeworkDto value, $Res Function(_HomeworkDto) then) =
+      __$HomeworkDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) UniqueId id,
+      {@JsonKey(ignore: true) String id,
       String title,
       String subject,
       String description,
@@ -121,13 +124,14 @@ abstract class _$HomeworkCopyWith<$Res> implements $HomeworkCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$HomeworkCopyWithImpl<$Res> extends _$HomeworkCopyWithImpl<$Res>
-    implements _$HomeworkCopyWith<$Res> {
-  __$HomeworkCopyWithImpl(_Homework _value, $Res Function(_Homework) _then)
-      : super(_value, (v) => _then(v as _Homework));
+class __$HomeworkDtoCopyWithImpl<$Res> extends _$HomeworkDtoCopyWithImpl<$Res>
+    implements _$HomeworkDtoCopyWith<$Res> {
+  __$HomeworkDtoCopyWithImpl(
+      _HomeworkDto _value, $Res Function(_HomeworkDto) _then)
+      : super(_value, (v) => _then(v as _HomeworkDto));
 
   @override
-  _Homework get _value => super._value as _Homework;
+  _HomeworkDto get _value => super._value as _HomeworkDto;
 
   @override
   $Res call({
@@ -138,8 +142,8 @@ class __$HomeworkCopyWithImpl<$Res> extends _$HomeworkCopyWithImpl<$Res>
     Object deliveryDate = freezed,
     Object homeworkDocuments = freezed,
   }) {
-    return _then(_Homework(
-      id: id == freezed ? _value.id : id as UniqueId,
+    return _then(_HomeworkDto(
+      id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       subject: subject == freezed ? _value.subject : subject as String,
       description:
@@ -157,8 +161,8 @@ class __$HomeworkCopyWithImpl<$Res> extends _$HomeworkCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 
 /// @nodoc
-class _$_Homework extends _Homework {
-  const _$_Homework(
+class _$_HomeworkDto extends _HomeworkDto {
+  const _$_HomeworkDto(
       {@JsonKey(ignore: true) this.id,
       @required this.title,
       @required this.subject,
@@ -172,12 +176,12 @@ class _$_Homework extends _Homework {
         assert(homeworkDocuments != null),
         super._();
 
-  factory _$_Homework.fromJson(Map<String, dynamic> json) =>
-      _$_$_HomeworkFromJson(json);
+  factory _$_HomeworkDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_HomeworkDtoFromJson(json);
 
   @override
   @JsonKey(ignore: true)
-  final UniqueId id;
+  final String id;
   @override
   final String title;
   @override
@@ -192,13 +196,13 @@ class _$_Homework extends _Homework {
 
   @override
   String toString() {
-    return 'Homework(id: $id, title: $title, subject: $subject, description: $description, deliveryDate: $deliveryDate, homeworkDocuments: $homeworkDocuments)';
+    return 'HomeworkDto(id: $id, title: $title, subject: $subject, description: $description, deliveryDate: $deliveryDate, homeworkDocuments: $homeworkDocuments)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Homework &&
+        (other is _HomeworkDto &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
@@ -229,30 +233,31 @@ class _$_Homework extends _Homework {
 
   @JsonKey(ignore: true)
   @override
-  _$HomeworkCopyWith<_Homework> get copyWith =>
-      __$HomeworkCopyWithImpl<_Homework>(this, _$identity);
+  _$HomeworkDtoCopyWith<_HomeworkDto> get copyWith =>
+      __$HomeworkDtoCopyWithImpl<_HomeworkDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_HomeworkToJson(this);
+    return _$_$_HomeworkDtoToJson(this);
   }
 }
 
-abstract class _Homework extends Homework {
-  const _Homework._() : super._();
-  const factory _Homework(
-      {@JsonKey(ignore: true) UniqueId id,
+abstract class _HomeworkDto extends HomeworkDto {
+  const _HomeworkDto._() : super._();
+  const factory _HomeworkDto(
+      {@JsonKey(ignore: true) String id,
       @required String title,
       @required String subject,
       @required String description,
       @required @TimestampConverter() DateTime deliveryDate,
-      @required List<Document> homeworkDocuments}) = _$_Homework;
+      @required List<Document> homeworkDocuments}) = _$_HomeworkDto;
 
-  factory _Homework.fromJson(Map<String, dynamic> json) = _$_Homework.fromJson;
+  factory _HomeworkDto.fromJson(Map<String, dynamic> json) =
+      _$_HomeworkDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
-  UniqueId get id;
+  String get id;
   @override
   String get title;
   @override
@@ -266,5 +271,5 @@ abstract class _Homework extends Homework {
   List<Document> get homeworkDocuments;
   @override
   @JsonKey(ignore: true)
-  _$HomeworkCopyWith<_Homework> get copyWith;
+  _$HomeworkDtoCopyWith<_HomeworkDto> get copyWith;
 }

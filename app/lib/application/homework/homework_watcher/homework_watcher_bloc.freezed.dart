@@ -19,8 +19,11 @@ class _$HomeworkWatcherEventTearOff {
   }
 
 // ignore: unused_element
-  _HomeworksReceived homeworksReceived() {
-    return const _HomeworksReceived();
+  HomeworksReceived homeworksReceived(
+      Either<HomeworkFailure, List<Homework>> failureOrHomeworks) {
+    return HomeworksReceived(
+      failureOrHomeworks,
+    );
   }
 }
 
@@ -33,23 +36,26 @@ mixin _$HomeworkWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
-    @required TResult homeworksReceived(),
+    @required
+        TResult homeworksReceived(
+            Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult homeworksReceived(),
+    TResult homeworksReceived(
+        Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(_WatchAll value),
-    @required TResult homeworksReceived(_HomeworksReceived value),
+    @required TResult homeworksReceived(HomeworksReceived value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(_WatchAll value),
-    TResult homeworksReceived(_HomeworksReceived value),
+    TResult homeworksReceived(HomeworksReceived value),
     @required TResult orElse(),
   });
 }
@@ -109,7 +115,9 @@ class _$_WatchAll implements _WatchAll {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
-    @required TResult homeworksReceived(),
+    @required
+        TResult homeworksReceived(
+            Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
   }) {
     assert(watchAll != null);
     assert(homeworksReceived != null);
@@ -120,7 +128,8 @@ class _$_WatchAll implements _WatchAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult homeworksReceived(),
+    TResult homeworksReceived(
+        Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -134,7 +143,7 @@ class _$_WatchAll implements _WatchAll {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(_WatchAll value),
-    @required TResult homeworksReceived(_HomeworksReceived value),
+    @required TResult homeworksReceived(HomeworksReceived value),
   }) {
     assert(watchAll != null);
     assert(homeworksReceived != null);
@@ -145,7 +154,7 @@ class _$_WatchAll implements _WatchAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(_WatchAll value),
-    TResult homeworksReceived(_HomeworksReceived value),
+    TResult homeworksReceived(HomeworksReceived value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -161,62 +170,92 @@ abstract class _WatchAll implements HomeworkWatcherEvent {
 }
 
 /// @nodoc
-abstract class _$HomeworksReceivedCopyWith<$Res> {
-  factory _$HomeworksReceivedCopyWith(
-          _HomeworksReceived value, $Res Function(_HomeworksReceived) then) =
-      __$HomeworksReceivedCopyWithImpl<$Res>;
+abstract class $HomeworksReceivedCopyWith<$Res> {
+  factory $HomeworksReceivedCopyWith(
+          HomeworksReceived value, $Res Function(HomeworksReceived) then) =
+      _$HomeworksReceivedCopyWithImpl<$Res>;
+  $Res call({Either<HomeworkFailure, List<Homework>> failureOrHomeworks});
 }
 
 /// @nodoc
-class __$HomeworksReceivedCopyWithImpl<$Res>
+class _$HomeworksReceivedCopyWithImpl<$Res>
     extends _$HomeworkWatcherEventCopyWithImpl<$Res>
-    implements _$HomeworksReceivedCopyWith<$Res> {
-  __$HomeworksReceivedCopyWithImpl(
-      _HomeworksReceived _value, $Res Function(_HomeworksReceived) _then)
-      : super(_value, (v) => _then(v as _HomeworksReceived));
+    implements $HomeworksReceivedCopyWith<$Res> {
+  _$HomeworksReceivedCopyWithImpl(
+      HomeworksReceived _value, $Res Function(HomeworksReceived) _then)
+      : super(_value, (v) => _then(v as HomeworksReceived));
 
   @override
-  _HomeworksReceived get _value => super._value as _HomeworksReceived;
+  HomeworksReceived get _value => super._value as HomeworksReceived;
+
+  @override
+  $Res call({
+    Object failureOrHomeworks = freezed,
+  }) {
+    return _then(HomeworksReceived(
+      failureOrHomeworks == freezed
+          ? _value.failureOrHomeworks
+          : failureOrHomeworks as Either<HomeworkFailure, List<Homework>>,
+    ));
+  }
 }
 
 /// @nodoc
-class _$_HomeworksReceived implements _HomeworksReceived {
-  const _$_HomeworksReceived();
+class _$HomeworksReceived implements HomeworksReceived {
+  const _$HomeworksReceived(this.failureOrHomeworks)
+      : assert(failureOrHomeworks != null);
+
+  @override
+  final Either<HomeworkFailure, List<Homework>> failureOrHomeworks;
 
   @override
   String toString() {
-    return 'HomeworkWatcherEvent.homeworksReceived()';
+    return 'HomeworkWatcherEvent.homeworksReceived(failureOrHomeworks: $failureOrHomeworks)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _HomeworksReceived);
+    return identical(this, other) ||
+        (other is HomeworksReceived &&
+            (identical(other.failureOrHomeworks, failureOrHomeworks) ||
+                const DeepCollectionEquality()
+                    .equals(other.failureOrHomeworks, failureOrHomeworks)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failureOrHomeworks);
+
+  @JsonKey(ignore: true)
+  @override
+  $HomeworksReceivedCopyWith<HomeworksReceived> get copyWith =>
+      _$HomeworksReceivedCopyWithImpl<HomeworksReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult watchAll(),
-    @required TResult homeworksReceived(),
+    @required
+        TResult homeworksReceived(
+            Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
   }) {
     assert(watchAll != null);
     assert(homeworksReceived != null);
-    return homeworksReceived();
+    return homeworksReceived(failureOrHomeworks);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAll(),
-    TResult homeworksReceived(),
+    TResult homeworksReceived(
+        Either<HomeworkFailure, List<Homework>> failureOrHomeworks),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (homeworksReceived != null) {
-      return homeworksReceived();
+      return homeworksReceived(failureOrHomeworks);
     }
     return orElse();
   }
@@ -225,7 +264,7 @@ class _$_HomeworksReceived implements _HomeworksReceived {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAll(_WatchAll value),
-    @required TResult homeworksReceived(_HomeworksReceived value),
+    @required TResult homeworksReceived(HomeworksReceived value),
   }) {
     assert(watchAll != null);
     assert(homeworksReceived != null);
@@ -236,7 +275,7 @@ class _$_HomeworksReceived implements _HomeworksReceived {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAll(_WatchAll value),
-    TResult homeworksReceived(_HomeworksReceived value),
+    TResult homeworksReceived(HomeworksReceived value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -247,8 +286,14 @@ class _$_HomeworksReceived implements _HomeworksReceived {
   }
 }
 
-abstract class _HomeworksReceived implements HomeworkWatcherEvent {
-  const factory _HomeworksReceived() = _$_HomeworksReceived;
+abstract class HomeworksReceived implements HomeworkWatcherEvent {
+  const factory HomeworksReceived(
+          Either<HomeworkFailure, List<Homework>> failureOrHomeworks) =
+      _$HomeworksReceived;
+
+  Either<HomeworkFailure, List<Homework>> get failureOrHomeworks;
+  @JsonKey(ignore: true)
+  $HomeworksReceivedCopyWith<HomeworksReceived> get copyWith;
 }
 
 /// @nodoc

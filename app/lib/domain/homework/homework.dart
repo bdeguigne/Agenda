@@ -1,6 +1,7 @@
+import 'package:agenda/domain/core/timestamp_converter.dart';
 import 'package:agenda/domain/core/value_object.dart';
 import 'package:agenda/domain/document/document.dart';
-import 'package:dartz/dartz.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'homework.freezed.dart';
@@ -14,7 +15,7 @@ abstract class Homework with _$Homework {
     @required String title,
     @required String subject,
     @required String description,
-    @required DateTime deliveryDate,
+    @required @TimestampConverter() DateTime deliveryDate,
     @required List<Document> homeworkDocuments,
   }) = _Homework;
 

@@ -16,11 +16,13 @@ import 'application/auth/register_form/register_form_bloc.dart' as _i12;
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i13;
 import 'application/homework/document/document_bloc.dart' as _i15;
 import 'application/homework/homework_form/homework_form_bloc.dart' as _i16;
+import 'application/homework/homework_watcher/homework_watcher_bloc.dart'
+    as _i17;
 import 'application/profile/profile_bloc.dart' as _i11;
 import 'domain/auth/i_auth_facade.dart' as _i7;
 import 'domain/homework/i_homework_repository.dart' as _i9;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i8;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i17;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i18;
 import 'infrastructure/homework/homework_repository.dart'
     as _i10; // ignore_for_file: unnecessary_lambdas
 
@@ -55,7 +57,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i15.DocumentBloc(get<_i9.IHomeworkRepository>()));
   gh.factory<_i16.HomeworkFormBloc>(
       () => _i16.HomeworkFormBloc(get<_i9.IHomeworkRepository>()));
+  gh.factory<_i17.HomeworkWatcherBloc>(
+      () => _i17.HomeworkWatcherBloc(get<_i9.IHomeworkRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i17.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i18.FirebaseInjectableModule {}

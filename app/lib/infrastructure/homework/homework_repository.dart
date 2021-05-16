@@ -4,6 +4,7 @@ import 'package:agenda/domain/core/value_object.dart';
 import 'package:agenda/domain/document/document.dart';
 import 'package:agenda/domain/document/document_failure.dart';
 import 'package:agenda/domain/document/document_task_snapshot.dart';
+import 'package:agenda/infrastructure/homework/homework_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -63,14 +64,6 @@ class HomeworkRepository implements IHomeworkRepository {
         homeworkDocuments: homeworkDocuments,
       );
 
-      // if (homework.homeworkDocument.isSome()) {
-      //   final Document homeworkDocument =
-      //       homework.homeworkDocument.fold(() => null, id);
-
-      //   final storageFile = await _firebaseStorage
-      //       .ref("/documents/${homeworkDocument.fileName}")
-      //       .putFile(homeworkDocument.file);
-      // }
       await _firebaseFirestore
           .collection("homeworks")
           .doc()
@@ -87,9 +80,27 @@ class HomeworkRepository implements IHomeworkRepository {
   }
 
   @override
-  Stream<List<Homework>> watchAll(Function(HomeworkFailure failure) onError) {
-    // TODO: implement watchAll
-    throw UnimplementedError();
+  Stream<List<Homework>> watchAll(
+      Function(HomeworkFailure failure) onError) async* {
+    yield* _firebaseFirestore
+        .collection("homeworks")
+        .orderBy(
+          'deliveryDate',
+          descending: true,
+        )
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => HomeworkDto.fromFirestore(doc).toDomain())
+              .toList(),
+        )
+        .handleError((e) {
+      if (e is FirebaseException && e.code == "permission-denied") {
+        return onError(const HomeworkFailure.insufficientPermission());
+      } else {
+        return onError(const HomeworkFailure.unexpected());
+      }
+    });
   }
 
   // @override

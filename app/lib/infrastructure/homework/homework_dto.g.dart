@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'homework.dart';
+part of 'homework_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Homework _$_$_HomeworkFromJson(Map<String, dynamic> json) {
-  return _$_Homework(
+_$_HomeworkDto _$_$_HomeworkDtoFromJson(Map<String, dynamic> json) {
+  return _$_HomeworkDto(
     title: json['title'] as String,
     subject: json['subject'] as String,
     description: json['description'] as String,
@@ -20,7 +20,7 @@ _$_Homework _$_$_HomeworkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_HomeworkToJson(_$_Homework instance) =>
+Map<String, dynamic> _$_$_HomeworkDtoToJson(_$_HomeworkDto instance) =>
     <String, dynamic>{
       'title': instance.title,
       'subject': instance.subject,
