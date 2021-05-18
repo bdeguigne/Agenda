@@ -1,4 +1,5 @@
 import 'package:agenda/application/homework/homework_watcher/homework_watcher_bloc.dart';
+import 'package:agenda/presentation/pages/tasks/task_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +24,7 @@ class TaskPage extends StatelessWidget {
           ),
           loadSuccess: (success) {
             print("HOME LOADED ${success.homeworks}");
-            return const Center(
-              child: Text("Homework loaded"),
+            return const Task_Widget(string: "TEst",
             );
           },
           loadFailure: (_) => const Center(
