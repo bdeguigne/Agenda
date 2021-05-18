@@ -2,6 +2,7 @@ import 'package:agenda/application/auth/auth_bloc.dart';
 import 'package:agenda/application/navigation/navigation_bloc.dart';
 import 'package:agenda/domain/auth/user.dart';
 import 'package:agenda/presentation/navigation/widgets/bottom_navigation.dart';
+import 'package:agenda/presentation/pages/calendar/calendar.dart';
 import 'package:agenda/presentation/pages/homework_form/homework_form_page.dart';
 import 'package:agenda/presentation/pages/tasks/task_page.dart';
 import 'package:auto_route/auto_route.dart';
@@ -67,9 +68,7 @@ class Navigation extends StatelessWidget {
               onSignOutPressed: () =>
                   context.read<AuthBloc>().add(const AuthEvent.signedOut()),
             ),
-            calendarPage: (_) => const Center(
-              child: Text("Calendar page"),
-            ),
+            calendarPage: (_) => Calendar(),
             homeworkForm: (_) => const HomeworkFormPage(),
           );
         },
