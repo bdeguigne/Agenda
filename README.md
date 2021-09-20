@@ -3,7 +3,8 @@ Flutter app for student and teacher. Create and see homeworks for a classroom.
 
 # Features 
 
-- Flutter with Firebase
+- Flutter App + Web admin console made with Flutter
+- Firebase
 - Clean code : BLoC pattern + DDD architecure
 
 ## App:
